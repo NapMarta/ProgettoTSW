@@ -8,7 +8,7 @@
     <table>
         <tr>
             <td>
-                <img src="/WEB-INF/images/logo.jpeg">
+                <img src="logo.jpeg" width="80" height="80"/>
             </td>
             <td>
                 <h2>CookStock</h2>
