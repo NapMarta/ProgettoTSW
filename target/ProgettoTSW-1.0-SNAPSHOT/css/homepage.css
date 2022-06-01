@@ -19,7 +19,3 @@
 a img:hover{
     filter: grayscale(100%);
 }
-
-a:active img{
-    filter: grayscale(100%);
-}
