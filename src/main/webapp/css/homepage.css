@@ -1,0 +1,21 @@
+.navbarUP{
+    background-color: black;
+    width: 100%;
+    position: sticky;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbarDOWN{
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a img:hover{
+    filter: grayscale(100%);
+}
