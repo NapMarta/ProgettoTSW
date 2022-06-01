@@ -34,7 +34,16 @@
     <div class="navbarDOWN">
         <a href="#"> <img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a>
         <a href="#"> <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/> </a>
-        <a href="#"> <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/> </a>
+        <span class="dropup">
+            <button class="dropbtn">
+                <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+            </button>
+            <div class="dropup-content" id="elements">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </span>
         <a href="#"> <img src="https://img.icons8.com/ios/40/C29436/info--v1.png"/> </a>
     </div>
 </body>
