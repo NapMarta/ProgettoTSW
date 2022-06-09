@@ -21,8 +21,7 @@
             </td>
         </tr>
     </table>
-    <div class="navbar" id="up">
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/></a>
+    <div class="navbar" iddropbtnrc="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/></a>
         <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/></a>
         <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/></a>
         <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/></a>
