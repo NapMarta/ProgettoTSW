@@ -7,26 +7,30 @@
     <script type="text/javascript" src="javaScript/homepage.js"></script>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>
-                <img src="logo.jpeg" height="60" width="60">
-            </td>
-            <td>
-                <h2 id="nomePub">CookStock</h2>
-            </td>
-            <td>
-                <img src="https://img.icons8.com/color/40/000000/instagram-new--v1.png" class="social"/>
-                <img src="https://img.icons8.com/color/40/000000/facebook-new.png" class="social"/>
-            </td>
-        </tr>
-    </table>
-    <div class="navbar" id="up">
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/></a>
+
+    <div class="navbarTot">
+        <table>
+            <tr>
+                <td id="logo">
+                    <img src="logo.jpeg" height="60" width="60">
+                </td>
+                <td>
+                    <h2 id="nomePub">CookStock</h2>
+                </td>
+                <td id="social">
+                    <img src="https://img.icons8.com/color/40/000000/instagram-new--v1.png" class="social"/>
+                    <img src="https://img.icons8.com/color/40/000000/facebook-new.png" class="social"/>
+                </td>
+            </tr>
+        </table>
+
+        <div class="navbarUp">
+            <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/></a>
+        </div>
     </div>
 
     <p class="content">
@@ -127,7 +131,7 @@
 
     </p>
 
-    <div class="navbar" id="down">
+    <div class="navbarDown">
         <a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a>
         <a href="#"><img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/></a>
         <span class="dropup">
