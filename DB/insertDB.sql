@@ -1,11 +1,11 @@
 use cookstock;
 
-insert into utente(nome, cognome, email) values 
-("Mario", "Rossi", "mario01@gmail.com"),
-("Marco", "Bianchi", "marco22@libero.it"),
-("Luigi", "Ferreri","luigi34@gmail.com"),
-("Maria", "Costante", "m.costante@gmail.com"),
-("Alice", "Lo Conte","alice01.loconte@gmail.com");
+insert into utente(nome, cognome, email,passwordUtente) values 
+("Mario", "Rossi", "mario01@gmail.com","Scdfg54"),
+("Marco", "Bianchi", "marco22@libero.it","ciao43"),
+("Luigi", "Ferreri","luigi34@gmail.com","HelloWorld"),
+("Maria", "Costante", "m.costante@gmail.com","Maria54"),
+("Alice", "Lo Conte","alice01.loconte@gmail.com","Hellog4");
 
 insert into ordine(tipologia, sconto, totale,dataPagamento, tipoPagamento, idUtente) values
 ("A", 1.5, 45.70, "2021-10-10", "Contanti", 5),
@@ -48,4 +48,4 @@ insert into contenere values
 (1, 5, 2),
 (3, 1, 1);
 
-
+select * from utente

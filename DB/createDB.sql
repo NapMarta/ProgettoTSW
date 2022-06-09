@@ -7,10 +7,11 @@ use CookStock;
 
 create table utente(
 	id int auto_increment primary key,
-    nome varchar(30),
-    cognome varchar(30),
-    email varchar(30),
-    passwordUtente varchar(30)
+    nome varchar(30) not null,
+    cognome varchar(30) not null,
+    email varchar(30) not null,
+    passwordUtente varchar(30) not null,
+    unique(email)
 );
 
 create table ordine
@@ -20,20 +21,20 @@ create table ordine
 							   tipologia = 'D' OR 
                                tipologia = 'CP') not null,
     sconto double,
-    totale double(4,2),
-    dataPagamento date,
+    totale double(4,2) not null,
+    dataPagamento date not null,
     tipoPagamento varchar(20) check(tipoPagamento = 'Contanti' OR 
 									tipoPagamento = 'Carta di credito' OR 
                                     tipoPagamento = 'PayPal') not null,
-	idUtente int,
+	idUtente int not null,
     foreign key(idUtente) references utente(id)
 );
 
 create table prodotto
 (
 	codice int auto_increment primary key,
-    nome varchar(30),
-    prezzo double(4,2),
+    nome varchar(30) not null,
+    prezzo double(4,2) not null,
     descrizione varchar(200),
     tipologia varchar(30) check(tipologia = 'Panino' OR 
 								tipologia = 'Pizza' OR 
@@ -47,7 +48,7 @@ create table appartenere
 (
 	codiceProdotto int,
     codiceOrdine int,
-    quantità int,
+    quantità int not null,
     
     primary key(codiceProdotto, codiceOrdine),
     foreign key(codiceProdotto) references prodotto(codice),
@@ -75,8 +76,8 @@ create table seleziona
 create table carrello(
 	codice int auto_increment primary key,
     sconto double,
-    totale double(4,2),
-    numeroProdotti int,
+    totale double(4,2) not null,
+    numeroProdotti int not null,
     idUtente int,
     
     foreign key(idUtente) references utente(id)
@@ -85,7 +86,7 @@ create table carrello(
 create table contenere(
 	codiceCarrello int,
     codiceProdotto int,
-    quantità int,
+    quantità int not null,
     primary key(codiceCarrello, codiceProdotto),
 	foreign key(codiceCarrello) references carrello(codice),
     foreign key(codiceProdotto) references prodotto(codice)

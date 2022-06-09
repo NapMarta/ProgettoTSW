@@ -39,6 +39,7 @@
             <button class="dropbtn" onclick="isLogin()" id="utente">
                 <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
             </button>
+
             <div class="dropup-content" id="elements">
                 <a href="#">Ordini Effettuati</a>
                 <a href="#">Modifica Credenziali</a>

@@ -4,6 +4,7 @@
 <head>
     <title>Homepage</title>
     <link href="css/homepage.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="javaScript/homepage.js"></script>
 </head>
 <body>
     <table>
@@ -35,13 +36,15 @@
         <a href="#"> <img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a>
         <a href="#"> <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/> </a>
         <span class="dropup">
-            <button class="dropbtn">
+            <button class="dropbtn" onclick="isLogin()" id="utente">
                 <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
             </button>
+
             <div class="dropup-content" id="elements">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <a href="#">Ordini Effettuati</a>
+                <a href="#">Modifica Credenziali</a>
+                <a href="#">Lista dei desideri</a>
+                <a href="#">Logout</a>
             </div>
         </span>
         <a href="#"> <img src="https://img.icons8.com/ios/40/C29436/info--v1.png"/> </a>

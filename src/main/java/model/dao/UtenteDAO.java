@@ -31,6 +31,25 @@ public class UtenteDAO {
         }
     }
 
+    public static Utente doRetrieveByCredenziali(String email, String password) throws SQLException{
+        Connection con = ConPool.getConnection();
+        PreparedStatement ps =
+              con.prepareStatement("SELECT id, nome, cognome, email, passwordUtente FROM utente WHERE email=? and passwordUtente=?");
+        ps.setString(1, email);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            Utente p = new Utente();
+            p.setId(rs.getInt(1));
+            p.setNome(rs.getString(2));
+            p.setCognome(rs.getString(3));
+            p.setEmail(rs.getString(4));
+            p.setPasswordUtente(rs.getString(5));
+            return p;
+        }
+        return null;
+    }
+
     public int doSave(Utente utente){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(

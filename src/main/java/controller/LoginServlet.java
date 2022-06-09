@@ -4,6 +4,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.ConPool;
+import model.beans.Utente;
+import model.dao.UtenteDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,16 +23,20 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String address;
+        Utente utente = new Utente();
 
         if(email.equals("admin@gmail.com") && password.equals("admin")){
             address = "/WEB-INF/result/AdminView.jsp";
         }
         else{
-            //if exists in DATABASE
-                address = "";
-            //else
-            request.setAttribute("error", "Nome Utente e/o Password errati");
-            address = "/login.jsp";
+            try {
+                utente = UtenteDAO.doRetrieveByCredenziali(email, password);
+            } catch (SQLException e) {
+                //le credenziali sono errate
+                request.setAttribute("error", "Email Utente e/o Password errati");
+                address = "WEB-INF/result/login.jsp";
+            }
+            address = "index.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
