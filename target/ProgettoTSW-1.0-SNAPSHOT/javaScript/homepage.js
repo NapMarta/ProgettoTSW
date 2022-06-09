@@ -1,6 +1,12 @@
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+window.onscroll = function() {myFunction()};
 
-window.onclick = function isLogin (e){
-    document.getElementById("utente");
+var navbarUP = document.getElementById("navbarUP");
+var sticky = navbarUP.offsetTop;
+
+function myFunction() {
+    if (window.pageYOffset >= sticky) {
+        navbarUP.classList.add("sticky")
+    } else {
+        navbarUP.classList.remove("sticky");
+    }
 }

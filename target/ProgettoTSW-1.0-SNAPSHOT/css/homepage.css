@@ -1,20 +1,58 @@
-.navbarUP{
-    background-color: black;
+table{
+    border-collapse: collapse;
     width: 100%;
-    position: sticky;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
 }
 
-.navbarDOWN{
-    background-color: black;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+td{
+    text-align: right;
 }
+
+/*.navbarUP{*/
+
+/*    background-color: black;*/
+/*    width: 100%;*/
+/*    position: sticky;*/
+/*    margin-left: 0px;*/
+/*    margin-right: 0px;*/
+/*    padding: 0;*/
+/*    overflow: hidden;*/
+/*    border-collapse: collapse;*/
+/*}*/
+
+/*.navbarDOWN{*/
+/*    background-color: black;*/
+/*    position: fixed;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    margin-left: 0px;*/
+/*    margin-right: 0px;*/
+/*    padding: 0;*/
+/*}*/
+
+.navbar{
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+#up ::before{
+    position: -webkit-sticky;   /*solo per safari*/
+    position: sticky;
+    top:0;
+}
+
+#down ::after{
+    position: fixed;
+    width: 100%;
+}
+
+/*a img{*/
+/*    float: left;*/
+/*    padding-left: 40px;*/
+/*    padding-right: 40px;*/
+/*}*/
 
 a img:hover{
     filter: grayscale(100%);
