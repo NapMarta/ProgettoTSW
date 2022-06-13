@@ -28,11 +28,42 @@
     </header>
 
     <nav class="navbarUp">
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/><span>Pizza</span></a>
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/><span>Hamburger</span></a>
-        <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/><span>Patatine</span></a>
-        <a href="#"></a><img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/><span>Bibite</span></a>
-        <a href="#"></a><img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/><span>Dolci</span></a>
+        <table>
+            <tr>
+                <td>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/pizza.png"/></a>
+                </td>
+                <td>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/hamburger.png"/></a>
+                </td>
+                <td>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/chips.png"/></a>
+                </td>
+                <td>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/beer.png"/></a>
+                </td>
+                <td>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/ice-cream-in-waffle-cone.png"/></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Pizza</span>
+                </td>
+                <td>
+                    <span>Hamburger</span>
+                </td>
+                <td>
+                    <span>Patatine</span>
+                </td>
+                <td>
+                    <span>Bibite</span>
+                </td>
+                <td>
+                    <span>Dolci</span>
+                </td>
+            </tr>
+        </table>
     </nav>
 </div>
 
