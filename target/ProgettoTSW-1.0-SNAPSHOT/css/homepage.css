@@ -61,6 +61,25 @@ la navigation bar totale superiore */
     padding: 0;
 }
 
+.navbarUp a{
+    display: inline-block;
+    width: 15.5%;
+    max-width: 100px;
+    text-align: center;
+    position: relative;
+}
+
+.navbarUp a span{
+    width: 100%;
+    text-align: center;
+    color: #C29436;
+    font-size: 10px;
+    display: block;
+    position: absolute;
+    line-height: 1.3;
+}
+
+
 a img{
     float: left;
     padding-left: 40px;
@@ -70,6 +89,7 @@ a img{
 a img:hover{
     filter: grayscale(100%);
 }
+
 
 .dropbtn {
     background-color: black;
