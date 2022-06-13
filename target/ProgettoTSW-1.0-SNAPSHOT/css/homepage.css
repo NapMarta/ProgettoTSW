@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
+table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
 .navbarTot{
     top: 0;
     background-color: white;
@@ -9,8 +15,6 @@
 }
 
 header{
-    border-collapse: collapse;
-    width: 100%;
     height: 60px;
 }
 
@@ -41,8 +45,9 @@ la navigation bar totale superiore */
     position: fixed;
     margin-left: -15px;
     margin-right: -15px;
-    overflow: scroll;
-    height: 110px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 120px;
     padding: 5px 35px 5px 10px;
     text-align: center;
 }
@@ -71,7 +76,24 @@ la navigation bar totale superiore */
     width: 100%;
     margin-left: -15px;
     margin-right: -15px;
-    padding: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 5px 35px 5px 10px;
+    text-align: center;
+    height: 80px;
+}
+
+.navbarDown td {
+    text-align: center;
+    border: solid 1px white;
+
+}
+
+.navbarDown td img, .navbarDown td button, .navbarDown td form{
+    display: block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a img:hover{
@@ -107,7 +129,9 @@ a img:hover{
     display: block;
 }
 
-.dropup-content a:hover {background-color: #ccc}
+.dropup-content a:hover {
+    background-color: #ccc
+}
 
 .dropup:hover .dropup-content {
     display: block;
@@ -122,5 +146,31 @@ a img:hover{
 }
 
 .content{
-    padding-top: 150px;
+    padding-top: 180px;
+    padding-bottom: 80px;
+}
+
+
+/*.search{*/
+/*    width:150px;*/
+/*}*/
+
+.search input[type=text]{
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.search button {
+    /*height: 40px;*/
+    /*width: 60px;*/
+    background: black;
+    cursor: pointer;
+    border: none;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.search::after {
+    clear: both;
 }
