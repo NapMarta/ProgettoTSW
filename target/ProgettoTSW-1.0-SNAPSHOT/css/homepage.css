@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+/*@font-face {*/
+/*    font-family: 'Shadows Into Light';*/
+/*    font-size: 22px;*/
+/*    src: url("/font/ShadowsIntoLight-Regular.ttf") format("truetype");*/
+/*}*/
+
+@import url("/font/ShadowsIntoLight-Regular.ttf");
 
 .navbarTot{
     top: 0;
