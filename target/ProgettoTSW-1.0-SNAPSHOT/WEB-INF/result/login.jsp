@@ -3,16 +3,20 @@
 <html>
 <head>
     <title>Login</title>
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
+    <div class="parent">
+        <form action="LoginServlet" method="post" class="child">
+            <p>Login</p>
+            <label for="email">Email</label><br>            <!--admin@gmail.com-->
+            <input type="email" id="email" name="email" placeholder="Email"><br>
+            <label for="password">Password</label><br>      <!--admin-->
+            <input type="password" id="password" name="password" placeholder="Password"><br><br>
+            <input type="submit" value="Conferma">
+        </form>
+    </div>
 
-<form action="LoginServlet" method="post">
-    <label for="email">Email</label><br>            <!--admin@gmail.com-->
-    <input type="email" id="email" name="email"><br>
-    <label for="password">Password</label><br>      <!--admin-->
-    <input type="password" id="password" name="password">
-    <input type="submit" value="Conferma">
-</form>
 <!--in seguito da inserire in un allert js-->
 <%
     String error = (String) request.getAttribute("error");

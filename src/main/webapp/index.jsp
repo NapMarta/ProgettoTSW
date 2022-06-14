@@ -10,12 +10,10 @@
         <p id="nome">CookStock</p>
     </div>
     <hr>
-    <div class="home2">
-        <a href="WEB-INF/result/homepage.jsp">HomePage</a><br>
-    </div>
-    <div class="home2">
-        <a href="WEB-INF/result/login.jsp">Login/Registrati</a><br>
-    </div>
+    <form action="HomeServlet" method="get">
+        <input type="submit" name="home" value="HomePage">
+        <input type="submit" name="login" value="Login/Registrati">
+    </form>
 
     <footer>
         <p>Copyright © 2022. CookStock tutti i diritti riservati.</p>
