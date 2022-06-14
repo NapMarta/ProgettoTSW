@@ -3,36 +3,28 @@
 <html>
 <head>
     <title>Registrazione Utente</title>
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
-    <form action="" method="post">
-        <table>
-            <tr>
-                <td>
-                    <label for="nomeUtente">Nome</label>
-                    <input type="text" id="nomeUtente" name="nomeUtente">
-                </td>
-                <td>
-                    <label for="cognomeUtente">Cognome</label>
-                    <input type="text" id="cognomeUtente" name="cognomeUtente">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="emailUtente">Email</label>
-                    <input type="email" id="emailUtente" name="emailUtente">
-                </td>
-                <td>
-                    <label for="passwordUtente">Password</label>
-                    <input type="password" id="passwordUtente" name="passwordUtente">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="Conferma Dati">
-                </td>
-            </tr>
-        </table>
-    </form>
+    <div class="parent">
+        <form action="" class="child">
+            <p>Registrazione Utente</p>
+            <hr>
+
+            <label for="email">Email</label><br>
+            <input type="email" placeholder="Inserisci Email" name="email" id="email" required><br>
+            <label for="psw">Password</label><br>
+            <input type="password" placeholder="Inserisci Password" name="psw" id="psw" required><br>
+
+            <label for="psw-repeat">Ripetere Password</label><br>
+            <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" required><br><br>
+
+            <input type="submit" id="accedi" value="Registrati ora"><br><br>
+            <p class="testo">Hai già un account?<input type="submit" id="registrati" value="Login"></p>
+        </form>
+
+
+    </div>
+
 </body>
 </html>
