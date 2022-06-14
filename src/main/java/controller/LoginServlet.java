@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("error", "Email Utente e/o Password errati");
                     address = "WEB-INF/result/login.jsp";
                 }
-                address = "index.jsp";
+                address = "WEB-INF/result/homepage.jsp";
             }
         }else
             address = "WEB-INF/result/registrazioneUtente.jsp";

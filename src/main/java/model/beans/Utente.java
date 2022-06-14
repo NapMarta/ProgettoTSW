@@ -5,12 +5,13 @@ public class Utente {
     public Utente() {
     }
 
-    public Utente(int id, String email, String passwordUtente, String nome, String cognome) {
+    public Utente(int id, String email, String passwordUtente, String nome, String cognome, boolean isAdmin) {
         this.id = id;
         this.email = email;
         this.passwordUtente = passwordUtente;
         this.nome = nome;
         this.cognome = cognome;
+        this.isAdmin = isAdmin;
     }
 
     public int getId() {
@@ -53,6 +54,15 @@ public class Utente {
         this.cognome = cognome;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
     private int id;
     private String email, passwordUtente, nome, cognome;
+    private boolean isAdmin;
 }
