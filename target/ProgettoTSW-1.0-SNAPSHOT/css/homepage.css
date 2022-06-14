@@ -11,7 +11,6 @@ table{
     background-color: white;
     width: 100%;
     position: fixed;
-    padding-bottom: 100px;
 }
 
 header{
@@ -20,24 +19,19 @@ header{
 
 #logo{
     float:left;
-    padding-left: 10px;
-    padding-right: 60px;
+    padding-right: 40px;
 }
 
 #social{
     float:right;
-    padding: 10px 10px 10px 60px;
+    padding: 5px 10px 5px 10px;
 }
 
 td h2{
     font-family: 'Shadows Into Light', cursive, sans-serif;
     font-size: 25px;
     text-align: center;
-    padding: 17.5px 30px;
 }
-
-/* mettere testo che non si vede dietro
-la navigation bar totale superiore */
 
 .navbarUp{
     background-color: black;
@@ -47,7 +41,7 @@ la navigation bar totale superiore */
     margin-right: -15px;
     overflow-x: scroll;
     overflow-y: hidden;
-    height: 120px;
+    height: 100px;
     padding: 5px 35px 5px 10px;
     text-align: center;
 }
@@ -70,10 +64,10 @@ la navigation bar totale superiore */
 }
 
 .navbarDown{
+    width: 100%;
     background-color: black;
     position: fixed;
     bottom: 0;
-    width: 100%;
     margin-left: -15px;
     margin-right: -15px;
     overflow-x: scroll;
@@ -81,19 +75,50 @@ la navigation bar totale superiore */
     padding: 5px 35px 5px 10px;
     text-align: center;
     height: 80px;
+    border-collapse: collapse;
 }
 
 .navbarDown td {
+    width: 20%;
+    height: 80px;
     text-align: center;
     border: solid 1px white;
-
+    margin: 0px;
+    padding: 0px;
 }
 
-.navbarDown td img, .navbarDown td button, .navbarDown td form{
-    display: block;
-    width: auto;
-    margin-left: auto;
+.navbarDown td img, .navbarDown td button, .navbarDown td form.search{
     margin-right: auto;
+    margin-left: auto;
+}
+
+.search{
+    min-width: 180px;
+    padding: 0px 10px 20px 10px;
+    margin-bottom: 20px;
+}
+
+.search input[type=text]{
+    padding: 6px;
+    font-size: 17px;
+    border: 2px solid black;
+    width: 100px;
+    float: left;
+    border-radius: 6px;
+}
+
+.search button {
+    float: left;
+    padding: 0px 10px;
+    margin-right: 16px;
+    font-size: 17px;
+    background: black;
+    cursor: pointer;
+    border: none;
+}
+
+.search::after {
+    clear: both;
 }
 
 a img:hover{
@@ -103,13 +128,10 @@ a img:hover{
 .dropbtn {
     background-color: black;
     color: white;
-    padding: 16px;
-    font-size: 16px;
     border: none;
 }
 
 .dropup {
-    position: relative;
     display: inline-block;
 }
 
@@ -146,31 +168,6 @@ a img:hover{
 }
 
 .content{
-    padding-top: 180px;
+    padding-top: 160px;
     padding-bottom: 80px;
-}
-
-
-/*.search{*/
-/*    width:150px;*/
-/*}*/
-
-.search input[type=text]{
-    padding: 10px;
-    font-size: 15px;
-    margin-top: 5px;
-}
-
-.search button {
-    /*height: 40px;*/
-    /*width: 60px;*/
-    background: black;
-    cursor: pointer;
-    border: none;
-    padding-top: 10px;
-    padding-right: 20px;
-}
-
-.search::after {
-    clear: both;
 }

@@ -31,19 +31,19 @@
         <table>
             <tr>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/pizza.png"/></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/></a>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/hamburger.png"/></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/></a>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/chips.png"/></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/></a>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/beer.png"/></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/></a>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/80/C29436/ice-cream-in-waffle-cone.png"/></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/></a>
                 </td>
             </tr>
             <tr>
@@ -77,21 +77,21 @@
     <table>
         <tr>
             <td>
-                <form class="search" action="">
-                    <input type="text" placeholder="Search..." name="search">
-                    <button type="submit"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></button>
-                </form>
+                <div class="search">
+                    <form action="">
+                        <input type="text" placeholder="Search..." name="search">
+                        <button type="submit"><a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a></button>
+                    </form>
+                </div>
             </td>
             <td>
                 <a href="#"><img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/></a>
-
             </td>
             <td>
                 <span class="dropup">
                     <button class="dropbtn" onclick="isLogin()" id="utente">
                         <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
                     </button>
-
                     <div class="dropup-content" id="elements">
                         <a href="#">Ordini Effettuati</a>
                         <a href="#">Modifica Credenziali</a>
@@ -101,7 +101,9 @@
                 </span>
             </td>
             <td>
-                <a href="#"><img src="https://img.icons8.com/ios/40/C29436/info--v1.png"/></a>
+                <span>
+                    <a href="#"><img src="https://img.icons8.com/ios/40/C29436/info--v1.png"/></a>
+                </span>
             </td>
         </tr>
     </table>
