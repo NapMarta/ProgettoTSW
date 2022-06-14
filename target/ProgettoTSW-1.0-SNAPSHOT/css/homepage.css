@@ -29,7 +29,7 @@ header{
 
 td h2{
     font-family: 'Shadows Into Light', cursive, sans-serif;
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -82,7 +82,6 @@ td h2{
     width: 20%;
     height: 80px;
     text-align: center;
-    border: solid 1px white;
     margin: 0px;
     padding: 0px;
 }
