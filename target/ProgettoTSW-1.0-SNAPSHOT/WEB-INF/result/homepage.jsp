@@ -77,13 +77,14 @@
     <table>
         <tr>
             <td>
-                <a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a>
+                <form class="search" action="">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></button>
+                </form>
             </td>
             <td>
-                <form action="">
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/></a>
 
-                    <input type="text" value="<a href="#"><img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/></a>">
-                </form>
             </td>
             <td>
                 <span class="dropup">
