@@ -13,7 +13,8 @@
             <input type="email" id="email" name="email" placeholder="Email"><br>
             <label for="password">Password</label><br>      <!--admin-->
             <input type="password" id="password" name="password" placeholder="Password"><br><br>
-            <input type="submit" value="Conferma">
+            <input type="submit" value="Accedi" name="accedi" id="accedi"><br><br>
+            <input type="submit" value="Sei un nuovo utente? Registrati" name="registrati" id="registrati">
         </form>
     </div>
 
