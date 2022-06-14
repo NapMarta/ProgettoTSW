@@ -68,9 +68,6 @@
 </div>
 
 <div class="content">
-    <%--        <c:forech>--%>
-    <%--            --%>
-    <%--        </c:forech>--%>
 </div>
 
 <footer class="navbarDown">
@@ -79,16 +76,19 @@
             <td>
                 <div class="search">
                     <form action="">
-                        <input type="text" placeholder="Search..." name="search">
-                        <button type="submit"><a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a></button>
+                        <input type="text" placeholder="Search..." name="search" id="search-input">
+                        <button type="submit" id="search-button"><a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a></button>
                     </form>
                 </div>
             </td>
             <td>
-                <a href="#"><img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/></a>
+                <a href="#" class="notification">
+                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/>
+                    <span class="badge">0</span>
+                </a>
             </td>
             <td>
-                <span class="dropup">
+                <div class="dropup">
                     <button class="dropbtn" onclick="isLogin()" id="utente">
                         <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
                     </button>
@@ -98,12 +98,7 @@
                         <a href="#">Lista dei desideri</a>
                         <a href="#">Logout</a>
                     </div>
-                </span>
-            </td>
-            <td>
-                <span>
-                    <a href="#"><img src="https://img.icons8.com/ios/40/C29436/info--v1.png"/></a>
-                </span>
+                </div>
             </td>
         </tr>
     </table>
