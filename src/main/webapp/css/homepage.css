@@ -23,7 +23,6 @@ header{
     padding-left: 10px;
     padding-right: 60px;
 }
-
 #social{
     float:right;
     padding: 10px 10px 10px 60px;
@@ -35,9 +34,6 @@ td h2{
     text-align: center;
     padding: 17.5px 30px;
 }
-
-/* mettere testo che non si vede dietro
-la navigation bar totale superiore */
 
 .navbarUp{
     background-color: black;
