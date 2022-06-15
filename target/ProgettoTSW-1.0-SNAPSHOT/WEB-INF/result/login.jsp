@@ -7,8 +7,9 @@
 </head>
 <body>
     <div class="parent">
+        <p class="titolo">Login</p>
         <form action="LoginServlet" method="post" class="child">
-            <p class="titolo">Login</p>
+
             <hr>
             <label for="email">Email</label><br>            <!--admin@gmail.com-->
             <input type="email" id="email" name="email" placeholder="Email"><br>
