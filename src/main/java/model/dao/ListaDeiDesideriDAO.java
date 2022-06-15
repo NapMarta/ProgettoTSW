@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ListaDeiDesideriDAO {
 
-    public ListaDeiDesideri doRetrieveById(int idUtente, String nomeLista){
+    public static ListaDeiDesideri doRetrieveById(int idUtente, String nomeLista){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine FROM prodotto JOIN seleziona ON codice=codiceProdotto WHERE idUtente=? AND nomeLista=?");
@@ -37,7 +37,7 @@ public class ListaDeiDesideriDAO {
         }
     }
 
-    public void doSave(ListaDeiDesideri lista){
+    public static void doSave(ListaDeiDesideri lista){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO listaDesideri (nome, idUtente) VALUES(?,?)",
@@ -63,7 +63,7 @@ public class ListaDeiDesideriDAO {
         }
     }
 
-    public List<ListaDeiDesideri> doRetrieveAll(){
+    public static List<ListaDeiDesideri> doRetrieveAll(){
         List<ListaDeiDesideri> listaDeiDesideriList = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM listaDesideri");
@@ -99,7 +99,7 @@ public class ListaDeiDesideriDAO {
         return listaDeiDesideriList;
     }
 
-    public boolean doUpdate(ListaDeiDesideri lista){
+    public static boolean doUpdate(ListaDeiDesideri lista){
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
@@ -122,7 +122,7 @@ public class ListaDeiDesideriDAO {
         }
 
         if(ris)
-            return true;
+            return true;       //aggiurnamento a buon fine
         return false;
     }
 }

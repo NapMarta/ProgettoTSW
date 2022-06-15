@@ -3,8 +3,11 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.beans.Utente;
+import model.dao.UtenteDAO;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet(name = "RegistrazioneServlet", value = "/RegistrazioneServlet")
 public class RegistrazioneServlet extends HttpServlet {
@@ -21,7 +24,17 @@ public class RegistrazioneServlet extends HttpServlet {
             address = "/WEB-INF/result/login.jsp";
         }
         else {
-            //controllo input utente back-end
+            Utente utente = new Utente();
+            try {
+                utente.setPasswordUtente(request.getParameter("psw"));
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            utente.setEmail(request.getParameter("email"));
+            utente.setNome(request.getParameter("nome"));
+            utente.setCognome(request.getParameter("cognome"));
+
+            utente.setId(UtenteDAO.doSave(utente));
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

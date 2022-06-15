@@ -12,7 +12,7 @@ import java.util.List;
 
 public class OrdineDAO {
 
-    public Ordine doRetrieveById(int codice){
+    public static Ordine doRetrieveById(int codice){
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps1 =
@@ -56,7 +56,7 @@ public class OrdineDAO {
         }
     }
 
-    public void doSave(Ordine o){
+    public static void doSave(Ordine o){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO ordine (tipologia, sconto, totale, dataPagamento, tipoPagamento, idUtente ) VALUES(?,?,?,?,?,?)",
@@ -93,7 +93,7 @@ public class OrdineDAO {
     }
 
 
-    public List<Ordine> doRetrieveAll(){
+    public static List<Ordine> doRetrieveAll(){
         List<Ordine> ordini = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM ordine");

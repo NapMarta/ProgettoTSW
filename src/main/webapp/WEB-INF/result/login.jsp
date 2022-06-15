@@ -9,7 +9,6 @@
     <div class="parent">
         <p class="titolo">Login</p>
         <form action="LoginServlet" method="post" class="child">
-
             <hr>
             <label for="email">Email</label><br>            <!--admin@gmail.com-->
             <input type="email" id="email" name="email" placeholder="Email"><br>
@@ -20,12 +19,5 @@
         </form>
     </div>
 
-<!--in seguito da inserire in un allert js-->
-<%
-    String error = (String) request.getAttribute("error");
-    if(error != null){
-%>
-    <%=error%>
-<%}%>
 </body>
 </html>

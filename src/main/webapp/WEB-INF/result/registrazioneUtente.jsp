@@ -18,7 +18,7 @@
                     </td>
                     <td>
                         <label for="cognome">Cognome</label><br>
-                        <input type="text" placeholder="Inserisci Cognome" name="cognome" id="cognome" required>
+                        <input type="text" placeholder="Inserisci Cognome" name="nome" id="cognome" required>
                     </td>
                 </tr>
                 <tr>

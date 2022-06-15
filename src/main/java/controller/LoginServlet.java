@@ -8,6 +8,7 @@ import model.beans.Utente;
 import model.dao.UtenteDAO;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -37,7 +38,7 @@ public class LoginServlet extends HttpServlet {
             else{
                 try {
                     utente = UtenteDAO.doRetrieveByCredenziali(email, password);
-                } catch (SQLException e) {
+                } catch (SQLException | NoSuchAlgorithmException e) {
                     //le credenziali sono errate
                     request.setAttribute("error", "Email Utente e/o Password errati");
                     address = "WEB-INF/result/login.jsp";

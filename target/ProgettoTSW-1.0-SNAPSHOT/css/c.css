@@ -4,7 +4,8 @@ body{
     background-color: #f7f7f7;
 }
 
-.parent {
+.parent .child {
+    background-color: #C29436;
     height: 40%;
     width: 50%;
     /*display: flex;*/
@@ -33,20 +34,20 @@ hr{
     text-align: center;
 }
 
-/*.parent .child {*/
+/*.parent  .child {*/
 /*    color: black;*/
 /*    padding: 5px;*/
 /*    position: absolute;*/
-/*    top: 0;*/
+/*    alignment: center;*/
 /*}*/
 
 /*.child1{*/
 /*    padding-top: 20px;*/
 /*}*/
 
-/*label{*/
-/*    font-size: 20px;*/
-/*}*/
+label{
+    font-size: 20px;
+}
 
 
 /*p{*/
