@@ -1,12 +1,15 @@
 use cookstock;
 
 insert into utente(nome, cognome, email,passwordUtente, isAdmin) values 
+("Admin", "Admin","admin@gmail.com","admin",true);
+
+/*
+insert into utente(nome, cognome, email,passwordUtente, isAdmin) values 
 ("Mario", "Rossi", "mario01@gmail.com","Scdfg54", false),
 ("Marco", "Bianchi", "marco22@libero.it","ciao43", false),
 ("Luigi", "Ferreri","luigi34@gmail.com","HelloWorld", false),
 ("Maria", "Costante", "m.costante@gmail.com","Maria54",false),
-("Alice", "Lo Conte","alice01.loconte@gmail.com","Hellog4",false),
-("Admin", "Admin","admin@gmail.com","admin",true);
+("Alice", "Lo Conte","alice01.loconte@gmail.com","Hellog4",false);
 
 insert into ordine(tipologia, sconto, totale,dataPagamento, tipoPagamento, idUtente) values
 ("A", 1.5, 45.70, "2021-10-10", "Contanti", 5),
@@ -48,5 +51,6 @@ insert into contenere values
 (1, 3, 2),
 (1, 5, 2),
 (3, 1, 1);
+*/
 
 select * from utente

@@ -17,14 +17,16 @@ public class RegistrazioneServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String login = request.getParameter("login");
-        String address = null;
+        String address;
+
         if(login != null){
             address = "/WEB-INF/result/login.jsp";
         }
         else {
             Utente utente = new Utente();
+            UtenteDAO service = new UtenteDAO();
             try {
                 utente.setPasswordUtente(request.getParameter("psw"));
             } catch (NoSuchAlgorithmException e) {
@@ -34,7 +36,11 @@ public class RegistrazioneServlet extends HttpServlet {
             utente.setNome(request.getParameter("nome"));
             utente.setCognome(request.getParameter("cognome"));
 
-            utente.setId(UtenteDAO.doSave(utente));
+            request.setAttribute("utente", utente);
+
+            utente.setId(service.doSave(utente));
+
+            address = "/WEB-INF/result/homepage.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

@@ -73,6 +73,7 @@ input[type=submit]#accedi{
     background-color: #f7f7f7;
     text-align: center;
     padding: 5px 10px;
+    margin: 5px;
     font-size: 15px;
 }
 

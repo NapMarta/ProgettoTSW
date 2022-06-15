@@ -3,11 +3,11 @@
 <html>
 <head>
     <title>Registrazione Utente</title>
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/registrazione.css" rel="stylesheet">
 </head>
 <body>
     <div class="parent">
-        <form action="" class="child">
+        <form action="RegistrazioneServlet" class="child" method="post">
             <p class="titolo">Registrazione Utente</p>
             <hr>
             <table>
@@ -18,7 +18,7 @@
                     </td>
                     <td>
                         <label for="cognome">Cognome</label><br>
-                        <input type="text" placeholder="Inserisci Cognome" name="nome" id="cognome" required>
+                        <input type="text" placeholder="Inserisci Cognome" name="cognome" id="cognome" required>
                     </td>
                 </tr>
                 <tr>

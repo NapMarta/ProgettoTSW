@@ -74,6 +74,7 @@
 </div>
 
 <div class="content">
+<%--    <h3>Benvenuto ${utente.nome} ${utente.cognome}</h3>--%>
     <jsp:include page="catalogo.jsp" />
 </div>
 

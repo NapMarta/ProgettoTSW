@@ -10,7 +10,7 @@ create table utente(
     nome varchar(30) not null,
     cognome varchar(30) not null,
     email varchar(30) not null,
-    passwordUtente varchar(30) not null,
+    passwordUtente varchar(128) not null,
     isAdmin boolean not null,
     unique(email)
 );
