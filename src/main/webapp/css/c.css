@@ -8,13 +8,11 @@ body{
     background-color: #C29436;
     height: 40%;
     width: 50%;
-    /*display: flex;*/
+    display: flex;
     justify-content: center;
-    margin: 15%;
-    /*border: 2px solid black;*/
-    /*border-radius: 10px;*/
-    /*padding: 0;*/
-    /*position: relative;*/
+    margin: 30vh auto;
+    border: 2px solid black;
+    border-radius: 10px;
 
 }
 
@@ -22,7 +20,7 @@ p.titolo{
     text-align: center;
     font-family: "Shadows Into Light", cursive, sans-serif;
     font-size: 35px;
-    padding-top: 15px;
+    padding-top: 60px;
 }
 
 hr{
@@ -34,119 +32,97 @@ hr{
     text-align: center;
 }
 
-/*.parent .child {*/
-/*    color: black;*/
-/*    padding: 5px;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*}*/
+.parent .child {
+    color: black;
+    padding: 5px;
+    padding-top: 30px;
+}
 
 /*.child1{*/
 /*    padding-top: 20px;*/
 /*}*/
 
-/*label{*/
-/*    font-size: 20px;*/
-/*}*/
+label{
+    font-size: 20px;
+}
 
 
-/*p{*/
-/*    margin-top: 20px;*/
-/*    font-family: "Shadows Into Light", cursive, sans-serif;*/
-/*    font-size: 30px;*/
-/*    width: 100%;*/
-/*}*/
+p{
+    margin-top: 20px;
+    font-family: "Shadows Into Light", cursive, sans-serif;
+    font-size: 30px;
+    width: 100%;
+}
 
-/*hr{*/
-/*    color: black;*/
-/*    background-color: black;*/
-/*    border: 0;*/
-/*    height: 1px;*/
-/*    width: 50%;*/
-/*    text-align: center;*/
-/*}*/
+input {
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 
+}
 
-/*input {*/
-/*    border: 0.5px solid black;*/
-/*    -webkit-border-radius: 6px;*/
-/*    -moz-border-radius: 6px;*/
-/*    border-radius: 6px;*/
+input[type=submit]#accedi{
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 15px;
+}
 
-/*}*/
+input[type=submit]#registrati{
+    color: #f7f7f7;
+    border: 0px;
+    background-color: #C29436;
+    font-size: 15px;
+    position: relative;
+    margin-top: 30px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 
-/*input[type=submit]#accedi{*/
-/*    background-color: #f7f7f7;*/
-/*    text-align: center;*/
-/*    padding: 5px 10px;*/
-/*    font-size: 15px;*/
-/*}*/
+}
 
-/*input[type=submit]#registrati{*/
-/*    color: #f7f7f7;*/
-/*    border: 0px;*/
-/*    background-color: #C29436;*/
-/*    font-size: 15px;*/
-/*    position: relative;*/
-/*    margin-top: 30px;*/
-/*    padding-bottom: 0px;*/
-/*    margin-bottom: 0px;*/
+input[type=submit]#registrati:hover{
+    text-decoration-line: underline;
+    background-color: #C29436;
+}
 
-/*}*/
+input[type=submit]#registrati:active{
+    color: black;
+    background-color: #C29436;
+}
 
-/*input[type=submit]#registrati:hover{*/
-/*    text-decoration-line: underline;*/
-/*    background-color: #C29436;*/
-/*}*/
+/*small screen, laptop, tv*/
+@media screen and (min-width: 1011px){
 
-/*input[type=submit]#registrati:active{*/
-/*    color: black;*/
-/*    background-color: #C29436;*/
-/*}*/
-
-/*p.testo{*/
-/*    margin-top: 250px;*/
-/*    font-family: sans-serif;*/
-/*    font-size: 15px;*/
-/*    text-align: center;*/
-/*}*/
-
-/*table{*/
-/*    width: 100%;*/
-/*}*/
-
-/*!*small screen, laptop, tv*!*/
-/*@media screen and (min-width: 1011px){*/
-
-/*}*/
+}
 
 
-/*!*iPad, tablet*!*/
-/*@media screen and (max-width: 1010px){*/
-/*    .parent {*/
-/*        height: 40%;*/
-/*        width: 70%;*/
-/*    }*/
+/*iPad, tablet*/
+@media screen and (max-width: 1010px){
+    .parent {
+        height: 40%;
+        width: 70%;
+    }
 
-/*    p{*/
-/*        font-size: 30px;*/
-/*    }*/
-/*}*/
+    p{
+        font-size: 30px;
+    }
+}
 
-/*!*mobile device*!*/
-/*@media screen and (max-width: 580px) !*and (min-width: 320px)*!{*/
-/*    .parent {*/
-/*        height: 40%;*/
-/*        width: 100%;*/
-/*        padding: 0px;*/
-/*        border-collapse: collapse;*/
-/*    }*/
+/*mobile device*/
+@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
+    .parent {
+        height: 40%;
+        width: 100%;
+        padding: 0px;
+        border-collapse: collapse;
+    }
 
-/*    label{*/
-/*        font-size: 15px;*/
-/*    }*/
+    label{
+        font-size: 15px;
+    }
 
-/*    p{*/
-/*        font-size: 30px;*/
-/*    }*/
-/*}*/
+    p{
+        font-size: 30px;
+    }
+}

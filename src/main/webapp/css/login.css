@@ -13,7 +13,7 @@ body{
     align-items: center;
     border: 2px solid black;
     border-radius: 10px;
-    margin: 0 auto;
+    margin: 30vh auto;
     padding: 0;
     position: relative;
 
@@ -24,6 +24,7 @@ body{
     padding: 5px;
     position: absolute;
     top: 0;
+    transform: translateX(50%);
 }
 
 .child1{
@@ -32,6 +33,11 @@ body{
 
 label{
     font-size: 20px;
+}
+
+input[type=text], input[type=email], input[type=password]{
+    padding: 6px;
+    width: 130px;
 }
 
 p.titolo{
@@ -104,16 +110,21 @@ table{
 }
 
 /*small screen, laptop, tv*/
-@media screen and (min-width: 1011px){
+@media screen and (min-width: 1001px){
 
 }
 
 
 /*iPad, tablet*/
-@media screen and (max-width: 1010px){
+@media screen and (max-width: 1000px){
     .parent {
         height: 40%;
         width: 70%;
+        margin: 30vh auto;
+    }
+
+    .parent .child{
+        transform: translateX(20%);
     }
 
     p{
@@ -128,6 +139,11 @@ table{
         width: 100%;
         padding: 0px;
         border-collapse: collapse;
+        margin: 30vh auto;
+    }
+
+    .parent .child{
+        transform: translateX(0%);
     }
 
     label{
