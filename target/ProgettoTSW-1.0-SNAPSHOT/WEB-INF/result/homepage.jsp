@@ -14,14 +14,20 @@
         <table>
             <tr>
                 <td id="logo">
-                    <img src="logo.jpeg" height="60" width="60">
+                    <a href="index.jsp">
+                        <img src="logo.jpeg" height="60" width="60">
+                    </a>
                 </td>
                 <td>
                     <h2 id="nomePub">CookStock</h2>
                 </td>
                 <td id="social">
-                    <img src="https://img.icons8.com/color/40/000000/instagram-new--v1.png" class="social"/>
-                    <img src="https://img.icons8.com/color/40/000000/facebook-new.png" class="social"/>
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjOiKy6_674AhUTi_0HHSNhAJcQFnoECAgQAQ&url=https%3A%2F%2Fwww.instagram.com%2F&usg=AOvVaw1cBeRoOpMhZ3-x5M1sA3Fm">
+                        <img src="https://img.icons8.com/color/40/000000/instagram-new--v1.png" class="social"/>
+                    </a>
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjEnbyEgK_4AhWfgv0HHbLNDGgQFnoECAgQAQ&url=https%3A%2F%2Fit-it.facebook.com%2F&usg=AOvVaw0QAHe3HHSlIy5N1ZAXMlWx">
+                        <img src="https://img.icons8.com/color/40/000000/facebook-new.png" class="social"/>
+                    </a>
                 </td>
             </tr>
         </table>
@@ -77,7 +83,9 @@
                 <div class="search">
                     <form action="">
                         <input type="text" placeholder="Search..." name="search" id="search-input">
-                        <button type="submit" id="search-button"><a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a></button>
+                        <button type="submit" id="search-button">
+                            <a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a>
+                        </button>
                     </form>
                 </div>
             </td>
@@ -89,14 +97,16 @@
             </td>
             <td>
                 <div class="dropup">
-                    <button class="dropbtn" onclick="isLogin()" id="utente">
+                    <button class="dropbtn" id="utente">
                         <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
                     </button>
                     <div class="dropup-content" id="elements">
-                        <a href="#">Ordini Effettuati</a>
-                        <a href="#">Modifica Credenziali</a>
-                        <a href="#">Lista dei desideri</a>
-                        <a href="#">Logout</a>
+                        <form action="">
+                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
+                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
+                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
+                            <input type="submit" name="elements" value="Logout" id="logout">
+                        </form>
                     </div>
                 </div>
             </td>

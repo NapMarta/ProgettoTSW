@@ -72,7 +72,7 @@ td h2{
     overflow-x: scroll;
     overflow-y: hidden;
     padding: 5px 35px 5px 10px;
-    height: 70px;
+    height: 80px;
 }
 
 .navbarDown td {
@@ -127,25 +127,32 @@ a img:hover{
 
 .dropup {
     display: inline-block;
+    position: relative;
 }
 
 .dropup-content {
     display: none;
-    position: absolute;
-    background-color: #f1f1f1;
+    position: fixed;
+    background-color: #f7f7f7;
     min-width: 160px;
     bottom: 50px;
-    z-index: 1;
+    z-index: 2;
+    padding: 0px;
 }
 
-.dropup-content a {
+.dropup-content input[type=submit] {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    border: none;
+    background-color: #f7f7f7;
+    margin: 0px;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.dropup-content a:hover {
+.dropup-content input[type=submit]:hover {
     background-color: #ccc
 }
 
@@ -161,6 +168,10 @@ a img:hover{
     filter: grayscale(100%);
 }
 
+#logout{
+    margin-bottom: -12px;
+}
+
 .badge{
     z-index: 1;
     border: 0.5px solid black;
@@ -174,6 +185,7 @@ a img:hover{
     position: relative;
     display: inline-block;
     border-radius: 2px;
+    padding-left: 10px;
 }
 
 .notification .badge {
@@ -188,7 +200,7 @@ a img:hover{
 
 .content{
     padding-top: 170px;
-    padding-bottom: 80px;
+    padding-bottom: 90px;
 }
 
 
