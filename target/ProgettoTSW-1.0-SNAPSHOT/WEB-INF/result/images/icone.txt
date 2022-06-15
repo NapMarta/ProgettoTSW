@@ -48,8 +48,5 @@ CERCA
 Oro-> <img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/>
 Grigio-> <img src="https://img.icons8.com/ios/40/D1D1D1/search--v1.png"/>
 
-INFO
-Oro-> <img src="https://img.icons8.com/ios/40/C29436/info--v1.png"/>
-Grigio-> <img src="https://img.icons8.com/ios/40/D1D1D1/info--v1.png"/>
-
-
+MENU' ADMIN
+Grigio-> <img src="https://img.icons8.com/ios-filled/50/D1D1D1/menu--v1.png"/>
