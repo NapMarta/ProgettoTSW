@@ -80,8 +80,6 @@ td h2{
     height: 80px;
     text-align: center;
     margin: 0px;
-    /*padding: 10px 10px 0px 5px;*/
-    border: 2px solid white;
 }
 
 .search{
@@ -89,9 +87,6 @@ td h2{
 }
 
 #search-button{
-    /*left: 150px;*/
-    /*margin: 20px 0px 0px 0px;*/
-    /*font-size: 17px;*/
     cursor: pointer;
     border: none;
     background-color: black;
@@ -107,7 +102,6 @@ td h2{
     font-size: 17px;
     border: 2px solid black;
     width: 170px;
-    /*float: left;*/
     border-radius: 6px;
     border-collapse: collapse;
     margin: -50px auto auto auto;
