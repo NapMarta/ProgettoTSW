@@ -7,7 +7,7 @@ body{
 .parent {
     background-color: #C29436;
     height: 40%;
-    width: 50%;
+    width: 30%;
     display: flex;
     justify-content: center;
     margin: 30vh auto;
@@ -62,6 +62,11 @@ input {
 
 }
 
+input[type=email], input[type=password]{
+    padding: 6px;
+    width: 130px;
+}
+
 input[type=submit]#accedi{
     background-color: #f7f7f7;
     text-align: center;
@@ -101,7 +106,7 @@ input[type=submit]#registrati:active{
 @media screen and (max-width: 1010px){
     .parent {
         height: 40%;
-        width: 70%;
+        width: 60%;
     }
 
     p{
