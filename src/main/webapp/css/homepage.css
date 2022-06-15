@@ -115,6 +115,10 @@ td h2{
     width: 50%;
 }
 
+a{
+    text-decoration: none;
+}
+
 a img:hover{
     filter: grayscale(100%);
 }
