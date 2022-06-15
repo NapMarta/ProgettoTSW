@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="css/c.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
     <div class="parent">
@@ -17,13 +17,5 @@
             <input type="submit" value="Sei un nuovo utente? Registrati" name="registrati" id="registrati">
         </form>
     </div>
-
-<!--in seguito da inserire in un allert js-->
-<%
-    String error = (String) request.getAttribute("error");
-    if(error != null){
-%>
-    <%=error%>
-<%}%>
 </body>
 </html>

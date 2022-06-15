@@ -63,8 +63,8 @@ input {
 }
 
 input[type=email], input[type=password]{
-    padding: 6px;
-    width: 130px;
+    padding: 3px;
+    width: 150px;
 }
 
 input[type=submit]#accedi{
