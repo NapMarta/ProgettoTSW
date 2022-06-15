@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CarrelloDAO {
 
-    public Carrello doRetrieveById(int codice){
+    public static Carrello doRetrieveById(int codice){
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps1 =
@@ -54,7 +54,7 @@ public class CarrelloDAO {
         }
     }
 
-    public void doSave(Carrello c){
+    public static void doSave(Carrello c){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO carrello (idUtente, totale, sconto, numeroProdotti) VALUES(?,?,?,?)",
@@ -90,7 +90,7 @@ public class CarrelloDAO {
     }
 
 
-    public List<Carrello> doRetrieveAll(){
+    public static List<Carrello> doRetrieveAll(){
         List<Carrello> carrelli = new ArrayList<Carrello>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM carrello");
@@ -132,7 +132,7 @@ public class CarrelloDAO {
         return carrelli;
     }
 
-    public boolean doUpdate(Carrello carrello){
+    public static boolean doUpdate(Carrello carrello){
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();

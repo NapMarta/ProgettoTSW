@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ProdottoDAO {
 
-    public Prodotto doRetrieveById(int codice){
+    public static Prodotto doRetrieveById(int codice){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT *  FROM prodotto WHERE codice=?");
@@ -33,7 +33,7 @@ public class ProdottoDAO {
         }
     }
 
-    public int doSave(Prodotto prodotto){
+    public static int doSave(Prodotto prodotto){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO prodotto (nome, prezzo, descrizione, tipologia, immagine) VALUES(?,?,?,?,?)",
@@ -58,7 +58,7 @@ public class ProdottoDAO {
         }
     }
 
-    public List<Prodotto> doRetrieveAll(){
+    public static List<Prodotto> doRetrieveAll(){
         List<Prodotto> listaProd = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM prodotto");
@@ -81,7 +81,7 @@ public class ProdottoDAO {
         return listaProd;
     }
 
-    public boolean doUpdate(Prodotto p){
+    public static boolean doUpdate(Prodotto p){
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();

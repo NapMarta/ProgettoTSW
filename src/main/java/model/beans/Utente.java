@@ -1,5 +1,9 @@
 package model.beans;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Utente {
 
     public Utente() {
@@ -34,8 +38,14 @@ public class Utente {
         return passwordUtente;
     }
 
-    public void setPasswordUtente(String passwordUtente) {
-        this.passwordUtente = passwordUtente;
+    public void setPasswordUtente(String passwordUtente) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-512");
+        byte[] hashedPwd = digest.digest(passwordUtente.getBytes(StandardCharsets.UTF_8));
+        StringBuilder builder = new StringBuilder();
+        for(byte bit: hashedPwd){
+            builder.append(String.format("%02x", bit));
+        }
+        this.passwordUtente = builder.toString();
     }
 
     public String getNome() {
