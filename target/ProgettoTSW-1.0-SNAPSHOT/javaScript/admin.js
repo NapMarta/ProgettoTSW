@@ -1,5 +1,5 @@
 function menu() {
-    var x = document.getElementById("nav");
+    var x = document.getElementById("Topnav");
     if (x.className === "topnav") {
         x.className += " responsive";
     } else {
