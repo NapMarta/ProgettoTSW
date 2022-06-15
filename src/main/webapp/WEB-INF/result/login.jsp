@@ -3,12 +3,12 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/c.css" rel="stylesheet">
 </head>
 <body>
     <div class="parent">
         <form action="LoginServlet" method="post" class="child">
-            <p>Login</p>
+            <p class="titolo">Login</p>
             <hr>
             <label for="email">Email</label><br>            <!--admin@gmail.com-->
             <input type="email" id="email" name="email" placeholder="Email"><br>

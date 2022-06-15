@@ -74,6 +74,7 @@
 </div>
 
 <div class="content">
+    <jsp:include page="catalogo.jsp" />
 </div>
 
 <footer class="navbarDown">

@@ -8,14 +8,14 @@ body{
     background-color: #C29436;
     height: 40%;
     width: 50%;
-    /*display: flex;*/
+    display: flex;
     justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
+
+    /*border: 2px solid black;*/
+    /*border-radius: 10px;*/
+    /*margin: 0 auto;*/
+    /*padding: 0;*/
+    /*position: relative;*/
 
 }
 

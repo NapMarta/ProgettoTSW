@@ -1,0 +1,122 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Utente
+  Date: 15/06/2022
+  Time: 10:01
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+</head>
+<body>
+    <h2>Prodotti</h2>
+    <figure>
+        <img src="images/menu/pizze/pizza1.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza2.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza3.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza4.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza5.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza6.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza7.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza8.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza9.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza10.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza11.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/menu/pizze/pizza12.jpg">
+        <figcaption>
+            <p>Nome</p>
+            <p>Descrizione</p>
+            <p>Prezzo</p>
+        </figcaption>
+    </figure>
+</body>
+</html>
