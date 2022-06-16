@@ -11,7 +11,7 @@ import java.util.List;
 
 public class  UtenteDAO {
 
-    public static Utente doRetrieveById(int id){
+    public Utente doRetrieveById(int id){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT id, nome, cognome, email, passwordUtente, isAdmin FROM utente WHERE id=?");
@@ -33,7 +33,7 @@ public class  UtenteDAO {
         }
     }
 
-    public static Utente doRetrieveByCredenziali(String email, String password) throws SQLException, NoSuchAlgorithmException {
+    public Utente doRetrieveByCredenziali(String email, String password) throws SQLException, NoSuchAlgorithmException {
         Connection con = ConPool.getConnection();
         PreparedStatement ps =
               con.prepareStatement("SELECT id, nome, cognome, email, passwordUtente, isAdmin FROM utente WHERE email=? and passwordUtente=?");
@@ -53,7 +53,7 @@ public class  UtenteDAO {
         return null;
     }
 
-    public static int doSave(Utente utente){
+    public int doSave(Utente utente){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO utente (nome, cognome, email, passwordUtente, isAdmin) VALUES(?,?,?,?,?)",
@@ -77,7 +77,7 @@ public class  UtenteDAO {
         }
     }
 
-    public static List<Utente> doRetrieveAll(){
+    public List<Utente> doRetrieveAll(){
         List<Utente> utenteList = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM utente");
@@ -100,7 +100,7 @@ public class  UtenteDAO {
         return utenteList;
     }
 
-    public static boolean doUpdate(Utente utente){
+    public boolean doUpdate(Utente utente){
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();

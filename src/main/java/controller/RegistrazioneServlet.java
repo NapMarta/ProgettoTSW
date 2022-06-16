@@ -25,6 +25,7 @@ public class RegistrazioneServlet extends HttpServlet {
         }
         else {
             Utente utente = new Utente();
+            UtenteDAO service = new UtenteDAO();
             try {
                 utente.setPasswordUtente(request.getParameter("psw"));
             } catch (NoSuchAlgorithmException e) {
@@ -34,7 +35,10 @@ public class RegistrazioneServlet extends HttpServlet {
             utente.setNome(request.getParameter("nome"));
             utente.setCognome(request.getParameter("cognome"));
 
-            utente.setId(UtenteDAO.doSave(utente));
+            request.setAttribute("utente", utente);
+            utente.setId(service.doSave(utente));
+
+            address = "WEB-INF/result/homepage.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

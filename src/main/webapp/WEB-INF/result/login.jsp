@@ -18,12 +18,5 @@
         </form>
     </div>
 
-<!--in seguito da inserire in un allert js-->
-<%
-    String error = (String) request.getAttribute("error");
-    if(error != null){
-%>
-    <%=error%>
-<%}%>
 </body>
 </html>

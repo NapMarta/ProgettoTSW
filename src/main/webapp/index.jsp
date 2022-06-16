@@ -3,10 +3,11 @@
 <html>
 <head>
     <link href="css/home.css" rel="stylesheet">
+    <title>CookStock</title>
 </head>
 <body>
     <div class="home">
-        <img src="logo.jpeg" id="logo"><br>
+        <img src="logo.jpeg" id="logo" alt="logo sito web"><br>
         <p id="nome">CookStock</p>
     </div>
     <hr>
@@ -18,7 +19,7 @@
     <footer>
         <p>Copyright © 2022. CookStock tutti i diritti riservati.</p>
         <p>Via Roma 54, Avellino (AV) Tel. <a href="tel:0825447586">0825447586</a></p>
-        <p>Made With &#x2764</p>
+        <p>Made With &#x2764;</p>
     </footer>
 
 </body>

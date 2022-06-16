@@ -1,6 +1,6 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
-
+<%@ page import="model.beans.Utente" %><%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Homepage</title>
@@ -74,7 +74,11 @@
 </div>
 
 <div class="content">
-    <jsp:include page="catalogo.jsp" />
+      <%
+              Utente utente = new Utente();
+              utente = (Utente) request.getAttribute("utente");
+      %>
+      <%= utente.getNome() %>
 </div>
 
 <footer class="navbarDown">
@@ -97,18 +101,44 @@
                 </a>
             </td>
             <td>
-                <div class="dropup">
-                    <button class="dropbtn" id="utente">
-                        <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
-                    </button>
-                    <div class="dropup-content" id="elements">
-                        <form action="">
-                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
-                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
-                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
-                            <input type="submit" name="elements" value="Logout" id="logout">
-                        </form>
-                    </div>
+<%--                    <%--%>
+<%--                        Utente utente = new Utente();--%>
+<%--                        utente = (Utente) request.getAttribute("utente");--%>
+<%--                        if(utente == null){--%>
+<%--                    %>--%>
+<%--                            <div class="dropup">--%>
+<%--                                <a href="WEB-INF/result/login.jsp" class="dropbtn">--%>
+<%--                                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>--%>
+<%--                                </a>--%>
+<%--                            </div>--%>
+<%--                    <%--%>
+<%--                        }else{--%>
+<%--                    %>--%>
+<%--                            <div class="dropup">--%>
+<%--                                <button class="dropbtn" id="utente">--%>
+<%--                                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>--%>
+<%--                                </button>--%>
+<%--                                <div class="dropup-content" id="elements">--%>
+<%--                                    <form action="">--%>
+<%--                                        <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">--%>
+<%--                                        <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">--%>
+<%--                                        <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">--%>
+<%--                                        <input type="submit" name="elements" value="Logout" id="logout">--%>
+<%--                                    </form>--%>
+<%--                            </div>--%>
+<%--                    <%--%>
+<%--                        }--%>
+<%--                    %>--%>
+
+<%--&lt;%&ndash;                    <div class="dropup-content" id="elements">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        <form action="">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Logout" id="logout">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        </form>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    </div>&ndash;%&gt;--%>
+
                 </div>
             </td>
         </tr>

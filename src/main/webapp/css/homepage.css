@@ -127,6 +127,7 @@ a img:hover{
     background-color: black;
     color: white;
     border: none;
+    text-decoration: none;
 }
 
 .dropup {
