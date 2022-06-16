@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Login</title>
-    <link href="css/c.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
     <div class="parent">

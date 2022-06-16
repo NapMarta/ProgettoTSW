@@ -3,6 +3,7 @@
 <head>
     <link href="css/admin.css" rel="stylesheet">
     <script src="JavaScript/admin.js" type="text/javascript"></script>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Admin View</title>
 </head>
 <body>

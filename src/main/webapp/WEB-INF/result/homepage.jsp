@@ -1,10 +1,11 @@
 <%@ page import="model.beans.Utente" %><%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Homepage</title>
-    <link href="css/homepage.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
+    <link href="css/homepage.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="javaScript/homepage.js"></script>
 </head>
 <body>
@@ -74,11 +75,6 @@
 </div>
 
 <div class="content">
-      <%
-              Utente utente = new Utente();
-              utente = (Utente) request.getAttribute("utente");
-      %>
-      <%= utente.getNome() %>
 </div>
 
 <footer class="navbarDown">

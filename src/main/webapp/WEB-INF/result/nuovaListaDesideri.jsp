@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Nuova Lista dei Desideri</title>
 </head>
 <body>

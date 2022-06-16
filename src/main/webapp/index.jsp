@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/inizio.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>CookStock</title>
 </head>
 <body>
