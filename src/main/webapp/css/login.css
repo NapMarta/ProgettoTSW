@@ -37,7 +37,7 @@ label{
 
 input[type=text], input[type=email], input[type=password]{
     padding: 6px;
-    width: 130px;
+    width: 150px;
 }
 
 p.titolo{
@@ -74,6 +74,7 @@ input[type=submit]#accedi{
     text-align: center;
     padding: 5px 10px;
     font-size: 15px;
+    margin-top: 5px;
 }
 
 input[type=submit]#registrati{
@@ -133,7 +134,7 @@ table{
 }
 
 /*mobile device*/
-@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
+@media screen and (max-width: 680px) /*and (min-width: 320px)*/{
     .parent {
         height: 40%;
         width: 100%;

@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="parent">
-        <form action="" class="child">
+        <form action="RegistrazioneServlet" class="child">
             <p class="titolo">Registrazione Utente</p>
             <hr>
             <table>
@@ -36,7 +36,7 @@
                         <label for="psw-repeat">Ripetere Password</label><br>
                         <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" required>
                     </td>
-
+                    <td></td>
                 </tr>
             </table>
             <input type="submit" id="accedi" value="Registrati ora">
