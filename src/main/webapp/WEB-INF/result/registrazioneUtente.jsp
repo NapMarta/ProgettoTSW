@@ -3,8 +3,9 @@
 <html>
 <head>
     <title>Registrazione Utente</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <link href="css/registrazione.css" rel="stylesheet">
-    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="JavaScript/registrazione.js"></script>
 </head>
 <body>
     <div class="parent">
@@ -29,13 +30,26 @@
                     </td>
                     <td>
                         <label for="psw">Password</label><br>
-                        <input type="password" placeholder="Inserisci Password" name="psw" id="psw" required>
+                        <span class="visible">
+                            <input type="password" placeholder="Inserisci Password" name="psw" id="psw" required>
+                            <button class="btn" onclick="visible('psw', 'psw-linea');">
+                                <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
+                                <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
+                            </button>
+                        </span>
+
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label for="psw-repeat">Ripetere Password</label><br>
-                        <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" required>
+                        <span class="visible">
+                            <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" required>
+                            <button class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
+                                <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
+                                <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>
+                            </button>
+                        </span>
                     </td>
                     <td></td>
                 </tr>

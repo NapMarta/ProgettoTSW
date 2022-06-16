@@ -50,3 +50,10 @@ Grigio-> <img src="https://img.icons8.com/ios/40/D1D1D1/search--v1.png"/>
 
 MENU' ADMIN
 Grigio-> <img src="https://img.icons8.com/ios-filled/50/D1D1D1/menu--v1.png"/>
+
+
+OCCHIO
+<img src="https://img.icons8.com/ios/50/undefined/visible--v1.png"/>
+
+LINEA
+<img src="https://img.icons8.com/ios/50/undefined/line--v1.png"/>
