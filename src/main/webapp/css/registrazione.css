@@ -35,9 +35,13 @@ label{
     font-size: 20px;
 }
 
-input[type=text], input[type=email], input[type=password]{
+input[type=text], input[type=email], .visible{
     padding: 6px;
-    width: 150px;
+    width: 160px;
+}
+
+input[type=password]{
+    border: none;
 }
 
 p.titolo{
@@ -61,12 +65,30 @@ hr{
 }
 
 
-input {
+input[type=text], input[type=email], input[type=submit], .visible{
     border: 0.5px solid black;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
+    background-color: white;
+}
 
+.btn{
+    border: none;
+    background-color: white;
+}
+
+.occhio{
+    z-index: 0;
+    position: absolute;
+    margin: -15px 0px auto -5px;
+
+}
+
+.linea{
+    margin: -15px 0px auto -5px;
+    z-index: 1;
+    position: absolute;
 }
 
 input[type=submit]#accedi{
@@ -170,7 +192,7 @@ table{
 }
 
 /*mobile device*/
-@media screen and (max-width: 680px) /*and (min-width: 320px)*/{
+@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
     .parent {
         height: 40%;
         width: 100%;

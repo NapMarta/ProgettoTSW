@@ -1,3 +1,16 @@
+function visible(id, linea) {
+    var x = document.getElementById(id);
+    var y = document.getElementById(linea);
+    if (x.type === "password") {
+        x.type = "text";
+        y.style.visibility = "hidden";
+    } else {
+        x.type = "password";
+        y.style.visibility = "visible";
+    }
+}
+
+
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
