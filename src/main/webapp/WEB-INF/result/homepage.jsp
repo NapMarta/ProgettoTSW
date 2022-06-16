@@ -4,7 +4,6 @@
 <head>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Homepage</title>
-    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <link href="css/homepage.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="javaScript/homepage.js"></script>
 </head>
@@ -75,6 +74,7 @@
 </div>
 
 <div class="content">
+    <%@include file="catalogo.jsp"%>
 </div>
 
 <footer class="navbarDown">
