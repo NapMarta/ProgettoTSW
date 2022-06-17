@@ -6,7 +6,7 @@
     <title>Inserimento Prodotto</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="AggiungiProdottoServlet" method="post">
         <table>
             <tr>
                 <td>

@@ -10,11 +10,10 @@
 
     <div class="topnav" id="nav">
         <form action="AdminServlet">
-
-            <input type="submit" id="aggiungi" name="scelta" value="Aggiungi i prodotti">
-            <input type="submit" id="rimuovi" name="scelta" value="Rimuovi i prodotti">
-            <input type="submit" id="modifica" name="scelta" value="Modifica">
-            <input type="submit" id="visualizza" name="scelta" value="Visualizza">
+            <input type="submit" id="aggiungi" name="scelta" value="Aggiungi prodotto">
+            <input type="submit" id="rimuovi" name="scelta" value="Rimuovi prodotto">
+            <input type="submit" id="modifica" name="scelta" value="Modifica prodotto">
+            <input type="submit" id="visualizza" name="scelta" value="Visualizza ordini">
             <a class="icon" href="javascript:void(0);" onclick="menu();">
             <img src="https://img.icons8.com/ios-filled/40/D1D1D1/menu--v1.png"/>
             </a>

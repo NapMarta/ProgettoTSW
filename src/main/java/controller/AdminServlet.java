@@ -10,27 +10,29 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String aggiungi = request.getParameter("aggiungi");
-        String modifica = request.getParameter("modifica");
-        String rimuovi = request.getParameter("rimuovi");
-        String visualizza = request.getParameter("visualizza");
+        String scelta = request.getParameter("scelta");
+        String address = null;
 
-        if(aggiungi != null){
-
+        if(scelta.equalsIgnoreCase("Aggiungi prodotto")){
+            address = "WEB-INF/result/inserimentoProdotto.jsp";
         }
         else{
-            if(modifica != null){
+            if(scelta.equalsIgnoreCase("Rimuovi prodotto")){
 
             }
             else{
-                if(visualizza != null){
+                if(scelta.equalsIgnoreCase("Modifica prodotto")){
 
                 }
                 else{
-                    //rimuovi
+                    //visualizza ordini
+
                 }
             }
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+        dispatcher.forward(request, response);
     }
 
     @Override
