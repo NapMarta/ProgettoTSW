@@ -6,25 +6,22 @@ body{
 
 .parent {
     background-color: #C29436;
-    height: 40%;
+    height: 55%;
     width: 50%;
-    /*display: flex;*/
     justify-content: center;
     align-items: center;
     border: 2px solid black;
     border-radius: 10px;
-    margin: 30vh auto;
-    padding: 0;
-    position: relative;
-
-}
-
-.parent .child {
+    margin: 12% 20%;
     color: black;
-    padding: 5px;
     position: absolute;
     top: 0;
-    transform: translateX(50%);
+    /*padding: 0% 0% 0% 5%;*/
+}
+
+
+.child {
+
 }
 
 .child1{
@@ -33,16 +30,9 @@ body{
 
 label{
     font-size: 20px;
+    padding: 10px;
 }
 
-input[type=text], input[type=email], .visible{
-    padding: 6px;
-    width: 160px;
-}
-
-input[type=password]{
-    border: none;
-}
 
 p.titolo{
     text-align: center;
@@ -65,12 +55,14 @@ hr{
 }
 
 
-input[type=text], input[type=email], input[type=submit], .visible{
+#nome, #cognome, #email, .visible{
     border: 0.5px solid black;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
     background-color: white;
+    padding: 6px;
+    width: 200px;
 }
 
 .btn{
@@ -81,14 +73,27 @@ input[type=text], input[type=email], input[type=submit], .visible{
 .occhio{
     z-index: 0;
     position: absolute;
-    margin: -15px 0px auto -5px;
-
+    margin: -15px 0px auto -15px;
+    padding-left: 10px;
 }
 
 .linea{
-    margin: -15px 0px auto -5px;
+    margin: -15px 0px auto -15px;
     z-index: 1;
     position: absolute;
+    padding-left: 10px;
+}
+
+input[type=password], .active{
+    border: 0px solid white;
+    padding: 0px;
+    margin: 0px;
+    width: 170px;
+}
+
+.visible{
+    margin-top: 25px;
+    padding-right: 25px;
 }
 
 input[type=submit]#accedi{
@@ -96,7 +101,7 @@ input[type=submit]#accedi{
     text-align: center;
     padding: 5px 10px;
     font-size: 15px;
-    margin-top: 5px;
+    margin-top: 25px;
 }
 
 input[type=submit]#registrati{
@@ -108,7 +113,6 @@ input[type=submit]#registrati{
     margin-top: 30px;
     padding-bottom: 0px;
     margin-bottom: 0px;
-
 }
 
 input[type=submit]#registrati:hover{
@@ -122,94 +126,103 @@ input[type=submit]#registrati:active{
 }
 
 p.testo{
-    margin-top: 250px;
     font-family: sans-serif;
     font-size: 15px;
     text-align: center;
+    margin-top: -50px;
 }
 
 table{
-    width: 100%;
+    margin: 4% 15%;
 }
 
-#message {
-    display:none;
-    background: #f1f1f1;
-    color: #000;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-}
-
-#message p {
-    padding: 10px 35px;
-    font-size: 18px;
-}
-
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-    color: green;
-}
-
-.valid:before {
-    position: relative;
-    left: -35px;
-    content: "✔";
-}
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-    color: red;
-}
-
-.invalid:before {
-    position: relative;
-    left: -35px;
-    content: "✖";
-}
-
-/*small screen, laptop, tv*/
-@media screen and (min-width: 1001px){
-
+label{
+    margin-bottom: 5px;
 }
 
 
-/*iPad, tablet*/
-@media screen and (max-width: 1000px){
+/*#message {*/
+/*    display:none;*/
+/*    background: #f1f1f1;*/
+/*    color: #000;*/
+/*    position: relative;*/
+/*    padding: 20px;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*#message p {*/
+/*    padding: 10px 35px;*/
+/*    font-size: 18px;*/
+/*}*/
+
+/*!* Add a green text color and a checkmark when the requirements are right *!*/
+/*.valid {*/
+/*    color: green;*/
+/*}*/
+
+/*.valid:before {*/
+/*    position: relative;*/
+/*    left: -35px;*/
+/*    content: "✔";*/
+/*}*/
+
+/*!* Add a red text color and an "x" when the requirements are wrong *!*/
+/*.invalid {*/
+/*    color: red;*/
+/*}*/
+
+/*.invalid:before {*/
+/*    position: relative;*/
+/*    left: -35px;*/
+/*    content: "✖";*/
+/*}*/
+
+/*tablet*/
+@media screen and (max-width: 1300px) /*and (min-width: 320px)*/{
     .parent {
-        height: 40%;
-        width: 70%;
-        margin: 30vh auto;
+        width: 80%;
+        height: 60%;
+        margin: 10% 10% 0% 10%;
     }
 
-    .parent .child{
-        transform: translateX(20%);
-    }
-
-    p{
-        font-size: 30px;
+    table{
+        margin-left: 20%;
     }
 }
 
-/*mobile device*/
-@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
+/*modile device*/
+@media screen and (max-width: 850px){
     .parent {
-        height: 40%;
-        width: 100%;
-        padding: 0px;
-        border-collapse: collapse;
-        margin: 30vh auto;
+        width: 96%;
+        height: 50%;
+        margin: 30% 0% 30% 0.5%;
     }
 
-    .parent .child{
-        transform: translateX(0%);
+    table{
+        margin-left: 15%;
+    }
+}
+
+@media screen and (max-width: 650px){
+
+    .parent{
+        height: 60%;
+        margin: 20% 0%;
     }
 
-    label{
-        font-size: 15px;
+    table{
+        margin: auto 0%;
     }
 
-    p{
-        font-size: 30px;
+    #cognome, #nome, #email, .visible{
+        width: 130px;
+    }
+
+    input[type=password], .active{
+        width: 100px;
+    }
+
+    p.testo{
+        margin-top: 0px;
     }
 }

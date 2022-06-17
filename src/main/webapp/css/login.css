@@ -49,7 +49,7 @@ p{
     width: 100%;
 }
 
-input {
+input[type=email], input[type=submit], .visible{
     border: 0.5px solid black;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -57,9 +57,10 @@ input {
 
 }
 
-input[type=email], input[type=password]{
+input[type=email], .visible{
+    background-color: white;
     padding: 6px;
-    width: 130px;
+    width: 200px;
 }
 
 input[type=submit]#accedi{
@@ -89,6 +90,33 @@ input[type=submit]#registrati:hover{
 input[type=submit]#registrati:active{
     color: black;
     background-color: #C29436;
+}
+
+.btn{
+    border: none;
+    background-color: white;
+
+}
+
+.occhio{
+    z-index: 0;
+    position: absolute;
+    margin: -15px 0px auto -15px;
+    padding-left: 10px;
+}
+
+.linea{
+    margin: -15px 0px auto -15px;
+    z-index: 1;
+    position: absolute;
+    padding-left: 10px;
+}
+
+input[type=password], .active{
+    border: 0px solid white;
+    padding: 0px;
+    margin: 0px;
+    width: 180px;
 }
 
 /*small screen, laptop, tv*/
