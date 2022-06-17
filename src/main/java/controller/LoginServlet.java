@@ -42,8 +42,15 @@ public class LoginServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-            request.setAttribute("utente", utente);
-            address = "WEB-INF/result/homepage.jsp";
+            if(utente.isAdmin()){
+                address = "WEB-INF/result/AdminView.jsp";
+            }
+            else {
+                request.setAttribute("utente", utente);
+                address = "WEB-INF/result/homepage.jsp";
+            }
+
+
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
