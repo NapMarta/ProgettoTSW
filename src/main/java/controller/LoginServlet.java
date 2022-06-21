@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
         String registrazione = request.getParameter("registrati");
         String address = null;
 
+
         if(registrazione != null){
             address = "WEB-INF/result/registrazioneUtente.jsp";
         }
