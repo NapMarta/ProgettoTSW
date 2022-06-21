@@ -2,14 +2,14 @@ package model.dao;
 
 import model.ConPool;
 import model.beans.Prodotto;
-import model.beans.Utente;
 
-import java.io.InputStream;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProdottoDAO {
+    private static final int BUFFER_SIZE = 2000000;
 
     public Prodotto doRetrieveById(int codice){
         try (Connection con = ConPool.getConnection()) {
@@ -76,9 +76,17 @@ public class ProdottoDAO {
                 String tipologia = resultSet.getString(5);
                 String descrizione = resultSet.getString(4);
                 double prezzo = resultSet.getDouble(3);
-                InputStream immagine = resultSet.getBinaryStream(6);
-                listaProd.add(new Prodotto(codice, nome, tipologia, descrizione, prezzo, immagine));
+
+                //foto dal DB
+//                InputStream immagine = resultSet.getBinaryStream(6);
+                Blob blob = resultSet.getBlob(6);
+                InputStream stream = blob.getBinaryStream();
+
+
+
+                listaProd.add(new Prodotto(codice, nome, tipologia, descrizione, prezzo, stream));
             }
+
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -103,5 +111,27 @@ public class ProdottoDAO {
         if(ris)
             return true;
         return false;
+    }
+
+    public byte[] doRetrievePhotoById (int id){
+        byte[] buffer = new byte[BUFFER_SIZE];
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps1 = con.prepareStatement("SELECT immagine FROM prodotto where codice=" + id);
+            ResultSet resultSet1 = ps1.executeQuery();
+            Blob blob = resultSet1.getBlob(1);
+
+            InputStream stream = blob.getBinaryStream();
+            int bytesRead = -1;
+            while (bytesRead != -1){
+                bytesRead = stream.read(buffer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return buffer;
     }
 }
