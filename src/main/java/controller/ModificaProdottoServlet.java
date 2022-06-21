@@ -8,32 +8,34 @@ import model.dao.ProdottoDAO;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 
 @WebServlet(name = "ModificaProdottoServlet", value = "/ModificaProdottoServlet")
 public class ModificaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
-    }
+        Prodotto prodotto = new Prodotto();
+        ProdottoDAO prodottoDAO = new ProdottoDAO();
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+        int codice = Integer.parseInt(request.getParameter("id"));
         String nomeProdotto = request.getParameter("nomeProdotto");
         Double prezzoProdotto = Double.parseDouble(request.getParameter("prezzoProdotto"));
         String descrizione = request.getParameter("descrizione");
         String tipologia = request.getParameter("tipologia");
         Part immagine = request.getPart("immagine");
-        InputStream stream = null;
-        int codice = Integer.parseInt(request.getParameter("id"));
 
-        if(immagine != null){
-            stream = immagine.getInputStream();
+        InputStream stream = null;
+
+        if(immagine == null){
+            Blob b = prodottoDAO.doRetrievePhotoById(codice);
+            try {
+                stream = b.getBinaryStream();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
-        Prodotto prodotto = new Prodotto();
-        ProdottoDAO prodottoDAO = new ProdottoDAO();
         prodotto.setCodice(codice);
         prodotto.setDescrizione(descrizione);
         prodotto.setImmagine(stream);
@@ -41,11 +43,22 @@ public class ModificaProdottoServlet extends HttpServlet {
         prodotto.setTipologia(tipologia);
         prodotto.setPrezzo(prezzoProdotto);
 
-        prodottoDAO.doUpdate(prodotto);
+        boolean ris = prodottoDAO.doUpdate(prodotto);
 
         String address = "WEB-INF/result/AdminView.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        doGet(request,response);
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }

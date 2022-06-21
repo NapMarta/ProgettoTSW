@@ -8,9 +8,9 @@
     <title>Modifica Prodotto</title>
 </head>
 <body>
-<form action="ModificaProdottoServlet" method="post" enctype="multipart/form-data">
+<form action="ModificaProdottoServlet" method="put" enctype="multipart/form-data">
     <table>
-        <input type="hidden" name="id" value="${prodotto.codice}">
+        <input type="text" name="id" value="${prodotto.codice}">
         <tr>
             <td>
                 <label for="nomeProdotto">Nome Prodotto</label>
