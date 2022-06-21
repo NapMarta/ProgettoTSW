@@ -16,7 +16,6 @@
         <input type="submit" name="home" value="HomePage">
         <input type="submit" name="login" value="Login/Registrati">
     </form>
-
     <footer>
         <p>Copyright © 2022. CookStock tutti i diritti riservati.</p>
         <p>Via Roma 54, Avellino (AV) Tel. <a href="tel:0825447586">0825447586</a></p>
