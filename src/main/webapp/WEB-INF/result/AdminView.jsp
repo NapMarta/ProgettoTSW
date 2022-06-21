@@ -23,11 +23,11 @@
     </div>
     <span>Benvenuto Admin</span>
 
-    <c:forEach items="${}" var="student">
-        <p>${student.firstName}</p><br/>
-        <p>${student.lastName}</p><br/>
-        <p>${student.grade}</p><br/>
-        <p>${student.dateOfBirth}</p><br/>
+    <c:forEach items="${prodottoList}" var="prodotto">
+        <p>${prodotto.nome}</p><br/>
+        <p>${prodotto.tipologia}</p><br/>
+        <p>${prodotto.descrizione}</p><br/>
+        <p>${prodotto.prezzo}</p><br/>
     </c:forEach>
 </body>
 </html>

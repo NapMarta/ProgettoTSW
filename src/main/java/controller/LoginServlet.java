@@ -4,9 +4,11 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.ConPool;
+import model.beans.Prodotto;
 import model.beans.Utente;
 import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
+import java.util.List;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -47,6 +49,9 @@ public class LoginServlet extends HttpServlet {
             if(utente.isAdmin()){
                 address = "WEB-INF/result/AdminView.jsp";
                 ProdottoDAO prodottoDAO = new ProdottoDAO();
+                List<Prodotto> prodottoList = (List<Prodotto>) prodottoDAO.doRetrieveAll();
+                request.setAttribute("utente", utente);
+                request.setAttribute("prodottoList", prodottoList);
 
             }
             else {
