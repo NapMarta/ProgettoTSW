@@ -28,7 +28,7 @@
         <p>${prodotto.tipologia}</p><br/>
         <p>${prodotto.descrizione}</p><br/>
         <p>${prodotto.prezzo}</p><br/>
-        <p><img src="./PhotoController?id=${prodotto.codice}" style="width:100px"></p><br/>
+        <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
     </c:forEach>
 </body>
 </html>

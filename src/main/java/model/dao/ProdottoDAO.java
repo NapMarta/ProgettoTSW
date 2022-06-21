@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdottoDAO {
-    private static final int BUFFER_SIZE = 2000000;
+    private static final int BUFFER_SIZE = 1024;
 
     public Prodotto doRetrieveById(int codice){
         try (Connection con = ConPool.getConnection()) {
@@ -113,25 +113,21 @@ public class ProdottoDAO {
         return false;
     }
 
-    public byte[] doRetrievePhotoById (int id){
-        byte[] buffer = new byte[BUFFER_SIZE];
-        try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps1 = con.prepareStatement("SELECT immagine FROM prodotto where codice=" + id);
-            ResultSet resultSet1 = ps1.executeQuery();
-            Blob blob = resultSet1.getBlob(1);
+    public Blob doRetrievePhotoById (int id){
+        Blob blob = null;
 
-            InputStream stream = blob.getBinaryStream();
-            int bytesRead = -1;
-            while (bytesRead != -1){
-                bytesRead = stream.read(buffer);
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps1 = con.prepareStatement("SELECT immagine FROM prodotto where codice='" + id +"'");
+            ResultSet resultSet1 = ps1.executeQuery();
+
+            if(resultSet1.next()){
+                blob = resultSet1.getBlob(1);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        return buffer;
+        return blob;
     }
 }
