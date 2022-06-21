@@ -1,4 +1,6 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <link href="css/admin.css" rel="stylesheet">
@@ -20,5 +22,12 @@
         </form>
     </div>
     <span>Benvenuto Admin</span>
+
+    <c:forEach items="${}" var="student">
+        <p>${student.firstName}</p><br/>
+        <p>${student.lastName}</p><br/>
+        <p>${student.grade}</p><br/>
+        <p>${student.dateOfBirth}</p><br/>
+    </c:forEach>
 </body>
 </html>

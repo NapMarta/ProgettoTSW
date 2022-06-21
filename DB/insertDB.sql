@@ -50,4 +50,6 @@ insert into utente(nome, cognome, email, passwordUtente, isAdmin) value
 -- (1, 5, 2),
 -- (3, 1, 1);
 --
-select * from utente
+select * from utente;
+
+select * from prodotto;

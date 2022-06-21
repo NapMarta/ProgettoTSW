@@ -11,7 +11,7 @@ create table utente(
     cognome varchar(30) not null,
     email varchar(30) not null,
     passwordUtente varchar(128) not null,
-    isAdmin boolean default 0,
+    isAdmin boolean default false,
     unique(email)
 );
 
@@ -43,7 +43,7 @@ create table prodotto
                                 tipologia = 'Fritto' OR 
                                 tipologia = 'Dolce') not null,
 	immagine mediumblob
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 create table appartenere
 (

@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.ConPool;
 import model.beans.Utente;
+import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
 
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class LoginServlet extends HttpServlet {
 
             if(utente.isAdmin()){
                 address = "WEB-INF/result/AdminView.jsp";
+                ProdottoDAO prodottoDAO = new ProdottoDAO();
+
             }
             else {
                 request.setAttribute("utente", utente);
