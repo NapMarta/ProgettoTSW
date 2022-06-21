@@ -1,12 +1,18 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Inserimento Prodotto</title>
 </head>
 <body>
-    <form action="AggiungiProdottoServlet" method="post">
+    <form action="AggiungiProdottoServlet" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>
@@ -35,7 +41,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="file" name="immagine" value="" maxlength="255">	
+                    <input type="file" name="immagine" value="" size="50">
                 </td>
             </tr>
             <tr>

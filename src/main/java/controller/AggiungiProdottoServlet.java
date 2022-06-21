@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @WebServlet(name = "AggiungiProdottoServlet", value = "/AggiungiProdottoServlet")
+@MultipartConfig(maxFileSize = 16177215)
 public class AggiungiProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +40,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
 
         prodotto.setCodice(prodottoDAO.doSave(prodotto));
 
-        String address = "index.jsp";
+        String address = "WEB-INF/result/AdminView.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
