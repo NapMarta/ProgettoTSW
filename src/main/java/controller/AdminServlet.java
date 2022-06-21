@@ -13,8 +13,22 @@ public class AdminServlet extends HttpServlet {
         String scelta = request.getParameter("scelta");
         String address = null;
 
+        switch(scelta){
+            case "Aggiungi prodotto":
+                address = "WEB-INF/result/inserimentoProdotto.jsp";
+                break;
+            case "Rimuovi prodotto":
+                break;
+            case "Modifica prodotto":
+                break;
+            case "Visualizza ordini":
+                break;
+            case "Visualizza utenti":
+                break;
+        }
+
         if(scelta.equalsIgnoreCase("Aggiungi prodotto")){
-            address = "WEB-INF/result/inserimentoProdotto.jsp";
+
         }
         else{
             if(scelta.equalsIgnoreCase("Rimuovi prodotto")){

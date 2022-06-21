@@ -78,11 +78,8 @@ public class ProdottoDAO {
                 double prezzo = resultSet.getDouble(3);
 
                 //foto dal DB
-//                InputStream immagine = resultSet.getBinaryStream(6);
                 Blob blob = resultSet.getBlob(6);
                 InputStream stream = blob.getBinaryStream();
-
-
 
                 listaProd.add(new Prodotto(codice, nome, tipologia, descrizione, prezzo, stream));
             }
