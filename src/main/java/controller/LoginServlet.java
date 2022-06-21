@@ -55,5 +55,6 @@ public class LoginServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
+
     }
 }
