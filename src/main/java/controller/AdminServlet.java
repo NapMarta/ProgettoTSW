@@ -17,6 +17,7 @@ public class AdminServlet extends HttpServlet {
             case "Aggiungi prodotto":
                 address = "WEB-INF/result/inserimentoProdotto.jsp";
                 break;
+
             case "Rimuovi prodotto":
                 break;
             case "Modifica prodotto":
