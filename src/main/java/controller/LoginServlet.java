@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -52,7 +53,6 @@ public class LoginServlet extends HttpServlet {
                 List<Prodotto> prodottoList = (List<Prodotto>) prodottoDAO.doRetrieveAll();
                 request.setAttribute("utente", utente);
                 request.setAttribute("prodottoList", prodottoList);
-
             }
             else {
                 request.setAttribute("utente", utente);
