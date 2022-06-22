@@ -152,6 +152,7 @@ public class ProdottoDAO {
             e.printStackTrace();
         }
 
+
         if(rs)
             return true;
         return false;
