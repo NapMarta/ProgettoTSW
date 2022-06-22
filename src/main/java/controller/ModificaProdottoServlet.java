@@ -27,8 +27,6 @@ public class ModificaProdottoServlet extends HttpServlet {
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         String address = null;
 
-        HttpSession session = request.getSession();
-
         int codice = Integer.parseInt(request.getParameter("id"));
         String nomeProdotto = request.getParameter("nomeProdotto");
         Double prezzoProdotto = Double.parseDouble(request.getParameter("prezzoProdotto"));
@@ -48,6 +46,8 @@ public class ModificaProdottoServlet extends HttpServlet {
         prodotto.setNome(nomeProdotto);
         prodotto.setTipologia(tipologia);
         prodotto.setPrezzo(prezzoProdotto);
+
+       Blob blob = prodottoDAO.doRetrievePhotoById(codice);
 
         boolean ris = prodottoDAO.doUpdate(prodotto);
 
