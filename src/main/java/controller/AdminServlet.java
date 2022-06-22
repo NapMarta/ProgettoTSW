@@ -15,6 +15,7 @@ public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String scelta = request.getParameter("scelta");
         String address = null;
+        HttpSession session = request.getSession(true);
 
         switch(scelta){
             case "Aggiungi prodotto":
@@ -22,10 +23,16 @@ public class AdminServlet extends HttpServlet {
                 break;
 
             case "Rimuovi prodotto":
+
+                synchronized (session){
+                    int id  = Integer.parseInt(request.getParameter("codice"));
+                    ProdottoDAO prodottoDAO = new ProdottoDAO();
+                    prodottoDAO.doDeleteById(id);
+                    address = "WEB-INF/result/AdminView.jsp";
+                }
                 break;
             case "Modifica prodotto":
 
-                HttpSession session = request.getSession();
                 synchronized (session){
                     int id  = Integer.parseInt(request.getParameter("codice"));
                     ProdottoDAO prodottoDAO = new ProdottoDAO();
