@@ -7,6 +7,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Blob;
 
 public class ProdottoDAO {
     private static final int BUFFER_SIZE = 1024;
@@ -92,14 +93,20 @@ public class ProdottoDAO {
         return listaProd;
     }
 
-    public boolean doUpdate(Prodotto p){
+    public boolean doUpdate(Prodotto p, boolean foto){
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
+
             String query = "update prodotto set nome='" + p.getNome() + "', tipologia='" +
-                    p.getTipologia() + "', descrizione='" + p.getDescrizione() + "', prezzo='" + p.getPrezzo() + "', immagine='" + p.getImmagine() + "' where codice='" + p.getCodice() + "';";
+                    p.getTipologia() + "', descrizione='" + p.getDescrizione() + "', prezzo='" + p.getPrezzo() + "' where codice='" + p.getCodice() + "';";
             st.executeUpdate(query);
             ris = true;
+
+            if(foto){
+                ris = doUpdatePhotoById(p);
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -126,5 +133,27 @@ public class ProdottoDAO {
         }
 
         return blob;
+    }
+
+    public boolean doUpdatePhotoById (Prodotto prodotto){
+
+        boolean rs = false;
+        try (Connection con = ConPool.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement("UPDATE prodotto SET immagine = ? where codice='" + prodotto.getCodice() +"'");
+            InputStream stream = prodotto.getImmagine();
+            if(stream != null){
+                ps.setBlob(1, stream);
+            }
+            ps.executeUpdate();
+            rs = true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(rs)
+            return true;
+        return false;
     }
 }
