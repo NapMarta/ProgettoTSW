@@ -41,28 +41,28 @@
         <table>
             <tr>
                 <td>
-                    <button type="submit" value="Pizza" name="tipologia" id="pizza" onclick="show('pizza')" class="btnUP" >
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/>
+                    <button type="submit" value="Pizza" name="tipologia" onclick="show('pizza');" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png" id="pizza"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Panino" name="tipologia" id="panino" onclick="show('panino')" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/>
+                    <button type="submit" value="Panino" name="tipologia"  onclick="show('panino');" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png" id="panino"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Fritto" name="tipologia" id="fritto" onclick="show('fritto')" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/>
+                    <button type="submit" value="Fritto" name="tipologia" onclick="show('fritto');" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png" id="fritto"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Bibita" name="tipologia" id="bibita" onclick="show('bibita')" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/>
+                    <button type="submit" value="Bibita" name="tipologia" onclick="show('bibita');" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png" id="bibita"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Dolce" name="tipologia" id="dolce" onclick="show('dolce')" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/>
+                    <button type="submit" value="Dolce" name="tipologia" onclick="show('dolce');" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png" id="dolce"/>
                     </button>
                 </td>
             </tr>

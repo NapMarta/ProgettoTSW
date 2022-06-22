@@ -50,7 +50,7 @@ td h2{
     text-align: center;
 }
 
-.navbarUp td img{
+.navbarUp td button img{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -115,7 +115,8 @@ td h2{
     width: 50%;
 }
 
-.btnUP img{
+.btnUP{
+    border: none;
     background-color: black;
 }
 
@@ -123,7 +124,7 @@ td h2{
     filter: grayscale(100%);
 }
 
-a img{
+a{
     text-decoration: none;
     border: none;
     color: white;
@@ -222,8 +223,5 @@ a{
     text-decoration: none;
 }
 
-.active{
-    filter: grayscale(100%);
-}
 
 
