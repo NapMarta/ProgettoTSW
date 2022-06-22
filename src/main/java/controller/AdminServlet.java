@@ -1,5 +1,6 @@
 package controller;
 
+import com.mysql.cj.Session;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -23,11 +24,15 @@ public class AdminServlet extends HttpServlet {
             case "Rimuovi prodotto":
                 break;
             case "Modifica prodotto":
-                int id  = Integer.parseInt(request.getParameter("codice"));
-                ProdottoDAO prodottoDAO = new ProdottoDAO();
-                Prodotto p = prodottoDAO.doRetrieveById(id);
-                request.setAttribute("prodotto", p);
-                address = "WEB-INF/result/modificaProdotto.jsp";
+
+                HttpSession session = request.getSession();
+                synchronized (session){
+                    int id  = Integer.parseInt(request.getParameter("codice"));
+                    ProdottoDAO prodottoDAO = new ProdottoDAO();
+                    Prodotto p = prodottoDAO.doRetrieveById(id);
+                    session.setAttribute("prodotto", p);
+                    address = "WEB-INF/result/modificaProdotto.jsp";
+                }
                 break;
 
             case "Visualizza ordini":

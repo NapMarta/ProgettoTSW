@@ -12,11 +12,22 @@ import java.sql.Blob;
 import java.sql.SQLException;
 
 @WebServlet(name = "ModificaProdottoServlet", value = "/ModificaProdottoServlet")
+@MultipartConfig(maxFileSize = 16177215)
+
 public class ModificaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Prodotto prodotto = new Prodotto();
         ProdottoDAO prodottoDAO = new ProdottoDAO();
+        String address = null;
+
+        HttpSession session = request.getSession();
 
         int codice = Integer.parseInt(request.getParameter("id"));
         String nomeProdotto = request.getParameter("nomeProdotto");
@@ -27,13 +38,8 @@ public class ModificaProdottoServlet extends HttpServlet {
 
         InputStream stream = null;
 
-        if(immagine == null){
-            Blob b = prodottoDAO.doRetrievePhotoById(codice);
-            try {
-                stream = b.getBinaryStream();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        if(immagine != null) {
+            stream = immagine.getInputStream();
         }
 
         prodotto.setCodice(codice);
@@ -45,20 +51,18 @@ public class ModificaProdottoServlet extends HttpServlet {
 
         boolean ris = prodottoDAO.doUpdate(prodotto);
 
-        String address = "WEB-INF/result/AdminView.jsp";
+        if(ris){
+            address = "WEB-INF/result/AdminView.jsp";
+        }
+        else{
+            address = "WEB-INF/result/homepage.jsp"; //da cambiaree
+        }
+
+
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
+
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doGet(request,response);
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 }
