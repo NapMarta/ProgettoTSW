@@ -43,7 +43,7 @@
         <tr>
             <td>
                 <input type="file" name="immagine" size="50">
-                <p><img src="./PhotoController?codice=<%= prodotto.getCodice()%>" style="width:100px"></p><br/>
+                <p><img src="./PhotoController?codice=<%= prodotto.getCodice()%>"  name="immagineVecchia" style="width:100px"></p><br/>
 
             </td>
         </tr>

@@ -39,13 +39,20 @@ public class ModificaProdottoServlet extends HttpServlet {
         InputStream stream = null;
         boolean foto = true;        //l'admin vuole cambiare la foto del prodotto
 
-        if(immagine != null) {
+        if(immagine.getSize() != 0) {
             stream = immagine.getInputStream();
             prodotto.setImmagine(stream);
         }
         else {
             foto = false;
-            prodotto.setImmagine((InputStream) prodottoDAO.doRetrievePhotoById(codice));
+            Blob blob = prodottoDAO.doRetrievePhotoById(codice);
+            InputStream stream1 = null;
+            try {
+                stream1 = blob.getBinaryStream();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            prodotto.setImmagine(stream1);
         }
 
         prodotto.setCodice(codice);
