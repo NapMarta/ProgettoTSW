@@ -18,21 +18,21 @@
         <tr>
             <td>
                 <label for="nomeProdotto">Nome Prodotto</label>
-                <input type="text" id="nomeProdotto" name="nomeProdotto" value="">
+                <input type="text" id="nomeProdotto" name="nomeProdotto" value="<%= prodotto.getNome()%>">
             </td>
             <td>
                 <label for="prezzoProdotto">Prezzo</label>
-                <input type="number" id="prezzoProdotto" name="prezzoProdotto" min="0" step="0.01" value="">
+                <input type="number" id="prezzoProdotto" name="prezzoProdotto" min="0" step="0.01" value="<%= prodotto.getPrezzo()%>">
             </td>
         </tr>
         <tr>
             <td>
                 <label for="descrizione">Descrizione</label>
-                <input type="text" id="descrizione" name="descrizione" value="">
+                <input type="text" id="descrizione" name="descrizione" value="<%= prodotto.getDescrizione()%>">
             </td>
             <td>
                 <label for="tipologia">Tipologia</label>
-                <select id="tipologia" name="tipologia" value="">
+                <select id="tipologia" name="tipologia">
                     <option value="panino">Panino</option>
                     <option value="pizza">Pizza</option>
                     <option value="bibita">Bibita</option>
@@ -42,13 +42,13 @@
         </tr>
         <tr>
             <td>
-                <input type="file" name="immagine" value="" size="50">
-<%--                <p><img src="./PhotoController?codice=" style="width:100px"></p><br/>--%>
+                <input type="file" name="immagine" size="50">
+                <p><img src="./PhotoController?codice=<%= prodotto.getCodice()%>" style="width:100px"></p><br/>
 
             </td>
         </tr>
         <tr>
-            <input type="submit" value="Conferma">
+            <input type="submit" value="Conferma modifica">
         </tr>
     </table>
 </form>
