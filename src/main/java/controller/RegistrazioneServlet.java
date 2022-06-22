@@ -3,11 +3,14 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.beans.Prodotto;
 import model.beans.Utente;
+import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @WebServlet(name = "RegistrazioneServlet", value = "/RegistrazioneServlet")
 public class RegistrazioneServlet extends HttpServlet {
@@ -38,6 +41,9 @@ public class RegistrazioneServlet extends HttpServlet {
             request.setAttribute("utente", utente);
             utente.setId(service.doSave(utente));
 
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+            request.setAttribute("prodottoList", list);
             address = "WEB-INF/result/homepage.jsp";
         }
 

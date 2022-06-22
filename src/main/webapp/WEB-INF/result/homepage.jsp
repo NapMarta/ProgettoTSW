@@ -1,11 +1,14 @@
 <%@ page import="model.beans.Utente" %><%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Homepage</title>
     <link href="css/homepage.css" rel="stylesheet" type="text/css"/>
-    <script src="../../JavaScript/catalogo.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/catalogo.css">
+    <script src="JavaScript/homepage.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -38,27 +41,27 @@
         <table>
             <tr>
                 <td>
-                    <button type="submit" value="Pizza" name="tipologia" class="btnUP">
+                    <button type="submit" value="Pizza" name="tipologia" id="pizza" onclick="show('pizza')" class="btnUP" >
                         <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Paninp" name="tipologia" class="btnUP">
+                    <button type="submit" value="Panino" name="tipologia" id="panino" onclick="show('panino')" class="btnUP">
                         <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Fritto" name="tipologia" class="btnUP">
+                    <button type="submit" value="Fritto" name="tipologia" id="fritto" onclick="show('fritto')" class="btnUP">
                         <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Bibita" name="tipologia" class="btnUP">
+                    <button type="submit" value="Bibita" name="tipologia" id="bibita" onclick="show('bibita')" class="btnUP">
                         <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/>
                     </button>
                 </td>
                 <td>
-                    <button type="submit" value="Dolce" name="tipologia" class="btnUP">
+                    <button type="submit" value="Dolce" name="tipologia" id="dolce" onclick="show('dolce')" class="btnUP">
                         <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/>
                     </button>
                 </td>
@@ -86,7 +89,20 @@
 </div>
 
 <div class="content">
-    <%@include file="catalogo.jsp"%>
+    <c:forEach items="${prodottoList}" var="prodotto">
+        <form action="">
+            <figure>
+                <figcaption class="column">
+                    <p>${prodotto.nome}</p>
+                    <p>${prodotto.tipologia}</p><br/>
+                    <p>${prodotto.descrizione}</p><br/>
+                    <p>${prodotto.prezzo}</p><br/>
+                    <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
+                    <input type="hidden" name="codice" value="${prodotto.codice}">
+                </figcaption>
+            </figure>
+        </form>
+    </c:forEach>
 </div>
 
 <footer class="navbarDown">

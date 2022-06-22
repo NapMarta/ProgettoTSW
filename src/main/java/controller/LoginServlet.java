@@ -55,6 +55,9 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("prodottoList", prodottoList);
             }
             else {
+                ProdottoDAO prodottoDAO = new ProdottoDAO();
+                List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+                request.setAttribute("prodottoList", list);
                 request.setAttribute("utente", utente);
                 address = "WEB-INF/result/homepage.jsp";
             }

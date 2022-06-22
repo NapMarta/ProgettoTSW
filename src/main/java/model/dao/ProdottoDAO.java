@@ -168,4 +168,30 @@ public class ProdottoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Prodotto> doRetrieveByTipologia(String tipo){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps =
+                    con.prepareStatement("SELECT *  FROM prodotto WHERE tipologia=?");
+            ps.setString(1, tipo);
+            ResultSet rs = ps.executeQuery();
+
+            List<Prodotto> prodottoList = new ArrayList<>();
+
+            while(rs.next()) {
+                Prodotto p = new Prodotto();
+                p.setCodice(rs.getInt(1));
+                p.setNome(rs.getString(2));
+                p.setTipologia(rs.getString(5));
+                p.setDescrizione(rs.getString(4));
+                p.setPrezzo(rs.getDouble(3));
+                p.setImmagine(rs.getBinaryStream(6));
+                prodottoList.add(p);
+            }
+            return prodottoList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+

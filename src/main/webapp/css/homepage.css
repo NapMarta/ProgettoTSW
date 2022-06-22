@@ -222,3 +222,8 @@ a{
     text-decoration: none;
 }
 
+.active{
+    filter: grayscale(100%);
+}
+
+
