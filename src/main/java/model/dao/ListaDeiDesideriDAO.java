@@ -125,4 +125,15 @@ public class ListaDeiDesideriDAO {
             return true;       //aggiurnamento a buon fine
         return false;
     }
+
+    public void doDeleteById(int id){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM listaDesideri WHERE codice=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -158,4 +158,15 @@ public class CarrelloDAO {
             return true;
         return false;
     }
+
+    public void doDeleteById(int id){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM carrello WHERE codice=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
