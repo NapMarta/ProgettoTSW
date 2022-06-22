@@ -115,14 +115,21 @@ td h2{
     width: 50%;
 }
 
-.btnUP{
-    text-decoration: none;
-    border: none;
+.btnUP img{
     background-color: black;
-    color: white;
 }
 
 .btnUP img:hover{
+    filter: grayscale(100%);
+}
+
+a img{
+    text-decoration: none;
+    border: none;
+    color: white;
+}
+
+a img:hover{
     filter: grayscale(100%);
 }
 
