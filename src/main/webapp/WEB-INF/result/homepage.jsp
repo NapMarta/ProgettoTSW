@@ -8,7 +8,6 @@
     <title>Homepage</title>
     <link href="css/homepage.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/catalogo.css">
-    <script src="JavaScript/homepage.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -93,11 +92,11 @@
         <form action="">
             <figure>
                 <figcaption class="column">
+                    <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
                     <p>${prodotto.nome}</p>
                     <p>${prodotto.tipologia}</p><br/>
                     <p>${prodotto.descrizione}</p><br/>
                     <p>${prodotto.prezzo}</p><br/>
-                    <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
                     <input type="hidden" name="codice" value="${prodotto.codice}">
                 </figcaption>
             </figure>

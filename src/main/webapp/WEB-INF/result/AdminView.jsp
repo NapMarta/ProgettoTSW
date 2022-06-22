@@ -25,11 +25,11 @@
 
     <c:forEach items="${prodottoList}" var="prodotto">
         <form action="AdminServlet" method="post">
+            <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
             <p>${prodotto.nome}</p><br/>
             <p>${prodotto.tipologia}</p><br/>
             <p>${prodotto.descrizione}</p><br/>
             <p>${prodotto.prezzo}</p><br/>
-            <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
             <input type="hidden" name="codice" value="${prodotto.codice}">
             <input type="submit" id="rimuovi" name="scelta" value="Rimuovi prodotto">
             <input type="submit" id="modifica" name="scelta" value="Modifica prodotto">
