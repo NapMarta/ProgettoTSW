@@ -8,6 +8,7 @@ import model.dao.ProdottoDAO;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 @WebServlet(name = "AggiungiProdottoServlet", value = "/AggiungiProdottoServlet")
 @MultipartConfig(maxFileSize = 16177215)
@@ -40,6 +41,8 @@ public class AggiungiProdottoServlet extends HttpServlet {
 
         prodotto.setCodice(prodottoDAO.doSave(prodotto));
 
+        List<Prodotto> list = prodottoDAO.doRetrieveAll();
+        request.setAttribute("prodottoList", list);
         String address = "WEB-INF/result/AdminView.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
         String accedi = request.getParameter("accedi");
         String registrazione = request.getParameter("registrati");
         String address = null;
-
+        HttpSession session = request.getSession(true);
 
         if(registrazione != null){
             address = "WEB-INF/result/registrazioneUtente.jsp";

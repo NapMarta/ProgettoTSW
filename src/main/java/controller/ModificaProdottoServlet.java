@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "ModificaProdottoServlet", value = "/ModificaProdottoServlet")
 @MultipartConfig(maxFileSize = 16177215)
@@ -65,6 +66,9 @@ public class ModificaProdottoServlet extends HttpServlet {
         boolean ris = prodottoDAO.doUpdate(prodotto, foto);
 
         if(ris){
+            List<Prodotto> list = prodottoDAO.doRetrieveAll();
+            request.setAttribute("prodottoList", list);
+
             address = "WEB-INF/result/AdminView.jsp";
         }
         else{
