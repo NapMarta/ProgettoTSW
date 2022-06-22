@@ -5,7 +5,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Homepage</title>
     <link href="css/homepage.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="javaScript/homepage.js"></script>
+    <script src="../../JavaScript/catalogo.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -34,22 +34,33 @@
     </header>
 
     <nav class="navbarUp">
+        <form action="CatalogoServlet" method="get">
         <table>
             <tr>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/></a>
+                    <button type="submit" value="Pizza" name="tipologia" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png"/>
+                    </button>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/></a>
+                    <button type="submit" value="Paninp" name="tipologia" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png"/>
+                    </button>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/></a>
+                    <button type="submit" value="Fritto" name="tipologia" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png"/>
+                    </button>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/></a>
+                    <button type="submit" value="Bibita" name="tipologia" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png"/>
+                    </button>
                 </td>
                 <td>
-                    <a href="#"><img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/></a>
+                    <button type="submit" value="Dolce" name="tipologia" class="btnUP">
+                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png"/>
+                    </button>
                 </td>
             </tr>
             <tr>
@@ -60,7 +71,7 @@
                     <span>Hamburger</span>
                 </td>
                 <td>
-                    <span>Patatine</span>
+                    <span>Fritti</span>
                 </td>
                 <td>
                     <span>Bibite</span>
@@ -70,6 +81,7 @@
                 </td>
             </tr>
         </table>
+        </form>
     </nav>
 </div>
 
