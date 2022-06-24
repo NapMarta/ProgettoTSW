@@ -37,6 +37,7 @@ public class RegistrazioneServlet extends HttpServlet {
             utente.setEmail(request.getParameter("email"));
             utente.setNome(request.getParameter("nome"));
             utente.setCognome(request.getParameter("cognome"));
+            utente.setAdmin(false);
 
             request.setAttribute("utente", utente);
             utente.setId(service.doSave(utente));

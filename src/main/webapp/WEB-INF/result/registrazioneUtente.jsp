@@ -22,7 +22,7 @@
                     </td>
                     <td>
                         <label for="cognome">Cognome</label><br>
-                        <input type="text" placeholder="Inserisci Cognome" name="nome" id="cognome" required>
+                        <input type="text" placeholder="Inserisci Cognome" name="cognome" id="cognome" required>
                     </td>
                 </tr>
                 <tr>
@@ -34,10 +34,10 @@
                         <label for="psw">Password<br></label>
                         <span class="visible">
                             <input type="password" placeholder="Inserisci Password" name="psw" id="psw" required>
-                            <input type="checkbox"  class="btn" onclick="visible('psw', 'psw-linea');">
+                            <button type="button"  class="btn" onclick="visible('psw', 'psw-linea');">
                                 <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                                 <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
-                            </input>
+                            </button>
                         </span>
 
                     </td>
@@ -47,10 +47,10 @@
                         <label for="psw-repeat">Ripetere Password<br></label>
                         <span class="visible">
                             <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" required>
-                            <input type="checkbox" class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
+                            <button type="button" class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
                                 <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                                 <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>
-                            </input>
+                            </button>
                         </span>
                     </td>
                     <td></td>

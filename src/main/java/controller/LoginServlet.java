@@ -40,9 +40,16 @@ public class LoginServlet extends HttpServlet {
 
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+            try {
+                utente.setPasswordUtente(password);
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+            String pswCrittografata = utente.getPasswordUtente();
 
             try {
-                utente = utenteDAO.doRetrieveByCredenziali(email, password);
+                utente = utenteDAO.doRetrieveByCredenziali(email, pswCrittografata);
             } catch (SQLException | NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }

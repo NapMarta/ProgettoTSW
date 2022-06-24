@@ -16,10 +16,10 @@
             <label for="password">Password</label><br>      <!--admin-->
             <div class="visible">
                 <input type="password" id="password" name="password" id="password" placeholder="Password">
-                <input type="checkbox"  class="btn" onclick="visible('password', 'psw-linea');" formaction="">
+                <button type="button"  class="btn" onclick="visible('password', 'psw-linea');">
                     <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                     <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
-                </input>
+                </button>
             </div>
             <br><br>
             <input type="submit" value="Accedi" name="accedi" id="accedi"><br><br>

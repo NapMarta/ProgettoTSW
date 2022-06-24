@@ -61,6 +61,8 @@ input[type=email], .visible{
     background-color: white;
     padding: 6px;
     width: 200px;
+    display: flex;
+    align-items: center;
 }
 
 input[type=submit]#accedi{
@@ -79,7 +81,10 @@ input[type=submit]#registrati{
     margin-top: 30px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+}
 
+input[type="checkbox"] {
+    appearance: none;
 }
 
 input[type=submit]#registrati:hover{
@@ -101,12 +106,12 @@ input[type=submit]#registrati:active{
 .occhio{
     z-index: 0;
     position: absolute;
-    margin: -15px 0px auto -15px;
+    margin: -10px 0px auto -15px;
     padding-left: 10px;
 }
 
 .linea{
-    margin: -15px 0px auto -15px;
+    margin: -10px 0px auto -15px;
     z-index: 1;
     position: absolute;
     padding-left: 10px;

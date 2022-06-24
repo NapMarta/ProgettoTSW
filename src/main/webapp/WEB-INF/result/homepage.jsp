@@ -92,12 +92,22 @@
         <form action="">
             <figure>
                 <figcaption class="column">
-                    <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
-                    <p>${prodotto.nome}</p>
-                    <p>${prodotto.tipologia}</p><br/>
-                    <p>${prodotto.descrizione}</p><br/>
-                    <p>${prodotto.prezzo}</p><br/>
-                    <input type="hidden" name="codice" value="${prodotto.codice}">
+                    <p><img src="./PhotoController?codice=${prodotto.codice}"></p>
+                    <div class="btnProdotto">
+                        <button type="submit" id="AggiungiCarrello">
+                            <img src="https://img.icons8.com/ios-glyphs/30/C29436/add-shopping-cart.png"/>
+                        </button>
+                        <button type="submit" id="AggiungiPreferiti">
+                            <img src="https://img.icons8.com/ios-glyphs/30/C29436/favorite-cart.png"/>
+                        </button>
+                    </div>
+                    <div class="descrizione">
+                        <p>${prodotto.nome}</p>
+                        <p>${prodotto.descrizione}</p>
+                        <p class="prezzo">${prodotto.prezzo}&#8364;</p>
+                        <input type="hidden" name="codice" value="${prodotto.codice}">
+                        <input type="hidden" name="tipologia" value="${prodotto.tipologia}">
+                    </div>
                 </figcaption>
             </figure>
         </form>
@@ -124,45 +134,41 @@
                 </a>
             </td>
             <td>
-<%--                    <%--%>
-<%--                        Utente utente = new Utente();--%>
-<%--                        utente = (Utente) request.getAttribute("utente");--%>
-<%--                        if(utente == null){--%>
-<%--                    %>--%>
-<%--                            <div class="dropup">--%>
-<%--                                <a href="WEB-INF/result/login.jsp" class="dropbtn">--%>
-<%--                                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                    <%--%>
-<%--                        }else{--%>
-<%--                    %>--%>
-<%--                            <div class="dropup">--%>
-<%--                                <button class="dropbtn" id="utente">--%>
-<%--                                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>--%>
-<%--                                </button>--%>
-<%--                                <div class="dropup-content" id="elements">--%>
-<%--                                    <form action="">--%>
-<%--                                        <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">--%>
-<%--                                        <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">--%>
-<%--                                        <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">--%>
-<%--                                        <input type="submit" name="elements" value="Logout" id="logout">--%>
-<%--                                    </form>--%>
-<%--                            </div>--%>
-<%--                    <%--%>
-<%--                        }--%>
-<%--                    %>--%>
+                <%
+                    Utente utente = (Utente) request.getAttribute("utente");
+                    if(utente != null){
+                %>
+                    <div class="dropup">
+                        <button class="dropbtn" id="utente">
+                            <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+                        </button>
+                        <div class="dropup-content" id="elements">
+                            <form action="">
+                                <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
+                                <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
+                                <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
+                                <input type="submit" name="elements" value="Logout" id="logout">
+                            </form>
+                        </div>
+                    </div>
+                <%  }else{  %>
+                    <div class="dropup">
+                        <form action="UtenteServlet" method="get">
+                            <button class="dropbtn" type="submit" name="utente" value="login">
+                                <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+                            </button>
+                        </form>
+                    </div>
+                <%}%>
 
-<%--&lt;%&ndash;                    <div class="dropup-content" id="elements">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <form action="">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <input type="submit" name="elements" value="Logout" id="logout">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        </form>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </div>&ndash;%&gt;--%>
-
-                </div>
+<%--                    <div class="dropup-content" id="elements">--%>
+<%--                        <form action="">--%>
+<%--                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">--%>
+<%--                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">--%>
+<%--                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">--%>
+<%--                            <input type="submit" name="elements" value="Logout" id="logout">--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
             </td>
         </tr>
     </table>

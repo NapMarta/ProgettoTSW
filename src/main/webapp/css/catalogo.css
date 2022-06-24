@@ -15,7 +15,6 @@ body{
     padding-left: 0px;
     padding-right: 0px;
     margin-right: 0px;
-    margin-right: 0px;
 }
 
 /*.row {*/
@@ -30,9 +29,29 @@ body{
 /* Create four equal columns that floats next to each other */
 .column {
     float: left;
-    width: 25%;
-    margin: 0px;
+    width: 23.5%;
+    height: 70%;
+    margin: 5px 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     /*display: none;*/
+}
+
+.column:hover {
+    border: 1px solid #777;
+    border-radius: 6px;
+}
+
+.column img{
+    width: 100%;
+    height: 45%;
+    margin-top: -16px;
+}
+
+.descrizione {
+    padding: 0px 15px;
+    text-align: center;
+    margin-top: -20px;
 }
 
 /* Clear floats after rows */
@@ -45,29 +64,46 @@ body{
 /* Content */
 .content {
     background-color: white;
-    padding: 10px;
+    padding: 10px 0px;
+    overflow: scroll;
+    margin: auto 5%;
+    scrollbar-width: none; /* solo Firefox */
+}
+
+.content::-webkit-scrollbar {
+    display: none;
 }
 
 .show {
     display: block;
 }
 
-/* Style the buttons */
-.btn {
+.btnProdotto {
+    cursor: pointer;
+    text-align: center;
+}
+
+#AggiungiCarrello, #AggiungiPreferiti{
     border: none;
     outline: none;
     padding: 12px 16px;
     background-color: white;
-    cursor: pointer;
+    margin: 5px 10% 15px;
 }
 
-.btn:hover {
-    background-color: #ddd;
-}
+/*DA CANCELLARE????*/
 
-.btn.active {
-    background-color: #666;
-    color: white;
+/*.btn:hover {*/
+/*    background-color: #ddd;*/
+/*}*/
+
+/*.btn.active {*/
+/*    background-color: #666;*/
+/*    color: white;*/
+/*}*/
+
+.prezzo{
+    padding-bottom: 5px;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
