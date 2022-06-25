@@ -12,7 +12,7 @@
         <p id="nome">CookStock</p>
     </div>
     <hr>
-    <form action="HomeServlet" method="get">
+    <form action="Home" method="get">
         <input type="submit" name="home" value="HomePage">
         <input type="submit" name="login" value="Login/Registrati">
     </form>

@@ -10,7 +10,7 @@
 <body>
     <div class="parent">
         <p class="titolo">Login</p>
-        <form action="LoginServlet" method="post" class="child">
+        <form action="Login" method="post" class="child">
             <label for="email">Email</label><br>            <!--admin@gmail.com-->
             <input type="email" id="email" name="email" placeholder="Email"><br>
             <label for="password">Password</label><br>      <!--admin-->

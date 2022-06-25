@@ -12,7 +12,7 @@
 <body>
 
     <div class="topnav" id="nav">
-        <form action="AdminServlet">
+        <form action="Admin">
             <input type="submit" id="aggiungi" name="scelta" value="Aggiungi prodotto">
             <input type="submit" id="ordini" name="scelta" value="Visualizza ordini">
             <input type="submit" id="utenti" name="scelta" value="Visualizza utenti">

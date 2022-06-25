@@ -6,13 +6,12 @@ body{
 
 .parent {
     background-color: #C29436;
-    height: 55%;
     width: 50%;
     justify-content: center;
     align-items: center;
     border: 2px solid black;
     border-radius: 10px;
-    margin: 12% 20%;
+    margin: 18% 20%;
     color: black;
     position: absolute;
     top: 0;

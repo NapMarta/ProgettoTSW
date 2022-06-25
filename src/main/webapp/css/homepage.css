@@ -83,7 +83,7 @@ td h2{
 }
 
 .search{
-    min-width: 300px;
+    min-width: 180px;
 }
 
 #search-button{
@@ -112,7 +112,8 @@ td h2{
 }
 
 .search input[type=text]:focus {
-    width: 50%;
+    width: 70%;
+    outline: none;
 }
 
 .btnUP{
@@ -201,7 +202,7 @@ a img:hover{
     position: relative;
     display: inline-block;
     border-radius: 2px;
-    padding-left: 10px;
+    margin-right: 5px;
 }
 
 .notification .badge {
@@ -223,4 +224,6 @@ a{
     padding-bottom: 90px;
 }
 
-
+.log {
+    margin-top: 10px;
+}

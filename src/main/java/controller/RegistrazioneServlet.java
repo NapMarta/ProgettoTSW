@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-@WebServlet(name = "RegistrazioneServlet", value = "/RegistrazioneServlet")
+@WebServlet(name = "Registrazione", value = "/Registrazione")
 public class RegistrazioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

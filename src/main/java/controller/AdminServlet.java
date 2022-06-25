@@ -10,7 +10,7 @@ import model.dao.ProdottoDAO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminServlet", value = "/AdminServlet")
+@WebServlet(name = "Admin", value = "/Admin")
 public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

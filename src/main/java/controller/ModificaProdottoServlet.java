@@ -12,7 +12,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ModificaProdottoServlet", value = "/ModificaProdottoServlet")
+@WebServlet(name = "ModificaProdotto", value = "/ModificaProdotto")
 @MultipartConfig(maxFileSize = 16177215)
 
 public class ModificaProdottoServlet extends HttpServlet {

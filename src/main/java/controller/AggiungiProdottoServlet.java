@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-@WebServlet(name = "AggiungiProdottoServlet", value = "/AggiungiProdottoServlet")
+@WebServlet(name = "AggiungiProdotto", value = "/AggiungiProdotto")
 @MultipartConfig(maxFileSize = 16177215)
 public class AggiungiProdottoServlet extends HttpServlet {
     @Override

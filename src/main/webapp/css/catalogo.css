@@ -40,6 +40,7 @@ body{
 .column:hover {
     border: 1px solid #777;
     border-radius: 6px;
+    /*background-color: #D1D1D1;*/
 }
 
 .column img{
@@ -88,7 +89,7 @@ body{
     outline: none;
     padding: 12px 16px;
     background-color: white;
-    margin: 5px 10% 15px;
+    margin: 5px 8% 15px;
 }
 
 /*DA CANCELLARE????*/
@@ -106,16 +107,22 @@ body{
     padding-bottom: 5px;
 }
 
+@media screen and (max-width: 1100px) {
+    .column {
+        width: 31.5%;
+    }
+}
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 900px) {
     .column {
-        width: 50%;
+        width: 48%;
     }
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
     .column {
-        width: 100%;
+        width: 90%;
     }
 }

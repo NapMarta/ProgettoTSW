@@ -12,7 +12,7 @@
 
 <% Prodotto prodotto = (Prodotto) session.getAttribute("prodotto"); %>
 
-<form action="ModificaProdottoServlet" method="post" enctype="multipart/form-data">
+<form action="ModificaProdotto" method="post" enctype="multipart/form-data">
     <table>
         <input type="hidden" name="id" value="<%= prodotto.getCodice()%>">
         <tr>

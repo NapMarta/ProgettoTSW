@@ -36,7 +36,7 @@
     </header>
 
     <nav class="navbarUp">
-        <form action="CatalogoServlet" method="get">
+        <form action="Catalogo" method="get">
         <table>
             <tr>
                 <td>
@@ -153,22 +153,13 @@
                     </div>
                 <%  }else{  %>
                     <div class="dropup">
-                        <form action="UtenteServlet" method="get">
-                            <button class="dropbtn" type="submit" name="utente" value="login">
+                        <form action="Utente" method="get">
+                            <button class="dropbtn log" type="submit" name="utente" value="login">
                                 <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
                             </button>
                         </form>
                     </div>
                 <%}%>
-
-<%--                    <div class="dropup-content" id="elements">--%>
-<%--                        <form action="">--%>
-<%--                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">--%>
-<%--                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">--%>
-<%--                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">--%>
-<%--                            <input type="submit" name="elements" value="Logout" id="logout">--%>
-<%--                        </form>--%>
-<%--                    </div>--%>
             </td>
         </tr>
     </table>

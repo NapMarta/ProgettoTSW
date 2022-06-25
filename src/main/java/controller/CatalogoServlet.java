@@ -9,7 +9,7 @@ import model.dao.ProdottoDAO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CatalogoServlet", value = "/CatalogoServlet")
+@WebServlet(name = "Catalogo", value = "/Catalogo")
 public class CatalogoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

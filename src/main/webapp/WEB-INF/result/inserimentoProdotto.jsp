@@ -12,7 +12,7 @@
     <title>Inserimento Prodotto</title>
 </head>
 <body>
-    <form action="AggiungiProdottoServlet" method="post" enctype="multipart/form-data">
+    <form action="AggiungiProdotto" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>

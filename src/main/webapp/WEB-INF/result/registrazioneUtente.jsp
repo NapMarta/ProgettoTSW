@@ -13,7 +13,7 @@
             <p class="titolo">Registrazione Utente</p>
             <hr>
             <table>
-                <form action="RegistrazioneServlet" class="child">
+                <form action="Registrazione" class="child">
 
                 <tr>
                     <td>
@@ -61,18 +61,21 @@
                 </tr>
                 </form>
             </table>
-                <form action="RegistrazioneServlet" class="child1">
-                    <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
-                </form>
-    </span>
 
-<%--    <div id="message">--%>
+            <form action="Registrazione" class="child1">
+                <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
+            </form>
+
+    <%--    <div id="message">--%>
 <%--        <h3>Password must contain the following:</h3>--%>
 <%--        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>--%>
 <%--        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>--%>
 <%--        <p id="number" class="invalid">A <b>number</b></p>--%>
 <%--        <p id="length" class="invalid">Minimum <b>8 characters</b></p>--%>
 <%--    </div>--%>
+    </span>
+
+
 
 </body>
 </html>
