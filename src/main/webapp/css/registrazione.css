@@ -65,6 +65,14 @@ hr{
     width: 200px;
 }
 
+input[type=submit]#registrati{
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+}
+
 .btn{
     border: none;
     background-color: white;
@@ -96,7 +104,7 @@ input[type=password], .active{
     padding-right: 25px;
 }
 
-input[type=submit]#accedi{
+input[type=submit]#registrati{
     background-color: #f7f7f7;
     text-align: center;
     padding: 5px 10px;
@@ -104,7 +112,7 @@ input[type=submit]#accedi{
     margin-top: 25px;
 }
 
-input[type=submit]#registrati{
+input[type=submit]#accedi{
     color: #f7f7f7;
     border: 0px;
     background-color: #C29436;
@@ -115,12 +123,12 @@ input[type=submit]#registrati{
     margin-bottom: 0px;
 }
 
-input[type=submit]#registrati:hover{
+input[type=submit]#accedi:hover{
     text-decoration-line: underline;
     background-color: #C29436;
 }
 
-input[type=submit]#registrati:active{
+input[type=submit]#accedi:active{
     color: black;
     background-color: #C29436;
 }

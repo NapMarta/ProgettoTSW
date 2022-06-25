@@ -56,13 +56,13 @@
                     <td></td>
                 <tr>
                     <td>
-                        <input type="submit" id="accedi" value="Registrati ora">
+                        <input type="submit" id="registrati" value="Registrati ora">
                     </td>
                 </tr>
                 </form>
             </table>
                 <form action="RegistrazioneServlet" class="child1">
-                    <p class="testo">Hai già un account?<input type="submit" id="registrati" name="login" value="Login"></p>
+                    <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
                 </form>
     </span>
 
