@@ -26,7 +26,7 @@
 
     <div class="content">
         <c:forEach items="${prodottoList}" var="prodotto">
-            <form action="AdminServlet" method="post">
+            <form action="Admin" method="post">
                 <figure>
                     <figcaption class="column">
                         <p><img src="./PhotoController?codice=${prodotto.codice}"></p><br>
