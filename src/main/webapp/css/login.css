@@ -124,6 +124,10 @@ input[type=password], .active{
     width: 180px;
 }
 
+input:focus {
+    outline: none;
+}
+
 /*small screen, laptop, tv*/
 @media screen and (min-width: 1011px){
 

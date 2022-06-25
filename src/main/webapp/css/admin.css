@@ -7,6 +7,9 @@ body {
 .topnav {
     overflow: hidden;
     background-color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .topnav input[type=submit]{
@@ -30,8 +33,18 @@ body {
     display: none;
 }
 
-@media screen and (max-width: 600px) {
-    .topnav input[type=submit]:not(:first-child) {display: none;}
+@media screen and (max-width: 700px) {
+
+    .topnav{
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .topnav input[type=submit]:not(:first-child) {
+        display: none;
+    }
+
     .topnav a.icon {
         float: right;
         display: block;
@@ -39,7 +52,10 @@ body {
         padding-top: 5px;
     }
 
-    .topnav.responsive {position: relative;}
+    .topnav.responsive {
+        position: fixed;
+    }
+
     .topnav.responsive .icon {
         position: absolute;
         right: 0;

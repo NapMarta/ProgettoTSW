@@ -144,6 +144,9 @@ input[type="checkbox"] {
     appearance: none;
 }
 
+input:focus {
+    outline: none;
+}
 
 /*#message {*/
 /*    display:none;*/

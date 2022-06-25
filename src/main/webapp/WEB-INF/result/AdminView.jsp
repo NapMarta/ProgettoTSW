@@ -7,6 +7,7 @@
     <script src="JavaScript/admin.js" type="text/javascript"></script>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Admin View</title>
+    <link rel="stylesheet" href="css/catalogo.css">
 </head>
 <body>
 
@@ -23,17 +24,27 @@
     </div>
     <span>Benvenuto Admin</span>
 
-    <c:forEach items="${prodottoList}" var="prodotto">
-        <form action="AdminServlet" method="post">
-            <p><img src="./PhotoController?codice=${prodotto.codice}" style="width:100px"></p><br/>
-            <p>${prodotto.nome}</p><br/>
-            <p>${prodotto.tipologia}</p><br/>
-            <p>${prodotto.descrizione}</p><br/>
-            <p>${prodotto.prezzo}</p><br/>
-            <input type="hidden" name="codice" value="${prodotto.codice}">
-            <input type="submit" id="rimuovi" name="scelta" value="Rimuovi prodotto">
-            <input type="submit" id="modifica" name="scelta" value="Modifica prodotto">
-        </form>
-    </c:forEach>
+    <div class="content">
+        <c:forEach items="${prodottoList}" var="prodotto">
+            <form action="AdminServlet" method="post">
+                <figure>
+                    <figcaption class="column">
+                        <p><img src="./PhotoController?codice=${prodotto.codice}"></p><br>
+                        <div class="descrizione">
+                            <p>${prodotto.nome}</p>
+                            <p>${prodotto.tipologia}</p>
+                            <p>${prodotto.descrizione}</p>
+                            <p>${prodotto.prezzo}</p>
+                        </div>
+                        <div class="btnProdotto">
+                            <input type="hidden" name="codice" value="${prodotto.codice}">
+                            <input type="submit" id="rimuovi" name="scelta" value="Rimuovi prodotto">
+                            <input type="submit" id="modifica" name="scelta" value="Modifica prodotto">
+                        </div>
+                    </figcaption>
+                </figure>
+            </form>
+        </c:forEach>
+    </div>
 </body>
 </html>
