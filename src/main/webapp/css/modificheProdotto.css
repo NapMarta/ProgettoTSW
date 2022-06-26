@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+.contentForm{
+    background-color: #C29436;
+    display: flex;
+    margin: 25vh auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.titolo{
+    font-family: "Shadows Into Light", cursive, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin: 10% 5%;
+}
+
+table{
+    margin: 10% 0%;
+}
+
+
+input[type=text], input[type=number], input[type=submit], select{
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+input[type=submit]{
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+}
+
+img{
+    width: 100px;
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+
+@media screen and (max-width: 400px){
+    input[type=text], input[type=number]{
+        width: 100px;
+    }
+}
