@@ -15,6 +15,7 @@
         <div class="contentForm">
             <form action="ModificaProdotto" method="post" enctype="multipart/form-data">
                 <p class="titolo">Modifica Prodotto</p>
+                <hr>
                 <table>
                     <input type="hidden" name="id" value="<%= prodotto.getCodice()%>">
                     <tr>

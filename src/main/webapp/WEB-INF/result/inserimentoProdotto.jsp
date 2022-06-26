@@ -14,6 +14,7 @@
     <div class="contentForm">
         <form action="AggiungiProdotto" method="post" enctype="multipart/form-data">
             <p class="titolo">Inserimento Prodotto</p>
+            <hr>
             <table>
                 <tr>
                     <td>

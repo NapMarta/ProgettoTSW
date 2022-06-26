@@ -31,7 +31,7 @@
                         <input type="email" placeholder="Inserisci Email" name="email" id="email" required>
                     </td>
                     <td>
-                        <label for="psw">Password<br></label>
+                        <label for="psw" class="tPsw">Password<br></label>
                         <span class="visible">
                             <input type="password" placeholder="Inserisci Password" name="psw" id="psw" required>
                             <button type="button"  class="btn" onclick="visible('psw', 'psw-linea');">
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="psw-repeat">Ripetere Password<br></label>
+                        <label for="psw-repeat" class="tPsw">Ripetere Password<br></label>
                         <span class="visible">
                             <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" required>
                             <button type="button" class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
@@ -66,13 +66,13 @@
                 <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
             </form>
 
-    <%--    <div id="message">--%>
-<%--        <h3>Password must contain the following:</h3>--%>
-<%--        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>--%>
-<%--        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>--%>
-<%--        <p id="number" class="invalid">A <b>number</b></p>--%>
-<%--        <p id="length" class="invalid">Minimum <b>8 characters</b></p>--%>
-<%--    </div>--%>
+            <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A lowercase letter</p>
+                <p id="capital" class="invalid">A capital (uppercase) letter</p>
+                <p id="number" class="invalid">A number</p>
+                <p id="length" class="invalid">Minimum 8 characters</p>
+            </div>
     </span>
 
 

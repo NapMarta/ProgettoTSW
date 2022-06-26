@@ -7,6 +7,17 @@
     border: 2px solid black;
     border-radius: 10px;
     width: fit-content;
+    height: fit-content;
+    padding: 0% 5%;
+}
+
+hr{
+    color: black;
+    background-color: black;
+    border: 0;
+    height: 1px;
+    width: 50%;
+    text-align: center;
 }
 
 .titolo{
@@ -26,6 +37,10 @@ input[type=text], input[type=number], input[type=submit], select{
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
+    background-color: white;
+    padding: 6px;
+    display: flex;
+    align-items: center;
 }
 
 input[type=submit]{

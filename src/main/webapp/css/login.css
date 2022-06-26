@@ -23,15 +23,6 @@ p.titolo{
     padding-top: 60px;
 }
 
-hr{
-    color: black;
-    background-color: black;
-    border: 0;
-    height: 1px;
-    width: 50%;
-    text-align: center;
-}
-
 .parent .child {
     color: black;
     padding: 5px;
