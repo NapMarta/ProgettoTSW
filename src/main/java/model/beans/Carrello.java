@@ -7,11 +7,10 @@ public class Carrello {
     public Carrello() {
     }
 
-    public Carrello(int codice, int idUtente, double totale, double sconto, int numeroProdotti, ArrayList<ProdottoQuantita> listaProdotti) {
+    public Carrello(int codice, int idUtente, double totale, int numeroProdotti, ArrayList<ProdottoQuantita> listaProdotti) {
         this.codice = codice;
         this.idUtente = idUtente;
         this.totale = totale;
-        this.sconto = sconto;
         this.numeroProdotti = numeroProdotti;
         this.listaProdotti = listaProdotti;
     }
@@ -30,14 +29,6 @@ public class Carrello {
 
     public void setTotale(double totale) {
         this.totale = totale;
-    }
-
-    public double getSconto() {
-        return sconto;
-    }
-
-    public void setSconto(double sconto) {
-        this.sconto = sconto;
     }
 
     public int getNumeroProdotti() {
@@ -65,7 +56,7 @@ public class Carrello {
     }
 
     private int codice, idUtente;
-    private double totale, sconto;
+    private double totale;
     private int numeroProdotti;
     private ArrayList<ProdottoQuantita> listaProdotti;
 }
