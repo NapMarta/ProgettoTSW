@@ -1,7 +1,7 @@
 use cookstock;
 
 insert into utente(nome, cognome, email, passwordUtente, isAdmin) value
-    ("Admin", "Admin","admin@gmail.com","admin",true);
+    ("Admin", "Admin","admin@gmail.com","c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec",true);
 -- ("Mario", "Rossi", "mario01@gmail.com","Scdfg54", false),
 -- ("Marco", "Bianchi", "marco22@libero.it","ciao43", false),
 -- ("Luigi", "Ferreri","luigi34@gmail.com","HelloWorld", false),
@@ -50,8 +50,14 @@ insert into utente(nome, cognome, email, passwordUtente, isAdmin) value
 -- (1, 5, 2),
 -- (3, 1, 1);
 --
-drop
-table if exists utente;
 select * from utente;
-
 select * from prodotto;
+
+drop table utente;
+drop table ordine;
+drop table appartenere;
+
+drop table listaDesideri;
+drop table seleziona;
+drop table carrello;
+drop table contenere;

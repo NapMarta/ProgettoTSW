@@ -21,7 +21,6 @@ create table ordine
     tipologia varchar(2) check(tipologia = 'A' OR 
 							   tipologia = 'D' OR 
                                tipologia = 'CP') not null,
-    sconto double,
     totale double(4,2) not null,
     dataPagamento date not null,
     tipoPagamento varchar(20) check(tipoPagamento = 'Contanti' OR 
@@ -76,7 +75,6 @@ create table seleziona
 
 create table carrello(
 	codice int auto_increment primary key,
-    sconto double,
     totale double(4,2) not null,
     numeroProdotti int not null,
     idUtente int,
