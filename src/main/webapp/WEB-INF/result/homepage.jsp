@@ -37,52 +37,52 @@
 
     <nav class="navbarUp">
         <form action="Catalogo" method="get">
-        <table>
-            <tr>
-                <td>
-                    <button type="submit" value="Pizza" name="tipologia" onclick="show('pizza');" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png" id="pizza"/>
-                    </button>
-                </td>
-                <td>
-                    <button type="submit" value="Panino" name="tipologia"  onclick="show('panino');" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png" id="panino"/>
-                    </button>
-                </td>
-                <td>
-                    <button type="submit" value="Fritto" name="tipologia" onclick="show('fritto');" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png" id="fritto"/>
-                    </button>
-                </td>
-                <td>
-                    <button type="submit" value="Bibita" name="tipologia" onclick="show('bibita');" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png" id="bibita"/>
-                    </button>
-                </td>
-                <td>
-                    <button type="submit" value="Dolce" name="tipologia" onclick="show('dolce');" class="btnUP">
-                        <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png" id="dolce"/>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Pizza</span>
-                </td>
-                <td>
-                    <span>Hamburger</span>
-                </td>
-                <td>
-                    <span>Fritti</span>
-                </td>
-                <td>
-                    <span>Bibite</span>
-                </td>
-                <td>
-                    <span>Dolci</span>
-                </td>
-            </tr>
-        </table>
+            <table>
+                <tr>
+                    <td>
+                        <button type="submit" value="Pizza" name="tipologia" onclick="show('pizza');" class="btnUP">
+                            <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png" id="pizza"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="submit" value="Panino" name="tipologia"  onclick="show('panino');" class="btnUP">
+                            <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png" id="panino"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="submit" value="Fritto" name="tipologia" onclick="show('fritto');" class="btnUP">
+                            <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png" id="fritto"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="submit" value="Bibita" name="tipologia" onclick="show('bibita');" class="btnUP">
+                            <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png" id="bibita"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="submit" value="Dolce" name="tipologia" onclick="show('dolce');" class="btnUP">
+                            <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png" id="dolce"/>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Pizza</span>
+                    </td>
+                    <td>
+                        <span>Hamburger</span>
+                    </td>
+                    <td>
+                        <span>Fritti</span>
+                    </td>
+                    <td>
+                        <span>Bibite</span>
+                    </td>
+                    <td>
+                        <span>Dolci</span>
+                    </td>
+                </tr>
+            </table>
         </form>
     </nav>
 </div>
@@ -139,27 +139,27 @@
                     Utente utente = (Utente) request.getAttribute("utente");
                     if(utente != null){
                 %>
-                    <div class="dropup">
-                        <button class="dropbtn" id="utente">
-                            <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
-                        </button>
-                        <div class="dropup-content" id="elements">
-                            <form action="">
-                                <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
-                                <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
-                                <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
-                                <input type="submit" name="elements" value="Logout" id="logout">
-                            </form>
-                        </div>
-                    </div>
-                <%  }else{  %>
-                    <div class="dropup">
-                        <form action="Utente" method="get">
-                            <button class="dropbtn log" type="submit" name="utente" value="login">
-                                <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
-                            </button>
+                <div class="dropup">
+                    <button class="dropbtn" id="utente">
+                        <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+                    </button>
+                    <div class="dropup-content" id="elements">
+                        <form action="">
+                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
+                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
+                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
+                            <input type="submit" name="elements" value="Logout" id="logout">
                         </form>
                     </div>
+                </div>
+                <%  }else{  %>
+                <div class="dropup">
+                    <form action="Utente" method="get">
+                        <button class="dropbtn log" type="submit" name="utente" value="login">
+                            <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+                        </button>
+                    </form>
+                </div>
                 <%}%>
             </td>
         </tr>
