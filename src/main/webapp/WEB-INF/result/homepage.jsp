@@ -90,15 +90,15 @@
 
 <div class="content">
     <c:forEach items="${prodottoList}" var="prodotto">
-        <form action="">
+        <form action="Aggiungi">
             <figure>
                 <figcaption class="column">
                     <p><img src="./PhotoController?codice=${prodotto.codice}"></p>
                     <div class="btnProdotto">
-                        <button type="submit" id="AggiungiCarrello">
+                        <button type="submit" id="AggiungiCarrello" name="aggiungi" value="carrello">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/add-shopping-cart.png"/>
                         </button>
-                        <button type="submit" id="AggiungiPreferiti">
+                        <button type="submit" id="AggiungiPreferiti" name="aggiungi" value="lista">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/favorite-cart.png"/>
                         </button>
                     </div>
@@ -129,10 +129,12 @@
                 </div>
             </td>
             <td>
-                <a href="#" class="notification">
-                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/>
-                    <span class="badge">0</span>
-                </a>
+                <form action="Carrello">
+                    <button type="submit" class="notification" name="carrello" value="Carrello">
+                        <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/>
+                        <span class="badge">0</span>
+                    </button>
+                </form>
             </td>
             <td>
                 <%

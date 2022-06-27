@@ -10,35 +10,43 @@
 </head>
 <body>
 
-    <form action="">
+
     <%  session = request.getSession(false);
         ArrayList<ProdottoQuantita> list = (ArrayList<ProdottoQuantita>) session.getAttribute("list");
-        if(list != null){
-            for (ProdottoQuantita p: list) {
     %>
+    <c:choose>
+        <c:when  test = "${list != 'null' || list.size() !='0'}">
+            <% for (ProdottoQuantita p: list) { %>
 
-            <div>
-                <p><% p.getNome();%></p>
-                <select><% p.getQuantita();%></select>
-                <p><% p.getPrezzo();%></p>
-                <button type="submit" id="RimuoviDalCarrello">
-                    <img src="https://img.icons8.com/fluency-systems-filled/30/000000/trash.png"/>
-                </button>
-            </div>
+                <form action="Aggiungi" method="post">
+                    <p><%= p.getNome()%></p>
+                    <input type="hidden" name="cod" value="<%=p.getCodice()%>">
+                    <button name="quantita" value="meno">
+                        <img src="https://img.icons8.com/ios-glyphs/20/000000/minus.png"/>
+                    </button>
+                    <p><%= p.getQuantita()%></p>
+                    <button name="quantita" value="piu">
+                        <img src="https://img.icons8.com/ios-glyphs/20/000000/macos-maximize.png"/>
+                    </button>
 
-    <%
-    }
+                    <p><%= p.getPrezzo()%></p>
+                    <button type="submit" id="RimuoviDalCarrello" name="cancella" value="cancella">
+                        <img src="https://img.icons8.com/fluency-systems-filled/30/000000/trash.png"/>
+                    </button>
+                    <hr>
+                </form>
 
-    %>
 
-        <input type="submit" name="conferma" value="Conferma ordine">
-        <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
-    </form>
+            <%}%>
+            <form action="EffettuaOrdine">
+            <input type="submit" name="conferma" value="Conferma ordine">
+            <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+            </form>
+        </c:when>
 
-    <% } else { %>
-        <div> Il carrello è vuoto</div>
+    </c:choose>
 
-    <% } %>
+
 
 
 

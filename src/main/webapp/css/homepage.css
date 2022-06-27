@@ -135,7 +135,7 @@ a{
     color: white;
 }
 
-a img:hover{
+a img:hover, .notification img:hover{
     filter: grayscale(100%);
 }
 
@@ -202,11 +202,12 @@ a img:hover{
 .notification {
     background-color: black;
     color: black;
-    text-decoration: none;
     position: relative;
     display: inline-block;
     border-radius: 2px;
     margin-right: 5px;
+    border: 0px;
+    margin-top: 15px;
 }
 
 .notification .badge {

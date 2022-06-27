@@ -10,7 +10,7 @@ import java.io.IOException;
 public class CarrelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String carrello = request.getParameter("");
+        String carrello = request.getParameter("carrello");
         String address = null;
 
         if(carrello != null){
