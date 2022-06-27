@@ -15,24 +15,23 @@ function visible(id, linea) {
 }
 
 
-const myInput = document.getElementById("psw");
-const letter = document.getElementById("letter");
-const capital = document.getElementById("capital");
-const number = document.getElementById("number");
-const length = document.getElementById("length");
-
 // When the user clicks on the password field, show the message box
-myInput.onfocus = function() {
+function focus() {
     document.getElementById("message").style.display = "block";
 }
 
 // When the user clicks outside of the password field, hide the message box
-myInput.onblur = function() {
+function blur() {
     document.getElementById("message").style.display = "none";
 }
 
 // When the user starts to type something inside the password field
-myInput.onkeyup = function() {
+function keyup(id) {
+    var myInput = document.getElementById(id);
+    var letter = document.getElementById('letter');
+    var capital = document.getElementById('capital');
+    var number = document.getElementById('number');
+    var length = document.getElementById('length');
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
     if(myInput.value.match(lowerCaseLetters)) {
