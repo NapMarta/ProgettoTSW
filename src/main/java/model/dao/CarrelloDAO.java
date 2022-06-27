@@ -24,10 +24,9 @@ public class CarrelloDAO {
 
             if (rs1.next()) {
                 carrello.setCodice(rs1.getInt(1));
-                carrello.setIdUtente(rs1.getInt(5));
-                carrello.setTotale(rs1.getDouble(3));
-                carrello.setSconto(rs1.getDouble(2));
-                carrello.setNumeroProdotti(rs1.getInt(4));
+                carrello.setIdUtente(rs1.getInt(4));
+                carrello.setTotale(rs1.getDouble(2));
+                carrello.setNumeroProdotti(rs1.getInt(3));
             }
 
             PreparedStatement ps =
@@ -57,13 +56,12 @@ public class CarrelloDAO {
     public void doSave(Carrello c){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO carrello (idUtente, totale, sconto, numeroProdotti) VALUES(?,?,?,?)",
+                    "INSERT INTO carrello (idUtente, totale, numeroProdotti) VALUES(?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, c.getIdUtente());
             ps.setDouble(2,c.getTotale());
-            ps.setDouble(3,c.getSconto());
-            ps.setInt(4,c.getNumeroProdotti());
+            ps.setInt(3,c.getNumeroProdotti());
 
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
@@ -99,10 +97,9 @@ public class CarrelloDAO {
             while (resultSet.next()) {
 
                 int codice = resultSet.getInt(1);
-                int idUtente = resultSet.getInt(5);
-                double totale = resultSet.getDouble(3);
-                double sconto = resultSet.getDouble(2);
-                int numProdotti = resultSet.getInt(4);
+                int idUtente = resultSet.getInt(4);
+                double totale = resultSet.getDouble(2);
+                int numProdotti = resultSet.getInt(3);
 
 
                 PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN contenere ON codice=codiceProdotto ORDER BY codiceCarrello");
@@ -121,7 +118,7 @@ public class CarrelloDAO {
                     prodotti.add(p);
                 }
 
-                carrelli.add(new Carrello(codice, idUtente, totale, sconto, numProdotti,prodotti));
+                carrelli.add(new Carrello(codice, idUtente, totale, numProdotti,prodotti));
             }
 
         }
@@ -136,8 +133,7 @@ public class CarrelloDAO {
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
-            String query = "update carrello set sconto='" + carrello.getSconto() + "', totale='" +
-                    carrello.getTotale() + "', numeroProdotti='" + carrello.getNumeroProdotti() +"';";
+            String query = "update carrello set totale='" + carrello.getTotale() + "', numeroProdotti='" + carrello.getNumeroProdotti() +"';";
             st.executeUpdate(query);
             for (ProdottoQuantita p: carrello.getListaProdotti()) {
                 String query1 = "delete * from contenere where codiceCarrello='" + carrello.getCodice() + "' AND codiceProdotto='" + p.getCodice() + "';";
