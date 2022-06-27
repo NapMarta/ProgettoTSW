@@ -87,6 +87,7 @@
     </nav>
 </div>
 
+
 <div class="content">
     <c:forEach items="${prodottoList}" var="prodotto">
         <form action="">
