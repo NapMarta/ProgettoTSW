@@ -1,4 +1,4 @@
-https://icons8.it/icon/set/cibo/material
+https://icons8.it/icon
 
 PIZZA
 Grigio-> 	<img src="https://img.icons8.com/ios-glyphs/60/D1D1D1/pizza.png"/>
@@ -63,3 +63,9 @@ AGGIUNGI AL CARRELLO
 
 AGGIUNGI AI PREFERITI
 <img src="https://img.icons8.com/ios-glyphs/30/C29436/favorite-cart.png"/>
+
+HOMEPAGE
+<img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+
+CESTINO
+<img src="https://img.icons8.com/fluency-systems-filled/30/000000/trash.png"/>
