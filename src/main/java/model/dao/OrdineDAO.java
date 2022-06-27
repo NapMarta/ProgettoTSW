@@ -29,6 +29,7 @@ public class OrdineDAO {
                 ordine.setDataPagamento(rs1.getDate(4));
                 ordine.setTipoPagamento(rs1.getString(5));
                 ordine.setIdUtente(rs1.getInt(6));
+                ordine.setNumeroCarta(rs1.getString(7));
             }
 
             PreparedStatement ps =
@@ -58,13 +59,14 @@ public class OrdineDAO {
     public void doSave(Ordine o){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente ) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente, numeroCarta) VALUES(?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, o.getTipologia());
             ps.setDouble(2,o.getTotale());
             ps.setDate(3,o.getDataPagamento());
             ps.setString(4,o.getTipoPagamento());
             ps.setInt(5,o.getIdUtente());
+            ps.setString(6, o.getNumeroCarta());
 
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
@@ -106,8 +108,9 @@ public class OrdineDAO {
                 Date dataPag = resultSet.getDate(5);
                 String tipoPag = resultSet.getString(6);
                 int idUtente = resultSet.getInt(7);
+                String numeroCarta = resultSet.getString(8);
 
-                PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN appartenere ON codice=codiceProdotto ORDER BY codiceOrdine");
+                PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità, numeroCarta FROM prodotto JOIN appartenere ON codice=codiceProdotto ORDER BY codiceOrdine");
                 ResultSet rs = ps.executeQuery();
 
                 ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
@@ -123,7 +126,7 @@ public class OrdineDAO {
                     prodotti.add(p);
                 }
 
-                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, totale, dataPag, prodotti));
+                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, totale, dataPag, numeroCarta, prodotti));
             }
 
         }

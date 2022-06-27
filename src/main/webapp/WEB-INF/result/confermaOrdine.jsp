@@ -29,16 +29,16 @@
             <div>
                 <label>Seleziona il tipo di pagamento:</label>
                 <span>
-                    <input type="radio" id="contanti" name="tipologia" value="Contanti"
+                    <input type="radio" id="contanti" name="tipoPagamento" value="Contanti"
                            checked>
                     <label for="contanti">Asporto</label>
                 </span>
                 <span>
-                    <input type="radio" id="carta" name="tipologia" value="Carta di credito">
+                    <input type="radio" id="carta" name="tipoPagamento" value="Carta di credito">
                     <label for="carta">Domicilio</label>
                 </span>
                 <span>
-                    <input type="radio" id="paypal" name="tipologia" value="PayPal">
+                    <input type="radio" id="paypal" name="tipoPagamento" value="PayPal">
                     <label for="paypal">Consumazione sul posto</label>
                 </span>
             </div>

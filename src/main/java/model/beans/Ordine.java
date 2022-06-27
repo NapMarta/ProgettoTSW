@@ -10,7 +10,7 @@ public class Ordine {
     }
 
     public Ordine(int codice, int idUtente, String tipologia, String tipoPagamento,
-                  double totale, Date dataPagamento, ArrayList<ProdottoQuantita> listaProdotti) {
+                  double totale, Date dataPagamento, String numeroCarta, ArrayList<ProdottoQuantita> listaProdotti) {
         this.codice = codice;
         this.idUtente = idUtente;
         this.tipologia = tipologia;
@@ -18,6 +18,7 @@ public class Ordine {
         this.totale = totale;
         this.dataPagamento = dataPagamento;
         this.listaProdotti = listaProdotti;
+        this.numeroCarta = numeroCarta;
     }
 
     public int getCodice() {
@@ -76,8 +77,16 @@ public class Ordine {
         this.listaProdotti = listaProdotti;
     }
 
+    public String getNumeroCarta() {
+        return numeroCarta;
+    }
+
+    public void setNumeroCarta(String numeroCarta) {
+        this.numeroCarta = numeroCarta;
+    }
+
     private int codice, idUtente;
-    private String tipologia, tipoPagamento;
+    private String tipologia, tipoPagamento, numeroCarta;
     private double totale;
     private Date dataPagamento;
     private ArrayList<ProdottoQuantita> listaProdotti;
