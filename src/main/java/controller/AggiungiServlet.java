@@ -33,17 +33,16 @@ public class AggiungiServlet extends HttpServlet {
 
             if(session != null){
                 list = (ArrayList<ProdottoQuantita>) session.getAttribute("list");
+                for (ProdottoQuantita prodottoQuantita: list) {
+                    if(prodottoQuantita.getCodice() == codice) {
+                        prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);
+                        val = true;
+                    }
+                }
             }
             else{
                 session = request.getSession(true); //crea la sesssione
                 list = new ArrayList<>();
-            }
-
-            for (ProdottoQuantita prodottoQuantita: list) {
-                if(prodottoQuantita.getCodice() == codice) {
-                    prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);
-                    val = true;
-                }
             }
 
             if(!val){
