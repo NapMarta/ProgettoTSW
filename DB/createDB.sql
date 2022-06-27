@@ -26,6 +26,7 @@ create table ordine
     tipoPagamento varchar(20) check(tipoPagamento = 'Contanti' OR 
 									tipoPagamento = 'Carta di credito' OR 
                                     tipoPagamento = 'PayPal') not null,
+	numeroCarta varchar(27),
 	idUtente int not null,
     foreign key(idUtente) references utente(id)
 );

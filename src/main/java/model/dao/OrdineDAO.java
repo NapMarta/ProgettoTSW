@@ -25,11 +25,10 @@ public class OrdineDAO {
             if (rs1.next()) {
                 ordine.setCodice(rs1.getInt(1));
                 ordine.setTipologia(rs1.getString(2));
-                ordine.setSconto(rs1.getDouble(3));
-                ordine.setTotale(rs1.getDouble(4));
-                ordine.setDataPagamento(rs1.getDate(5));
-                ordine.setTipoPagamento(rs1.getString(6));
-                ordine.setIdUtente(rs1.getInt(7));
+                ordine.setTotale(rs1.getDouble(3));
+                ordine.setDataPagamento(rs1.getDate(4));
+                ordine.setTipoPagamento(rs1.getString(5));
+                ordine.setIdUtente(rs1.getInt(6));
             }
 
             PreparedStatement ps =
@@ -59,14 +58,13 @@ public class OrdineDAO {
     public void doSave(Ordine o){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO ordine (tipologia, sconto, totale, dataPagamento, tipoPagamento, idUtente ) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente ) VALUES(?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, o.getTipologia());
-            ps.setDouble(2, o.getSconto());
-            ps.setDouble(3,o.getTotale());
-            ps.setDate(4,o.getDataPagamento());
-            ps.setString(5,o.getTipoPagamento());
-            ps.setInt(6,o.getIdUtente());
+            ps.setDouble(2,o.getTotale());
+            ps.setDate(3,o.getDataPagamento());
+            ps.setString(4,o.getTipoPagamento());
+            ps.setInt(5,o.getIdUtente());
 
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
@@ -125,7 +123,7 @@ public class OrdineDAO {
                     prodotti.add(p);
                 }
 
-                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, sconto, totale, dataPag, prodotti));
+                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, totale, dataPag, prodotti));
             }
 
         }
