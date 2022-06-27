@@ -47,6 +47,9 @@ public class EffettuaOrdineServlet extends HttpServlet {
             ordine.setListaProdotti((ArrayList<ProdottoQuantita>) session.getAttribute("list"));
             Utente utente = (Utente) session.getAttribute("utente");
 
+            if(ordine.getTipologia().equals("A") && ordine.getTotale() < 20)
+                ordine.setTotale(ordine.getTotale() + 3);
+
             if(utente == null){
                 // ERRORE L'UTENTE NON HA FATTO IL LOGIN
             }
