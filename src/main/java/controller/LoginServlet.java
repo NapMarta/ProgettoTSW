@@ -70,9 +70,16 @@ public class LoginServlet extends HttpServlet {
 
                 Carrello carrello = (Carrello) session.getAttribute("carrello");
                 carrello.setIdUtente(utente.getId());
-                session.setAttribute("carrello", carrello);
+
+                synchronized (session){
+                    session.setAttribute("carrello", carrello);
+                }
 
                 address = "WEB-INF/result/homepage.jsp";
+            }
+
+            synchronized (session){
+                session.setAttribute("utente", utente);
             }
 
 

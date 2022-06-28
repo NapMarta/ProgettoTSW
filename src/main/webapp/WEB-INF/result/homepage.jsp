@@ -1,5 +1,5 @@
 <%@ page import="model.beans.Utente" %>
-<%@ page import="model.beans.Carrello" %><%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
+<%@ page import="model.beans.Carrello" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -91,12 +91,12 @@
 
 <div class="content">
     <c:forEach items="${prodottoList}" var="prodotto">
-        <form action="Aggiungi">
+        <form action="Aggiungi" method="post">
             <figure>
                 <figcaption class="column">
                     <p><img src="./PhotoController?codice=${prodotto.codice}"></p>
                     <div class="btnProdotto">
-                        <button type="submit" id="AggiungiCarrello" name="aggiungi" value="carrello">
+                        <button type="submit" id="AggiungiCarrello" name="aggiungi" value="carrello" onclick="alert('Prodotto aggiunto al carrello')">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/add-shopping-cart.png"/>
                         </button>
                         <button type="submit" id="AggiungiPreferiti" name="aggiungi" value="lista">
@@ -130,7 +130,7 @@
                 </div>
             </td>
             <td>
-                <%Carrello carrello = session.getAttribute("carrello")%>
+                <%Carrello carrello = (Carrello) session.getAttribute("carrello");%>
                 <form action="Carrello">
                     <button type="submit" class="notification" name="carrello" value="Carrello">
                         <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/>
@@ -140,7 +140,7 @@
             </td>
             <td>
                 <%
-                    Utente utente = (Utente) request.getAttribute("utente");
+                    Utente utente = (Utente) session.getAttribute("utente");
                     if(utente != null){
                 %>
                 <div class="dropup">

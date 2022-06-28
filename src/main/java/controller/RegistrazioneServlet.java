@@ -3,6 +3,7 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.beans.Carrello;
 import model.beans.Prodotto;
 import model.beans.Utente;
 import model.dao.ProdottoDAO;
@@ -23,6 +24,8 @@ public class RegistrazioneServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String address = null;
+        HttpSession session = request.getSession(true);
+
         if(login != null){
             address = "/WEB-INF/result/login.jsp";
         }
@@ -45,6 +48,14 @@ public class RegistrazioneServlet extends HttpServlet {
             ProdottoDAO prodottoDAO = new ProdottoDAO();
             List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
             request.setAttribute("prodottoList", list);
+
+            Carrello carrello = (Carrello) session.getAttribute("carrello");
+            carrello.setIdUtente(utente.getId());
+            synchronized (session){
+                session.setAttribute("carrello", carrello);
+                session.setAttribute("utente", utente);
+            }
+
             address = "WEB-INF/result/homepage.jsp";
         }
 

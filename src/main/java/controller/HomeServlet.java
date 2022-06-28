@@ -26,17 +26,30 @@ public class HomeServlet extends HttpServlet {
             ProdottoDAO prodottoDAO = new ProdottoDAO();
             List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
             request.setAttribute("prodottoList", list);
-            Carrello carrello = new Carrello();
-            ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
-            carrello.setListaProdotti(prodotti);
-            session.setAttribute("carrello",carrello);
+
+            if(session.getAttribute("carrello") == null){
+                Carrello carrello = new Carrello();
+                ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
+                carrello.setListaProdotti(prodotti);
+                synchronized (session){
+                    session.setAttribute("carrello",carrello);
+                }
+
+            }
+
             address = "WEB-INF/result/homepage.jsp";
         }
         else {
-            Carrello carrello = new Carrello();
-            ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
-            carrello.setListaProdotti(prodotti);
-            session.setAttribute("carrello",carrello);
+            if(session.getAttribute("carrello") == null){
+                Carrello carrello = new Carrello();
+                ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
+                carrello.setListaProdotti(prodotti);
+                synchronized (session){
+                    session.setAttribute("carrello",carrello);
+                }
+
+            }
+
             address = "WEB-INF/result/login.jsp";
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

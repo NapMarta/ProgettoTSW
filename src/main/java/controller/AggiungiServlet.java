@@ -6,9 +6,11 @@ import jakarta.servlet.annotation.*;
 import model.beans.Carrello;
 import model.beans.Prodotto;
 import model.beans.ProdottoQuantita;
+import model.beans.Utente;
 import model.dao.ProdottoDAO;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,6 +30,7 @@ public class AggiungiServlet extends HttpServlet {
         String cancella = request.getParameter("cancella");
         HttpSession session = request.getSession(true);
         String address = null;
+        ProdottoDAO prodottoDAO = new ProdottoDAO();
 
         Carrello carrello = (Carrello) session.getAttribute("carrello");
 
@@ -71,21 +74,20 @@ public class AggiungiServlet extends HttpServlet {
                     }
                 }
                 address = "WEB-INF/result/carrello.jsp";
-            }
-
-            else{
+            }else{
                 if (aggiungiCarrello != null) {
 
                     int codice = Integer.parseInt(request.getParameter("codice"));
                     boolean val = false;
-                    ProdottoDAO prodottoDAO = new ProdottoDAO();
 
+                    ProdottoQuantita prodottoQtà = null;
 
                     if (carrello.getListaProdotti() != null) {
 
                         for (ProdottoQuantita prodottoQuantita : carrello.getListaProdotti()) {
                             if (prodottoQuantita.getCodice() == codice) {
                                 prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);
+                                prodottoQtà = prodottoQuantita;
                                 carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
                                 carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
                                 val = true;
@@ -95,25 +97,42 @@ public class AggiungiServlet extends HttpServlet {
 
                     if (!val) {
                         Prodotto prodotto = prodottoDAO.doRetrieveById(codice);
-                        ProdottoQuantita prodottoQuantita = new ProdottoQuantita(prodotto.getCodice(), prodotto.getNome(), prodotto.getTipologia(), prodotto.getDescrizione(),
+                        prodottoQtà = new ProdottoQuantita(prodotto.getCodice(), prodotto.getNome(), prodotto.getTipologia(), prodotto.getDescrizione(),
                                 prodotto.getPrezzo(), prodotto.getImmagine(), 1);
 
-                        carrello.getListaProdotti().add(prodottoQuantita);
+                        carrello.getListaProdotti().add(prodottoQtà);
                         carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
-                        carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
+                        carrello.setTotale(carrello.getTotale()+prodottoQtà.getPrezzo());
                     }
 
-                    session.setAttribute("carrello", carrello);
+                    synchronized (session){
+                        session.setAttribute("carrello", carrello);
+                    }
 
-                    List<Prodotto> listTipologia = prodottoDAO.doRetrieveByTipologia("Pizza");
+                    List<Prodotto> listTipologia = prodottoDAO.doRetrieveByTipologia(prodottoQtà.getTipologia());
                     request.setAttribute("prodottoList", listTipologia);
+
                     address = "WEB-INF/result/homepage.jsp";
                 } else {
                     address = "WEB-INF/result/login.jsp";
                 }
         }
+//////////vedere else if
+            if(aggiungiPreferiti != null){
+                Utente utente = (Utente) session.getAttribute("utente");
 
-    }
+                if(utente != null){
+                    int codice = Integer.parseInt(request.getParameter("codice"));
+                    Prodotto prodotto = prodottoDAO.doRetrieveById(codice);
+
+                    request.setAttribute("prodotto", prodotto);
+
+                    address="WEB-INF/result/listaDesideriView.jsp";
+                }else
+                    address="WEB-INF/result/login.jsp";
+
+            }
+        }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request,response);

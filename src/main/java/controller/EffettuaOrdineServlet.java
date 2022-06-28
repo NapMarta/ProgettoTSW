@@ -25,7 +25,7 @@ public class EffettuaOrdineServlet extends HttpServlet {
         String address;
         String conferma = request.getParameter("conferma");
         String continua = request.getParameter("continuaAcquisti");
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         Ordine ordine = new Ordine();
 
         if (continua != null) {
@@ -62,13 +62,18 @@ public class EffettuaOrdineServlet extends HttpServlet {
 
                 ordine.setIdUtente(utente.getId());
                 ordineDAO.doSave(ordine);
-                session.setAttribute("carrello", null);
+
+                synchronized (session){
+                    session.setAttribute("carrello", null);
+                }
+
 
                 address = "WEB-INF/result/homepage.jsp";
             }
-
-            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-            dispatcher.forward(request, response);
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+        dispatcher.forward(request, response);
+
     }
 }
