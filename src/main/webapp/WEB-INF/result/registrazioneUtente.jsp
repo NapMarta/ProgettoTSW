@@ -7,7 +7,7 @@
     <link href="css/registrazione.css" rel="stylesheet">
     <script type="text/javascript" src="JavaScript/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="JavaScript/registrazione.js"></script>
-<%--    <script type="text/javascript" src="JavaScript/ajax.js"></script>--%>
+    <script type="text/javascript" src="JavaScript/ajax.js"></script>
 
 </head>
 <body>
@@ -71,40 +71,6 @@
                 <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
             </form>
     </span>
-
-<script>
-    $("#email").blur(function(event) { //Si attiva quando l’elemento HTML perde il focus
-
-        const value = event.target.value;
-        //console.log(value);
-
-        $.get('CheckRegistrazioneServlet', {"emailValue" : value},
-            function (response){
-            //nell if non va nell'else, ma direttamente in fail
-                if(response.registered){
-                    const div = $("#email").parent();
-                    const small = div.children('.small');
-                    //console.log(small.text());
-                    div.addClass('error');
-                    small.text('Utente già registrato');
-                }
-                // else{
-                //     const div = $("#email").parent();
-                //     const small = div.children('.small');
-                //     console.log(small.text());
-                //     div.removeClass('error');
-                //     small.text('');
-                // }
-            })
-            .fail(function() {
-                const div = $("#email").parent();
-                const small = div.children('.small');
-                //console.log(small.text());
-                small.text('');
-                //console.log('errore');
-            });
-    });
-</script>
 
 </body>
 </html>
