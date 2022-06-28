@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.beans.ProdottoQuantita" %>
+<%@ page import="model.beans.Carrello" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -12,7 +13,8 @@
 
 
     <%  session = request.getSession(false);
-        ArrayList<ProdottoQuantita> list = (ArrayList<ProdottoQuantita>) session.getAttribute("list");
+        Carrello carrello = (Carrello) session.getAttribute("carrello");
+        ArrayList<ProdottoQuantita> list = carrello.getListaProdotti();
     %>
     <c:choose>
         <c:when  test = "${list != 'null' || list.size() !='0'}">
@@ -39,8 +41,10 @@
 
             <%}%>
             <form action="EffettuaOrdine">
-            <input type="submit" name="conferma" value="Conferma ordine">
-            <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+                <p>Totale: <%= carrello.getTotale()%> €</p>
+                <p>Numero prodotti: <%= carrello.getNumeroProdotti()%></p>
+                <input type="submit" name="conferma" value="Conferma ordine">
+                <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
             </form>
         </c:when>
 

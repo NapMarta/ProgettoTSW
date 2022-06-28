@@ -5,6 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.ConPool;
+import model.beans.Carrello;
 import model.beans.Prodotto;
 import model.beans.Utente;
 import model.dao.ProdottoDAO;
@@ -66,6 +67,11 @@ public class LoginServlet extends HttpServlet {
                 List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
                 request.setAttribute("prodottoList", list);
                 request.setAttribute("utente", utente);
+
+                Carrello carrello = (Carrello) session.getAttribute("carrello");
+                carrello.setIdUtente(utente.getId());
+                session.setAttribute("carrello", carrello);
+
                 address = "WEB-INF/result/homepage.jsp";
             }
 

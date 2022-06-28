@@ -3,6 +3,7 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.beans.Carrello;
 import model.beans.Prodotto;
 import model.beans.ProdottoQuantita;
 import model.dao.ProdottoDAO;
@@ -28,25 +29,31 @@ public class AggiungiServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String address = null;
 
-        ArrayList<ProdottoQuantita> list;
-        list = (ArrayList<ProdottoQuantita>) session.getAttribute("list");
+        Carrello carrello = (Carrello) session.getAttribute("carrello");
 
         if(modificaQuantita != null){      //modificaQuantita la utilizziamo solo se abbiamo elementi nel carrello
             int cod = Integer.parseInt(request.getParameter("cod"));
             if(modificaQuantita.equalsIgnoreCase("piu")){
-                for (ProdottoQuantita p : list) {
+                for (ProdottoQuantita p : carrello.getListaProdotti()) {
                     if(p.getCodice() == cod){
                         p.setQuantita(p.getQuantita()+1);
+                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+                        carrello.setTotale(carrello.getTotale()+p.getPrezzo());
                     }
                 }
             }else{
-                Iterator<ProdottoQuantita> iterator = list.iterator();
+                Iterator<ProdottoQuantita> iterator = carrello.getListaProdotti().iterator();
                 while(iterator.hasNext()) {
                     ProdottoQuantita p = iterator.next();
                     if(p.getCodice() == cod){
                         p.setQuantita(p.getQuantita()-1);
-                        if(p.getQuantita() == 0)
+                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()-1);
+                        carrello.setTotale(carrello.getTotale()-p.getPrezzo());
+
+                        if(p.getQuantita() == 0){
                             iterator.remove();
+                        }
+
                     }
                 }
             }
@@ -54,11 +61,13 @@ public class AggiungiServlet extends HttpServlet {
         }else {
             if(cancella != null){
                 int cod = Integer.parseInt(request.getParameter("cod"));
-                Iterator<ProdottoQuantita> iterator = list.iterator();
+                Iterator<ProdottoQuantita> iterator = carrello.getListaProdotti().iterator();
                 while(iterator.hasNext()) {
                     ProdottoQuantita p = iterator.next();
                     if(p.getCodice() == cod){
                         iterator.remove();
+                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()-p.getQuantita());
+                        carrello.setTotale(carrello.getTotale()-(p.getPrezzo()*p.getQuantita()));
                     }
                 }
                 address = "WEB-INF/result/carrello.jsp";
@@ -72,16 +81,16 @@ public class AggiungiServlet extends HttpServlet {
                     ProdottoDAO prodottoDAO = new ProdottoDAO();
 
 
-                    if (list != null) {
+                    if (carrello.getListaProdotti() != null) {
 
-                        for (ProdottoQuantita prodottoQuantita : list) {
+                        for (ProdottoQuantita prodottoQuantita : carrello.getListaProdotti()) {
                             if (prodottoQuantita.getCodice() == codice) {
                                 prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);
+                                carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+                                carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
                                 val = true;
                             }
                         }
-                    } else {
-                        list = new ArrayList<>();
                     }
 
                     if (!val) {
@@ -89,10 +98,12 @@ public class AggiungiServlet extends HttpServlet {
                         ProdottoQuantita prodottoQuantita = new ProdottoQuantita(prodotto.getCodice(), prodotto.getNome(), prodotto.getTipologia(), prodotto.getDescrizione(),
                                 prodotto.getPrezzo(), prodotto.getImmagine(), 1);
 
-                        list.add(prodottoQuantita);
+                        carrello.getListaProdotti().add(prodottoQuantita);
+                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+                        carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
                     }
 
-                    session.setAttribute("list", list);
+                    session.setAttribute("carrello", carrello);
 
                     List<Prodotto> listTipologia = prodottoDAO.doRetrieveByTipologia("Pizza");
                     request.setAttribute("prodottoList", listTipologia);
