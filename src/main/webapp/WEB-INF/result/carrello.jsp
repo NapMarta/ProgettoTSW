@@ -31,7 +31,7 @@
                         <img src="https://img.icons8.com/ios-glyphs/20/000000/macos-maximize.png"/>
                     </button>
 
-                    <p><%= p.getPrezzo()%></p>
+                    <p><%= p.getPrezzo()%>&#8364;</p>
                     <button type="submit" id="RimuoviDalCarrello" name="cancella" value="cancella">
                         <img src="https://img.icons8.com/fluency-systems-filled/30/000000/trash.png"/>
                     </button>
@@ -41,7 +41,7 @@
 
             <%}%>
             <form action="EffettuaOrdine">
-                <p>Totale: <%= carrello.getTotale()%> €</p>
+                <p>Totale: <%= carrello.getTotale()%>&#8364;</p>
                 <p>Numero prodotti: <%= carrello.getNumeroProdotti()%></p>
                 <input type="submit" name="conferma" value="Conferma ordine">
                 <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">

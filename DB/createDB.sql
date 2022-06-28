@@ -58,9 +58,8 @@ create table appartenere
 
 create table listaDesideri
 (
-	nome varchar(30),
     idUtente int auto_increment,
-    primary key(nome, idUtente),
+    primary key(idUtente),
     foreign key(idUtente) references utente(id)
 );
 
@@ -69,9 +68,9 @@ create table seleziona
 	codiceProdotto int,
     nomeLista varchar(30),
     idUtente int,
-    primary key(codiceProdotto, nomeLista, idUtente),
+    primary key(codiceProdotto, idUtente),
     foreign key(codiceProdotto) references prodotto(codice),
-    foreign key(nomeLista, idUtente) references listaDesideri(nome, idUtente)
+    foreign key(idUtente) references listaDesideri(idUtente)
 );
 
 create table carrello(

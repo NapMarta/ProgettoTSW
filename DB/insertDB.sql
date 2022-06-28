@@ -52,6 +52,7 @@ insert into utente(nome, cognome, email, passwordUtente, isAdmin) value
 --
 select * from utente;
 select * from prodotto;
+select * from listaDesideri;
 
 drop table utente;
 drop table ordine;

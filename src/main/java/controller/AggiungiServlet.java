@@ -3,15 +3,10 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import model.beans.Carrello;
-import model.beans.Prodotto;
-import model.beans.ProdottoQuantita;
-import model.beans.Utente;
+import model.beans.*;
 import model.dao.ProdottoDAO;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,8 +19,8 @@ public class AggiungiServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String aggiungiCarrello = request.getParameter("aggiungi");
-        String aggiungiPreferiti = request.getParameter("aggiungi");
+        String aggiungiCarrello = request.getParameter("aggiungiCarrello");
+        String aggiungiPreferiti = request.getParameter("aggiungiDesideri");
         String modificaQuantita = request.getParameter("quantita");
         String cancella = request.getParameter("cancella");
         HttpSession session = request.getSession(true);
@@ -61,77 +56,97 @@ public class AggiungiServlet extends HttpServlet {
                 }
             }
             address = "WEB-INF/result/carrello.jsp";
-        }else {
-            if(cancella != null){
-                int cod = Integer.parseInt(request.getParameter("cod"));
-                Iterator<ProdottoQuantita> iterator = carrello.getListaProdotti().iterator();
-                while(iterator.hasNext()) {
-                    ProdottoQuantita p = iterator.next();
-                    if(p.getCodice() == cod){
-                        iterator.remove();
-                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()-p.getQuantita());
-                        carrello.setTotale(carrello.getTotale()-(p.getPrezzo()*p.getQuantita()));
-                    }
-                }
-                address = "WEB-INF/result/carrello.jsp";
-            }else{
-                if (aggiungiCarrello != null) {
-
-                    int codice = Integer.parseInt(request.getParameter("codice"));
-                    boolean val = false;
-
-                    ProdottoQuantita prodottoQtà = null;
-
-                    if (carrello.getListaProdotti() != null) {
-
-                        for (ProdottoQuantita prodottoQuantita : carrello.getListaProdotti()) {
-                            if (prodottoQuantita.getCodice() == codice) {
-                                prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);
-                                prodottoQtà = prodottoQuantita;
-                                carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
-                                carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
-                                val = true;
-                            }
-                        }
-                    }
-
-                    if (!val) {
-                        Prodotto prodotto = prodottoDAO.doRetrieveById(codice);
-                        prodottoQtà = new ProdottoQuantita(prodotto.getCodice(), prodotto.getNome(), prodotto.getTipologia(), prodotto.getDescrizione(),
-                                prodotto.getPrezzo(), prodotto.getImmagine(), 1);
-
-                        carrello.getListaProdotti().add(prodottoQtà);
-                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
-                        carrello.setTotale(carrello.getTotale()+prodottoQtà.getPrezzo());
-                    }
-
-                    synchronized (session){
-                        session.setAttribute("carrello", carrello);
-                    }
-
-                    List<Prodotto> listTipologia = prodottoDAO.doRetrieveByTipologia(prodottoQtà.getTipologia());
-                    request.setAttribute("prodottoList", listTipologia);
-
-                    address = "WEB-INF/result/homepage.jsp";
-                } else {
-                    address = "WEB-INF/result/login.jsp";
-                }
         }
-//////////vedere else if
-            if(aggiungiPreferiti != null){
-                Utente utente = (Utente) session.getAttribute("utente");
 
-                if(utente != null){
-                    int codice = Integer.parseInt(request.getParameter("codice"));
-                    Prodotto prodotto = prodottoDAO.doRetrieveById(codice);
-
-                    request.setAttribute("prodotto", prodotto);
-
-                    address="WEB-INF/result/listaDesideriView.jsp";
-                }else
-                    address="WEB-INF/result/login.jsp";
-
+        if(cancella != null){           //cancella il prodotto solo se abbiamo il prodotto nel carrello
+            int cod = Integer.parseInt(request.getParameter("cod"));
+            Iterator<ProdottoQuantita> iterator = carrello.getListaProdotti().iterator();
+            while(iterator.hasNext()) {
+                ProdottoQuantita p = iterator.next();
+                if(p.getCodice() == cod){
+                    iterator.remove();
+                    carrello.setNumeroProdotti(carrello.getNumeroProdotti()-p.getQuantita());
+                    carrello.setTotale(carrello.getTotale()-(p.getPrezzo()*p.getQuantita()));
+                }
             }
+            address = "WEB-INF/result/carrello.jsp";
+
+            synchronized (session){
+                session.setAttribute("carrello", carrello);
+            }
+        }
+
+        if (aggiungiCarrello != null) {         //aggiungi al carrello
+            int codice = Integer.parseInt(request.getParameter("codice"));
+            boolean val = false;
+
+            ProdottoQuantita prodottoQtà = null;
+
+            if (carrello.getListaProdotti() != null) {  //cerchiamo il prodotto per vedere se è già stato inserito
+                for (ProdottoQuantita prodottoQuantita : carrello.getListaProdotti()) {
+                    if (prodottoQuantita.getCodice() == codice) {
+                        prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);       //e modifichiamo la quantità
+                        prodottoQtà = prodottoQuantita;
+                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+                        carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
+                        val = true;
+                    }
+                }
+            }
+
+            if (!val) {     //se il prodotto non era nel carrello
+                Prodotto prodotto = prodottoDAO.doRetrieveById(codice);
+                prodottoQtà = new ProdottoQuantita(prodotto.getCodice(), prodotto.getNome(), prodotto.getTipologia(), prodotto.getDescrizione(),
+                        prodotto.getPrezzo(), prodotto.getImmagine(), 1);
+
+                carrello.getListaProdotti().add(prodottoQtà);
+                carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+                carrello.setTotale(carrello.getTotale()+prodottoQtà.getPrezzo());
+            }
+
+            synchronized (session){
+                session.setAttribute("carrello", carrello);
+            }
+
+            List<Prodotto> listTipologia = prodottoDAO.doRetrieveByTipologia(prodottoQtà.getTipologia());
+            request.setAttribute("prodottoList", listTipologia);
+
+            address = "WEB-INF/result/homepage.jsp";
+        }
+//        else {
+//            address = "WEB-INF/result/login.jsp";
+//        }
+
+        if(aggiungiPreferiti != null){               //aggiungi alla lista dei desideri
+            Utente utente = (Utente) session.getAttribute("utente");
+
+            if(utente != null){
+                int codice = Integer.parseInt(request.getParameter("codice"));
+                Prodotto prodotto = prodottoDAO.doRetrieveById(codice);
+
+                ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
+
+                boolean exists = false;
+
+                for (Prodotto prodotto1 : listaDeiDesideri.getListaProdotti()){
+                    if(prodotto1.getCodice() == prodotto.getCodice())
+                        exists = true;          //non reinserisce il prodotto se è già tra i preferiti
+                }
+
+                if(!exists){
+                    listaDeiDesideri.getListaProdotti().add(prodotto);
+                }
+
+                synchronized (session){
+                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                }
+                address="WEB-INF/result/homepage.jsp";
+
+                List<Prodotto> list = prodottoDAO.doRetrieveByTipologia(prodotto.getTipologia());
+                request.setAttribute("prodottoList", list);
+            }else
+                address="WEB-INF/result/login.jsp";
+
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

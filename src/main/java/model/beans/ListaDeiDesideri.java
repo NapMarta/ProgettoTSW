@@ -7,9 +7,8 @@ public class ListaDeiDesideri {
     public ListaDeiDesideri() {
     }
 
-    public ListaDeiDesideri(int idUtente, String nome, ArrayList<Prodotto> listaProdotti) {
+    public ListaDeiDesideri(int idUtente, ArrayList<Prodotto> listaProdotti) {
         this.idUtente = idUtente;
-        this.nome = nome;
         this.listaProdotti = listaProdotti;
     }
 
@@ -17,20 +16,12 @@ public class ListaDeiDesideri {
         return idUtente;
     }
 
-    public void setIdUtente(int idUtente) {
-        this.idUtente = idUtente;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public ArrayList<Prodotto> getListaProdotti() {
         return listaProdotti;
+    }
+
+    public void setIdUtente(int idUtente) {
+        this.idUtente = idUtente;
     }
 
     public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
@@ -38,6 +29,5 @@ public class ListaDeiDesideri {
     }
 
     private int idUtente;
-    private String nome;
     private ArrayList<Prodotto> listaProdotti;
 }

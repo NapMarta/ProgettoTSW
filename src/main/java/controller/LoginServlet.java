@@ -1,13 +1,17 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.ConPool;
 import model.beans.Carrello;
+import model.beans.ListaDeiDesideri;
 import model.beans.Prodotto;
 import model.beans.Utente;
+import model.dao.CarrelloDAO;
+import model.dao.ListaDeiDesideriDAO;
 import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
 import java.util.List;
@@ -68,11 +72,31 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("prodottoList", list);
                 request.setAttribute("utente", utente);
 
-                Carrello carrello = (Carrello) session.getAttribute("carrello");
-                carrello.setIdUtente(utente.getId());
+                CarrelloDAO carrelloDAO = new CarrelloDAO();
+                Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
+
+                if(carrello == null){
+                    carrello = (Carrello) session.getAttribute("carrello");
+                    carrello.setIdUtente(utente.getId());
+                }
+                else {
+                    synchronized (session) {
+                        session.setAttribute("carrello", carrello);
+                    }
+                }
+
+                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+                ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
+
+
+                if(listaDeiDesideri == null){
+                    ArrayList<Prodotto> arrayListDes = new ArrayList<>();
+                    listaDeiDesideri.setListaProdotti(arrayListDes);
+                    listaDeiDesideri.setIdUtente(utente.getId());
+                }
 
                 synchronized (session){
-                    session.setAttribute("carrello", carrello);
+                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
                 }
 
                 address = "WEB-INF/result/homepage.jsp";
