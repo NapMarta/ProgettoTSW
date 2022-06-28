@@ -1,4 +1,5 @@
-<%@ page import="model.beans.Utente" %><%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
+<%@ page import="model.beans.Utente" %>
+<%@ page import="model.beans.Carrello" %><%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -40,27 +41,27 @@
             <table>
                 <tr>
                     <td>
-                        <button type="submit" value="Pizza" name="tipologia" onclick="show('pizza');" class="btnUP">
+                        <button type="submit" value="Pizza" name="tipologia" class="btnUP">
                             <img src="https://img.icons8.com/ios-glyphs/60/C29436/pizza.png" id="pizza"/>
                         </button>
                     </td>
                     <td>
-                        <button type="submit" value="Panino" name="tipologia"  onclick="show('panino');" class="btnUP">
+                        <button type="submit" value="Panino" name="tipologia" class="btnUP">
                             <img src="https://img.icons8.com/ios-glyphs/60/C29436/hamburger.png" id="panino"/>
                         </button>
                     </td>
                     <td>
-                        <button type="submit" value="Fritto" name="tipologia" onclick="show('fritto');" class="btnUP">
+                        <button type="submit" value="Fritto" name="tipologia" class="btnUP">
                             <img src="https://img.icons8.com/ios-glyphs/60/C29436/chips.png" id="fritto"/>
                         </button>
                     </td>
                     <td>
-                        <button type="submit" value="Bibita" name="tipologia" onclick="show('bibita');" class="btnUP">
+                        <button type="submit" value="Bibita" name="tipologia" class="btnUP">
                             <img src="https://img.icons8.com/ios-glyphs/60/C29436/beer.png" id="bibita"/>
                         </button>
                     </td>
                     <td>
-                        <button type="submit" value="Dolce" name="tipologia" onclick="show('dolce');" class="btnUP">
+                        <button type="submit" value="Dolce" name="tipologia" class="btnUP">
                             <img src="https://img.icons8.com/ios-glyphs/60/C29436/ice-cream-in-waffle-cone.png" id="dolce"/>
                         </button>
                     </td>
@@ -129,10 +130,11 @@
                 </div>
             </td>
             <td>
+                <%Carrello carrello = session.getAttribute("carrello")%>
                 <form action="Carrello">
                     <button type="submit" class="notification" name="carrello" value="Carrello">
                         <img src="https://img.icons8.com/ios-glyphs/40/C29436/shopping-cart--v1.png"/>
-                        <span class="badge">0</span>
+                        <span class="badge"><%=carrello.calcolaNumeroProdotti()%></span>
                     </button>
                 </form>
             </td>

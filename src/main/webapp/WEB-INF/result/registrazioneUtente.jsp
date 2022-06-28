@@ -6,6 +6,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <link href="css/registrazione.css" rel="stylesheet">
     <script type="text/javascript" src="JavaScript/registrazione.js"></script>
+    <script type="text/javascript" src="JavaScript/ajax.js"></script>
 </head>
 <body>
 
@@ -28,7 +29,7 @@
                 <tr>
                     <td>
                         <label for="email">Email</label><br>
-                        <input type="email" placeholder="Inserisci Email" name="email" id="email" required>
+                        <input type="email" placeholder="Inserisci Email" onkeyup="validazioneEmail();" name="email" id="email" required>
                     </td>
                     <td>
                         <label for="psw" class="tPsw">Password<br></label>
@@ -65,14 +66,6 @@
             <form action="Registrazione" class="child1">
                 <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
             </form>
-
-            <div id="message">
-                <h3>Password must contain the following:</h3>
-                <p id="letter" class="invalid">A lowercase letter</p>
-                <p id="capital" class="invalid">A capital (uppercase) letter</p>
-                <p id="number" class="invalid">A number</p>
-                <p id="length" class="invalid">Minimum 8 characters</p>
-            </div>
     </span>
 
 
