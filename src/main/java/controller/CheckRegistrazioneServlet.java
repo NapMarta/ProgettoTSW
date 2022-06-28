@@ -13,11 +13,6 @@ import java.sql.SQLException;
 public class CheckRegistrazioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("emailValue");
 
         System.out.println(email);
@@ -42,5 +37,10 @@ public class CheckRegistrazioneServlet extends HttpServlet {
 
         response.getWriter().write(json);
         System.out.println(json);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }
