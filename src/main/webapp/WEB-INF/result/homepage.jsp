@@ -88,6 +88,9 @@
     </nav>
 </div>
 
+<%
+    Utente utente = (Utente) session.getAttribute("utente");
+%>
 
 <div class="content">
     <c:forEach items="${prodottoList}" var="prodotto">
@@ -96,10 +99,10 @@
                 <figcaption class="column">
                     <p><img src="./PhotoController?codice=${prodotto.codice}"></p>
                     <div class="btnProdotto">
-                        <button type="submit" id="AggiungiCarrello" name="aggiungi" value="carrello" onclick="alert('Prodotto aggiunto al carrello')">
+                        <button type="submit" id="AggiungiCarrello" name="aggiungiCarrello" value="carrello" onclick="alert('Prodotto aggiunto al carrello')">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/add-shopping-cart.png"/>
                         </button>
-                        <button type="submit" id="AggiungiPreferiti" name="aggiungi" value="lista">
+                        <button type="submit" id="AggiungiPreferiti" name="aggiungiDesideri" value="lista">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/favorite-cart.png"/>
                         </button>
                     </div>
@@ -140,30 +143,29 @@
             </td>
             <td>
                 <%
-                    Utente utente = (Utente) session.getAttribute("utente");
                     if(utente != null){
                 %>
-                <div class="dropup">
-                    <button class="dropbtn" id="utente">
-                        <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
-                    </button>
-                    <div class="dropup-content" id="elements">
-                        <form action="">
-                            <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
-                            <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
-                            <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
-                            <input type="submit" name="elements" value="Logout" id="logout">
-                        </form>
-                    </div>
-                </div>
+                        <div class="dropup">
+                            <button class="dropbtn" id="utente">
+                                <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+                            </button>
+                            <div class="dropup-content" id="elements">
+                                <form action="OperazioniUtente">
+                                    <input type="submit" name="elements" value="Ordini Effettuati" id="ordini">
+                                    <input type="submit" name="elements" value="Modifica Credenziali" id="credenziali">
+                                    <input type="submit" name="elements" value="Lista dei desideri" id="listaDes">
+                                    <input type="submit" name="elements" value="Logout" id="logout">
+                                </form>
+                            </div>
+                        </div>
                 <%  }else{  %>
-                <div class="dropup">
-                    <form action="Utente" method="get">
-                        <button class="dropbtn log" type="submit" name="utente" value="login">
-                            <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
-                        </button>
-                    </form>
-                </div>
+                        <div class="dropup">
+                            <form action="Utente" method="get">
+                                <button class="dropbtn log" type="submit" name="utente" value="login">
+                                    <img src="https://img.icons8.com/ios-glyphs/40/C29436/user-male-circle.png"/>
+                                </button>
+                            </form>
+                        </div>
                 <%}%>
             </td>
         </tr>

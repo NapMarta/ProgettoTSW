@@ -61,6 +61,7 @@ public class Carrello {
             totale += prodottoQuantita.getPrezzo() * prodottoQuantita.getQuantita();
         }
 
+        this.totale = totale;
         return totale;
     }
 
@@ -70,6 +71,7 @@ public class Carrello {
             num += 1 * prodottoQuantita.getQuantita();
         }
 
+        this.numeroProdotti = numeroProdotti;
         return num;
     }
 

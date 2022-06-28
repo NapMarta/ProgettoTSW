@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.beans.Carrello;
+import model.beans.ListaDeiDesideri;
 import model.beans.Prodotto;
 import model.beans.Utente;
 import model.dao.ProdottoDAO;
@@ -11,6 +12,7 @@ import model.dao.UtenteDAO;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Registrazione", value = "/Registrazione")
@@ -51,9 +53,15 @@ public class RegistrazioneServlet extends HttpServlet {
 
             Carrello carrello = (Carrello) session.getAttribute("carrello");
             carrello.setIdUtente(utente.getId());
+            ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();
+            ArrayList<Prodotto> arrayListDes = new ArrayList<>();
+            listaDeiDesideri.setListaProdotti(arrayListDes);
+            listaDeiDesideri.setIdUtente(utente.getId());
+
             synchronized (session){
                 session.setAttribute("carrello", carrello);
                 session.setAttribute("utente", utente);
+                session.setAttribute("listaDeiDesideri", listaDeiDesideri);
             }
 
             address = "WEB-INF/result/homepage.jsp";

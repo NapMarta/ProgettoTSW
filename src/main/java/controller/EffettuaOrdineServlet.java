@@ -42,7 +42,10 @@ public class EffettuaOrdineServlet extends HttpServlet {
                 Date date = Date.valueOf(dtm.toLocalDate());
                 ordine.setDataPagamento(date);
                 ordine.setTotale(Double.parseDouble((String) session.getAttribute("totale")));
-                session.setAttribute("ordine", ordine);
+                synchronized (session){
+                    session.setAttribute("ordine", ordine);
+                }
+
                 request.setAttribute("ordine", ordine);
             } else {
                 OrdineDAO ordineDAO = new OrdineDAO();

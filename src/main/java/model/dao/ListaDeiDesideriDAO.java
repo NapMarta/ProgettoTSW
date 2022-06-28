@@ -12,12 +12,12 @@ import java.util.List;
 
 public class ListaDeiDesideriDAO {
 
-    public ListaDeiDesideri doRetrieveById(int idUtente, String nomeLista){
+    public ListaDeiDesideri doRetrieveById(int idUtente){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine FROM prodotto JOIN seleziona ON codice=codiceProdotto WHERE idUtente=? AND nomeLista=?");
+                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine " +
+                            "FROM prodotto JOIN seleziona ON codice=codiceProdotto WHERE idUtente=?");
             ps.setInt(1, idUtente);
-            ps.setString(2, nomeLista);
             ResultSet rs = ps.executeQuery();
             ArrayList<Prodotto> listaProdotti = new ArrayList<>();
             if (rs.next()) {
@@ -30,7 +30,7 @@ public class ListaDeiDesideriDAO {
                 p.setImmagine(rs.getBinaryStream(6));
                 listaProdotti.add(p);
             }
-            ListaDeiDesideri lista = new ListaDeiDesideri(idUtente, nomeLista, listaProdotti);
+            ListaDeiDesideri lista = new ListaDeiDesideri(idUtente, listaProdotti);
             return lista;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -40,18 +40,16 @@ public class ListaDeiDesideriDAO {
     public void doSave(ListaDeiDesideri lista){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO listaDesideri (nome, idUtente) VALUES(?,?)",
+                    "INSERT INTO listaDesideri (idUtente) VALUES(?)",
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, lista.getNome());
-            ps.setInt(2, lista.getIdUtente());
+            ps.setInt(1, lista.getIdUtente());
             for (Prodotto p: lista.getListaProdotti())
             {
                 PreparedStatement ps1 = con.prepareStatement(
-                        "INSERT INTO seleziona (codiceProdotto, nomeLista, idUtente) VALUES(?,?,?)",
+                        "INSERT INTO seleziona (codiceProdotto, idUtente) VALUES(?,?)",
                         Statement.RETURN_GENERATED_KEYS);
                 ps1.setInt(1,p.getCodice());
-                ps1.setString(2, lista.getNome());
-                ps1.setInt(3, lista.getIdUtente());
+                ps1.setInt(2, lista.getIdUtente());
             }
 
             if (ps.executeUpdate() != 1) {
@@ -70,12 +68,11 @@ public class ListaDeiDesideriDAO {
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
-                String nome = resultSet.getString(1);
-                int id = resultSet.getInt(2);
+                int id = resultSet.getInt(1);
 
                 ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
-                PreparedStatement ps1 = con.prepareStatement("SELECT  codice, nome, prezzo, descrizione, tipologia, immagine FROM prodotto JOIN seleziona ON codiceProdotto = codice WHERE nomeLista=?");
-                ps1.setString(1, nome);
+                PreparedStatement ps1 = con.prepareStatement("SELECT  codice, prezzo, descrizione, tipologia, immagine FROM prodotto JOIN seleziona ON codiceProdotto = codice WHERE idUtente=?");
+                ps1.setInt(1, id);
                 ResultSet resultSet1 = ps.executeQuery();
 
 
@@ -89,7 +86,7 @@ public class ListaDeiDesideriDAO {
                     prodotti.add(new Prodotto(codice, nomeProdotto, tipologia, descrizione, prezzo, immagine));
                 }
 
-                listaDeiDesideriList.add(new ListaDeiDesideri(id, nome, prodotti));
+                listaDeiDesideriList.add(new ListaDeiDesideri(id, prodotti));
             }
         }
         catch (SQLException e) {
@@ -103,15 +100,13 @@ public class ListaDeiDesideriDAO {
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
-            String query = "update listaDesideri set nome='" + lista.getNome() + "', idUtente='" +
-                    lista.getIdUtente() + "';";
+            String query = "update listaDesideri set idUtente='" + lista.getIdUtente() + "';";
             st.executeUpdate(query);
             for (Prodotto p: lista.getListaProdotti()) {
-                String query1 = "delete * from seleziona where nomeLista='" + lista.getNome() + "' AND idUtente='" + lista.getIdUtente() + "';";
+                String query1 = "delete * from seleziona where idUtente='" + lista.getIdUtente() + "';";
                 st.executeUpdate(query1);
 
-                String query2 = "insert into seleziona values  codiceProdotto='" + p.getCodice() + "', nomeLista='" + lista.getNome() + "', idUtente='" +
-                        lista.getIdUtente() + "';";
+                String query2 = "insert into seleziona values  codiceProdotto='" + p.getCodice() + "', idUtente='" + lista.getIdUtente() + "';";
                 st.executeUpdate(query2);
             }
 
