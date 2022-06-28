@@ -64,6 +64,15 @@ public class Carrello {
         return totale;
     }
 
+    public int calcolaNumeroProdotti(){
+        int num = 0;
+        for (ProdottoQuantita prodottoQuantita: listaProdotti) {
+            num += 1 * prodottoQuantita.getQuantita();
+        }
+
+        return num;
+    }
+
     private int codice, idUtente;
     private double totale;
     private int numeroProdotti;
