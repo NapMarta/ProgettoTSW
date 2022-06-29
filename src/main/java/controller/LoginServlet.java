@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
             if(utente.isAdmin()){
                 address = "WEB-INF/result/AdminView.jsp";
                 ProdottoDAO prodottoDAO = new ProdottoDAO();
-                List<Prodotto> prodottoList = (List<Prodotto>) prodottoDAO.doRetrieveAll();
+                List<Prodotto> prodottoList = prodottoDAO.doRetrieveAll();
                 request.setAttribute("utente", utente);
                 request.setAttribute("prodottoList", prodottoList);
             }
@@ -70,34 +70,30 @@ public class LoginServlet extends HttpServlet {
                 ProdottoDAO prodottoDAO = new ProdottoDAO();
                 List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
                 request.setAttribute("prodottoList", list);
-                request.setAttribute("utente", utente);
+                session.setAttribute("utente", utente);
 
                 CarrelloDAO carrelloDAO = new CarrelloDAO();
                 Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
 
-                if(carrello == null){
-                    carrello = (Carrello) session.getAttribute("carrello");
-                    carrello.setIdUtente(utente.getId());
-                }
-                else {
-                    synchronized (session) {
-                        session.setAttribute("carrello", carrello);
-                    }
+//                carrello.setIdUtente(utente.getId());
+                synchronized (session) {
+                    session.setAttribute("carrello", carrello);
                 }
 
-                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
-                ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
 
-
-                if(listaDeiDesideri == null){
-                    ArrayList<Prodotto> arrayListDes = new ArrayList<>();
-                    listaDeiDesideri.setListaProdotti(arrayListDes);
-                    listaDeiDesideri.setIdUtente(utente.getId());
-                }
-
-                synchronized (session){
-                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
-                }
+//                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+//                ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
+//
+//
+//                if(listaDeiDesideri == null){
+//                    ArrayList<Prodotto> arrayListDes = new ArrayList<>();
+//                    listaDeiDesideri.setListaProdotti(arrayListDes);
+//                    listaDeiDesideri.setIdUtente(utente.getId());
+//                }
+//
+//                synchronized (session){
+//                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+//                }
 
                 address = "WEB-INF/result/homepage.jsp";
             }

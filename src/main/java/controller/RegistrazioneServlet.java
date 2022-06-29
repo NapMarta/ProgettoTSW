@@ -7,6 +7,7 @@ import model.beans.Carrello;
 import model.beans.ListaDeiDesideri;
 import model.beans.Prodotto;
 import model.beans.Utente;
+import model.dao.CarrelloDAO;
 import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
 
@@ -53,6 +54,11 @@ public class RegistrazioneServlet extends HttpServlet {
 
             Carrello carrello = (Carrello) session.getAttribute("carrello");
             carrello.setIdUtente(utente.getId());
+            CarrelloDAO carrelloDAO = new CarrelloDAO();
+            carrello.setIdUtente(carrelloDAO.doCreate(carrello));
+
+            //if (id == 0)  ERROR
+
             ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();
             ArrayList<Prodotto> arrayListDes = new ArrayList<>();
             listaDeiDesideri.setListaProdotti(arrayListDes);
