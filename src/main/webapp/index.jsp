@@ -14,7 +14,7 @@
     <hr>
     <form action="Home" method="get">
         <input type="submit" name="home" value="HomePage">
-        <input type="submit" name="login" value="Login/Registrati">
+        <input type="submit" name="login" value="Login/Registrazione">
     </form>
     <footer>
         <p>Copyright © 2022. CookStock tutti i diritti riservati.</p>

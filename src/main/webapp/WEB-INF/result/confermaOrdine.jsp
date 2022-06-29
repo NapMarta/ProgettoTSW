@@ -26,14 +26,14 @@
             <div>
                 <p>Totale: ${ordine.totale} </p>
                 <p>Costo di spedizione:</p>
-                <%
-                Ordine ordine = (Ordine) session.getAttribute("ordine");
-                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20){
-                %>
-                    <span>3.00 &#8364;</span>
-                <% }else{%>
-                    <span>0.00 &#8364;</span>
-                <%}%>
+<%--                <%--%>
+<%--                Ordine ordine = (Ordine) session.getAttribute("ordine");--%>
+<%--                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20){--%>
+<%--                %>--%>
+<%--                    <span>3.00 &#8364;</span>--%>
+<%--                <% }else{%>--%>
+<%--                    <span>0.00 &#8364;</span>--%>
+<%--                <%}%>--%>
 
                 <p>Data Pagamento: ${ordine.dataPagamento}</p>
             </div>

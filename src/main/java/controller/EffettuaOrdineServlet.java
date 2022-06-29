@@ -34,21 +34,26 @@ public class EffettuaOrdineServlet extends HttpServlet {
             request.setAttribute("prodottoList", list);
             address = "WEB-INF/result/homepage.jsp";
         } else {
+            Utente utente = (Utente) session.getAttribute("utente");
 
             if (conferma != null) {
-                address = "WEB-INF/result/confermaOrdine.jsp";
 
-                Carrello carrello = (Carrello) session.getAttribute("carrello");
+                if (utente == null) {
+                    address = "WEB-INF/result/login.jsp";
+                }else{
+                    address = "WEB-INF/result/confermaOrdine.jsp";
+                    Carrello carrello = (Carrello) session.getAttribute("carrello");
+                    LocalDateTime dtm = LocalDateTime.now();
+                    Date date = Date.valueOf(dtm.toLocalDate());
+                    ordine.setDataPagamento(date);
+                    ordine.setTotale(carrello.getTotale());
+                    synchronized (session){
+                        session.setAttribute("ordine", ordine);
+                    }
 
-                LocalDateTime dtm = LocalDateTime.now();
-                Date date = Date.valueOf(dtm.toLocalDate());
-                ordine.setDataPagamento(date);
-                ordine.setTotale(carrello.getTotale());
-                synchronized (session){
-                    session.setAttribute("ordine", ordine);
+                    request.setAttribute("ordine", ordine);
                 }
 
-                request.setAttribute("ordine", ordine);
             } else {
                 Carrello carrello = (Carrello) session.getAttribute("carrello");
 
@@ -58,14 +63,10 @@ public class EffettuaOrdineServlet extends HttpServlet {
                 ordine.setNumeroCarta(request.getParameter("numeroCarta"));
                 ordine.setTipoPagamento(request.getParameter("tipoPagamento"));
                 ordine.setListaProdotti(carrello.getListaProdotti());
-                Utente utente = (Utente) session.getAttribute("utente");
+
 
                 if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20)
                     ordine.setTotale(ordine.getTotale() + 3);
-
-                if (utente == null) {
-                    // ERRORE L'UTENTE NON HA FATTO IL LOGIN
-                }
 
                 ordine.setIdUtente(utente.getId());
                 ordineDAO.doSave(ordine);
