@@ -55,12 +55,16 @@ select * from prodotto;
 select * from listaDesideri;
 select * from carrello;
 select * from contenere;
+select * from seleziona;
 
-drop table utente;
-drop table ordine;
-drop table appartenere;
-
-drop table listaDesideri;
-drop table seleziona;
-drop table carrello;
 drop table contenere;
+drop table carrello;
+drop table seleziona;
+drop table listaDesideri;
+drop table appartenere;
+drop table ordine;
+drop table utente;
+
+update carrello set totale = 0, numeroProdotti = 0;
+
+SELECT prodotto.codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM (prodotto JOIN contenere ON prodotto.codice=contenere.codiceProdotto) JOIN carrello ON contenere.codiceCarrello = carrello.codice;
