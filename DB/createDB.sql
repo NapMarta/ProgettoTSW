@@ -27,6 +27,9 @@ create table ordine
 									tipoPagamento = 'Carta di credito' OR 
                                     tipoPagamento = 'PayPal') not null,
 	numeroCarta varchar(27),
+    via varchar(50),
+    cap varchar(5),
+    citta varchar(10),
 	idUtente int not null,
     foreign key(idUtente) references utente(id)
 );
