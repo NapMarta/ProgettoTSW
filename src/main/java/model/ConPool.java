@@ -15,7 +15,7 @@ public class ConPool {
             p.setUrl("jdbc:mysql://localhost:3306/cookstock?serverTimezone=" + TimeZone.getDefault().getID());
             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
             p.setUsername("root");
-            p.setPassword("simoloc1!");
+            p.setPassword("Marta2002");
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);
