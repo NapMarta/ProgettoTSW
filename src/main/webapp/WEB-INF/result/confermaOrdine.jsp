@@ -4,6 +4,9 @@
     <head>
         <title>Conferma Ordine</title>
         <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
+        <link href="css/confermaOrdine.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="JavaScript/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="JavaScript/confermaOrdine.js"></script>
     </head>
     <body>
         <form method="post" action="EffettuaOrdine">
@@ -23,18 +26,17 @@
                     <label for="cp">Consumazione sul posto</label>
                 </span>
             </div>
+            <div id="indirizzo">
+                <label for="via">Via:</label>
+                <input type="text" name="via" id="via">
+                <label for="via">Città:</label>
+                <input type="text" name="citta" id="citta">
+                <label for="via">CAP:</label>
+                <input type="text" name="cap" id="cap">
+            </div>
             <div>
-                <p>Totale: ${ordine.totale} </p>
-                <p>Costo di spedizione:</p>
-<%--                <%--%>
-<%--                Ordine ordine = (Ordine) session.getAttribute("ordine");--%>
-<%--                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20){--%>
-<%--                %>--%>
-<%--                    <span>3.00 &#8364;</span>--%>
-<%--                <% }else{%>--%>
-<%--                    <span>0.00 &#8364;</span>--%>
-<%--                <%}%>--%>
-
+                <p>Totale: <span id="totale">${ordine.totale}</span>&#8364;</p>
+                <p>Costo di spedizione:<span id="spedizione">0.00</span>&#8364;</p>
                 <p>Data Pagamento: ${ordine.dataPagamento}</p>
             </div>
             <div>
@@ -42,19 +44,19 @@
                 <span>
                     <input type="radio" id="contanti" name="tipoPagamento" value="Contanti"
                            checked>
-                    <label for="contanti">Asporto</label>
+                    <label for="contanti">Contanti</label>
                 </span>
                 <span>
                     <input type="radio" id="carta" name="tipoPagamento" value="Carta di credito">
-                    <label for="carta">Domicilio</label>
+                    <label for="carta">Carta di credito</label>
                 </span>
                 <span>
                     <input type="radio" id="paypal" name="tipoPagamento" value="PayPal">
-                    <label for="paypal">Consumazione sul posto</label>
+                    <label for="paypal">PayPal</label>
                 </span>
             </div>
             <div>
-                <input type="text" name="numeroCarta" maxlength="27">
+                <input type="text" name="numeroCarta" id="numeroCarta" maxlength="27">
             </div>
             <div>
                 <input type="submit" value="Conferma Ordine">

@@ -57,6 +57,7 @@ public class RegistrazioneServlet extends HttpServlet {
             carrello.setIdUtente(utente.getId());
             carrello.setTotale(0);
             carrello.setNumeroProdotti(0);
+            carrello.setListaProdotti(new ArrayList<>());
             CarrelloDAO carrelloDAO = new CarrelloDAO();
             carrello.setIdUtente(carrelloDAO.doCreate(carrello));
 
