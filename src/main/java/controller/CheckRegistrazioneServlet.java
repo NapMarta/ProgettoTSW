@@ -15,15 +15,17 @@ public class CheckRegistrazioneServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("emailValue");
 
-        System.out.println(email);
+        //System.out.println(email);
         boolean isRegistered = false;
 
         try{
             UtenteDAO utenteDAO = new UtenteDAO();
             Utente utente = utenteDAO.doRetrieveByEmail(email);
-            if(utente.getEmail() != null){
-                isRegistered = true;
-            }
+            if(utente != null){
+                if(utente.getEmail() != null)
+                    isRegistered = true;
+            }else
+                isRegistered = false;
         } catch (SQLException e) {
             request.getSession().setAttribute("errore", "Errore nella registrazione");
             response.sendRedirect(request.getContextPath() + "/error.jsp");
@@ -36,7 +38,7 @@ public class CheckRegistrazioneServlet extends HttpServlet {
         String json = "{\"registered\" : " + isRegistered + "}";
 
         response.getWriter().write(json);
-        System.out.println(json);
+        //System.out.println(json);
     }
 
     @Override

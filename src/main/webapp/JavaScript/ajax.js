@@ -7,28 +7,28 @@ $(document).ready(function(){
 
         $.get('CheckRegistrazioneServlet', {"emailValue" : value},
             function (response){
-                //nell if non va nell'else, ma direttamente in fail
+                const div = $("#email").parent();
+                const small = div.children('.small');
+
                 if(response.registered){
-                    const div = $("#email").parent();
-                    const small = div.children('.small');
+
                     //console.log(small.text());
                     div.addClass('error');
                     small.text('Utente già registrato');
+                    small.css({"font-size": "10px","color": "red"});
+                }else{
+                    small.text('');
+                    div.removeClass('error');
+                    //console.log(small.text());
                 }
-                // else{
-                //     const div = $("#email").parent();
-                //     const small = div.children('.small');
-                //     console.log(small.text());
-                //     div.removeClass('error');
-                //     small.text('');
-                // }
             })
             .fail(function() {
                 const div = $("#email").parent();
                 const small = div.children('.small');
                 //console.log(small.text());
-                small.text('');
-                //console.log('errore');
+                small.text('Errore. Riprova');
+                small.css({"font-size": "10px","color": "red"});
+                console.log('errore');
             });
     });
 });
