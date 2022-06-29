@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Carrello {
 
     public Carrello() {
+        this.codice = 0;
     }
 
     public Carrello(int codice, int idUtente, double totale, int numeroProdotti, ArrayList<ProdottoQuantita> listaProdotti) {

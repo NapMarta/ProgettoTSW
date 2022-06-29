@@ -55,6 +55,11 @@ public class AggiungiServlet extends HttpServlet {
                     }
                 }
             }
+
+            synchronized (session){
+                session.setAttribute("carrello", carrello);
+            }
+
             address = "WEB-INF/result/carrello.jsp";
         }
 

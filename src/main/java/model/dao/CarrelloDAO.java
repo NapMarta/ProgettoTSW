@@ -2,8 +2,6 @@ package model.dao;
 
 import model.ConPool;
 import model.beans.Carrello;
-import model.beans.ListaDeiDesideri;
-import model.beans.Prodotto;
 import model.beans.ProdottoQuantita;
 
 import java.sql.*;
@@ -32,11 +30,11 @@ public class CarrelloDAO {
             int codice = carrello.getCodice();
 
             PreparedStatement ps =
-                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN contenere ON codice=codiceProdotto WHERE codice=?");
-            ps.setInt(1, codice);
+                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità " +
+                            "FROM prodotto JOIN contenere ON codice=codiceProdotto WHERE codiceCarrello='" + codice + "';");
             ResultSet rs = ps.executeQuery();
             ArrayList<ProdottoQuantita> listaProdotti = new ArrayList<>();
-            if (rs.next()) {
+            while (rs.next()) {
                 ProdottoQuantita p = new ProdottoQuantita();
                 p.setCodice(rs.getInt(1));
                 p.setNome(rs.getString(2));
@@ -56,48 +54,48 @@ public class CarrelloDAO {
         }
     }
 
-    public Carrello doRetrieveById(int codice){
-        try (Connection con = ConPool.getConnection()) {
+//    public Carrello doRetrieveById(int codice){
+//        try (Connection con = ConPool.getConnection()) {
+//
+//            PreparedStatement ps1 =
+//                    con.prepareStatement("SELECT * FROM carrello WHERE codice=?");
+//            ps1.setInt(1, codice);
+//            ResultSet rs1 = ps1.executeQuery();
+//
+//            Carrello carrello = new Carrello();
+//
+//            if (rs1.next()) {
+//                carrello.setCodice(rs1.getInt(1));
+//                carrello.setIdUtente(rs1.getInt(4));
+//                carrello.setTotale(rs1.getDouble(2));
+//                carrello.setNumeroProdotti(rs1.getInt(3));
+//            }
+//
+//            PreparedStatement ps =
+//                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN contenere ON codice=codiceProdotto WHERE codice=?");
+//            ps.setInt(1, codice);
+//            ResultSet rs = ps.executeQuery();
+//            ArrayList<ProdottoQuantita> listaProdotti = new ArrayList<>();
+//            while (rs.next()) {
+//                ProdottoQuantita p = new ProdottoQuantita();
+//                p.setCodice(rs.getInt(1));
+//                p.setNome(rs.getString(2));
+//                p.setPrezzo(rs.getDouble(3));
+//                p.setDescrizione(rs.getString(4));
+//                p.setTipologia(rs.getString(5));
+//                p.setImmagine(rs.getBinaryStream(6));
+//                p.setQuantita(rs.getInt(7));
+//                listaProdotti.add(p);
+//            }
+//
+//            carrello.setListaProdotti(listaProdotti);
+//            return carrello;
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-            PreparedStatement ps1 =
-                    con.prepareStatement("SELECT * FROM carrello WHERE codice=?");
-            ps1.setInt(1, codice);
-            ResultSet rs1 = ps1.executeQuery();
-
-            Carrello carrello = new Carrello();
-
-            if (rs1.next()) {
-                carrello.setCodice(rs1.getInt(1));
-                carrello.setIdUtente(rs1.getInt(4));
-                carrello.setTotale(rs1.getDouble(2));
-                carrello.setNumeroProdotti(rs1.getInt(3));
-            }
-
-            PreparedStatement ps =
-                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN contenere ON codice=codiceProdotto WHERE codice=?");
-            ps.setInt(1, codice);
-            ResultSet rs = ps.executeQuery();
-            ArrayList<ProdottoQuantita> listaProdotti = new ArrayList<>();
-            if (rs.next()) {
-                ProdottoQuantita p = new ProdottoQuantita();
-                p.setCodice(rs.getInt(1));
-                p.setNome(rs.getString(2));
-                p.setPrezzo(rs.getDouble(3));
-                p.setDescrizione(rs.getString(4));
-                p.setTipologia(rs.getString(5));
-                p.setImmagine(rs.getBinaryStream(6));
-                p.setQuantita(rs.getInt(7));
-                listaProdotti.add(p);
-            }
-
-            carrello.setListaProdotti(listaProdotti);
-            return carrello;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void doSave(Carrello c){
+    public int doCreate(Carrello c){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO carrello (idUtente, totale, numeroProdotti) VALUES(?,?,?)",
@@ -108,9 +106,13 @@ public class CarrelloDAO {
             ps.setInt(3,c.getNumeroProdotti());
 
             ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            int id = rs.getInt(1);
-            c.setCodice(id);
+
+            int id = 0;
+            if(rs.next()){
+                id = rs.getInt(1);
+                c.setCodice(id);
+            }
+
 
             for (ProdottoQuantita p: c.getListaProdotti())
             {
@@ -127,11 +129,11 @@ public class CarrelloDAO {
                 throw new RuntimeException("INSERT error.");
             }
 
+            return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
 
     public List<Carrello> doRetrieveAll(){
         List<Carrello> carrelli = new ArrayList<Carrello>();
@@ -180,13 +182,17 @@ public class CarrelloDAO {
             Statement st = con.createStatement();
             String query = "update carrello set totale='" + carrello.getTotale() + "', numeroProdotti='" + carrello.getNumeroProdotti() +"';";
             st.executeUpdate(query);
-            for (ProdottoQuantita p: carrello.getListaProdotti()) {
-                String query1 = "delete * from contenere where codiceCarrello='" + carrello.getCodice() + "' AND codiceProdotto='" + p.getCodice() + "';";
-                st.executeUpdate(query1);
 
-                String query2 = "insert into contenere values  codiceProdotto='" + p.getCodice() + "', codiceCarrello='" + carrello.getCodice() + "', quantità='" +
-                        p.getQuantita() + "';";
-                st.executeUpdate(query2);
+            String query1 = "delete from contenere where codiceCarrello='" + carrello.getCodice() + "';";
+            st.executeUpdate(query1);
+
+            for (ProdottoQuantita p: carrello.getListaProdotti()) {
+                PreparedStatement ps1 = con.prepareStatement("insert into contenere (codiceProdotto, codiceCarrello, quantità) VALUES (?, ?, ?)");
+                ps1.setInt(1,p.getCodice());
+                ps1.setInt(2, carrello.getCodice());
+                ps1.setInt(3, p.getQuantita());
+
+                ps1.executeUpdate();
             }
 
             ris = true;
