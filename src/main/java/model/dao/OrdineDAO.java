@@ -63,8 +63,7 @@ public class OrdineDAO {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente, numeroCarta, via, cap, citta) " +
-                            "VALUES(?,?,?,?,?,?,?,?,?)",
-                    Statement.RETURN_GENERATED_KEYS);
+                            "VALUES(?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, o.getTipologia());
             ps.setDouble(2,o.getTotale());
             ps.setDate(3,o.getDataPagamento());
@@ -74,6 +73,10 @@ public class OrdineDAO {
             ps.setString(7, o.getVia());
             ps.setString(8, o.getCap());
             ps.setString(9, o.getCitta());
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
 
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();

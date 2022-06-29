@@ -42,8 +42,7 @@
             <div>
                 <label>Seleziona il tipo di pagamento:</label>
                 <span>
-                    <input type="radio" id="contanti" name="tipoPagamento" value="Contanti"
-                           checked>
+                    <input type="radio" id="contanti" name="tipoPagamento" value="Contanti" checked>
                     <label for="contanti">Contanti</label>
                 </span>
                 <span>
