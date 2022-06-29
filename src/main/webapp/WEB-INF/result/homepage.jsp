@@ -99,7 +99,7 @@
                 <figcaption class="column">
                     <p><img src="./PhotoController?codice=${prodotto.codice}"></p>
                     <div class="btnProdotto">
-                        <button type="submit" id="AggiungiCarrello" name="aggiungiCarrello" value="carrello" onclick="alert('Prodotto aggiunto al carrello')">
+                        <button type="submit" id="AggiungiCarrello" name="aggiungiCarrello" value="carrello">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/add-shopping-cart.png"/>
                         </button>
                         <button type="submit" id="AggiungiPreferiti" name="aggiungiDesideri" value="lista">
