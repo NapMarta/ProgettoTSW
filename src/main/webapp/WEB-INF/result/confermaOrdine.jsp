@@ -1,3 +1,4 @@
+<%@ page import="model.beans.Ordine" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
@@ -5,7 +6,7 @@
         <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     </head>
     <body>
-        <form method="post" action="">
+        <form method="post" action="EffettuaOrdine">
             <div>
                 <label>Seleziona il tipo di ordine:</label>
                 <span>
@@ -23,8 +24,18 @@
                 </span>
             </div>
             <div>
-                Totale: ${ordine.totale}
-                Data Pagamento: ${ordine.dataPagamento}
+                <p>Totale: ${ordine.totale} </p>
+                <p>Costo di spedizione:</p>
+                <%
+                Ordine ordine = (Ordine) session.getAttribute("ordine");
+                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20){
+                %>
+                    <span>3.00 &#8364;</span>
+                <% }else{%>
+                    <span>0.00 &#8364;</span>
+                <%}%>
+
+                <p>Data Pagamento: ${ordine.dataPagamento}</p>
             </div>
             <div>
                 <label>Seleziona il tipo di pagamento:</label>

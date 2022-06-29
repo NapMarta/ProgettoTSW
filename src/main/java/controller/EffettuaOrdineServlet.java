@@ -38,25 +38,29 @@ public class EffettuaOrdineServlet extends HttpServlet {
             if (conferma != null) {
                 address = "WEB-INF/result/confermaOrdine.jsp";
 
+                Carrello carrello = (Carrello) session.getAttribute("carrello");
+
                 LocalDateTime dtm = LocalDateTime.now();
                 Date date = Date.valueOf(dtm.toLocalDate());
                 ordine.setDataPagamento(date);
-                ordine.setTotale(Double.parseDouble((String) session.getAttribute("totale")));
+                ordine.setTotale(carrello.getTotale());
                 synchronized (session){
                     session.setAttribute("ordine", ordine);
                 }
 
                 request.setAttribute("ordine", ordine);
             } else {
+                Carrello carrello = (Carrello) session.getAttribute("carrello");
+
                 OrdineDAO ordineDAO = new OrdineDAO();
                 ordine = (Ordine) session.getAttribute("ordine");
                 ordine.setTipologia(request.getParameter("tipologia"));
                 ordine.setNumeroCarta(request.getParameter("numeroCarta"));
                 ordine.setTipoPagamento(request.getParameter("tipoPagamento"));
-                ordine.setListaProdotti((ArrayList<ProdottoQuantita>) session.getAttribute("list"));
+                ordine.setListaProdotti(carrello.getListaProdotti());
                 Utente utente = (Utente) session.getAttribute("utente");
 
-                if(ordine.getTipologia().equals("A") && ordine.getTotale() < 20)
+                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20)
                     ordine.setTotale(ordine.getTotale() + 3);
 
                 if (utente == null) {

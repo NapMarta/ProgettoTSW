@@ -101,7 +101,7 @@ td h2{
     padding-top: 20px;
 }
 
-.search input[type=text]{
+.search input[type=search]{
     padding: 6px;
     font-size: 17px;
     border: 2px solid black;
@@ -115,8 +115,18 @@ td h2{
     clear: both;
 }
 
-.search input[type=text]:focus {
-    width: 70%;
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+}
+input[type=search] {
+    -webkit-appearance:textfield;
+    -webkit-box-sizing:content-box;
+}
+
+.search input[type=search]:focus {
     outline: none;
 }
 
@@ -135,7 +145,7 @@ a{
     color: white;
 }
 
-a img:hover, .notification img:hover{
+a img:hover, .notification img:hover, button img:hover{
     filter: grayscale(100%);
 }
 

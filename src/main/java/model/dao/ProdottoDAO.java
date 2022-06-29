@@ -169,14 +169,14 @@ public class ProdottoDAO {
         }
     }
 
-    public List<Prodotto> doRetrieveByTipologia(String tipo){
+    public ArrayList<Prodotto> doRetrieveByTipologia(String tipo){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT *  FROM prodotto WHERE tipologia=?");
             ps.setString(1, tipo);
             ResultSet rs = ps.executeQuery();
 
-            List<Prodotto> prodottoList = new ArrayList<>();
+            ArrayList<Prodotto> prodottoList = new ArrayList<>();
 
             while(rs.next()) {
                 Prodotto p = new Prodotto();
@@ -192,6 +192,34 @@ public class ProdottoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Prodotto> search(String s){
+        ArrayList<Prodotto> listaProd = new ArrayList<>();
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM prodotto WHERE nome LIKE '%" + s + "%';");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int codice = resultSet.getInt(1);
+                String nome = resultSet.getString(2);
+                String tipologia = resultSet.getString(5);
+                String descrizione = resultSet.getString(4);
+                double prezzo = resultSet.getDouble(3);
+
+                //foto dal DB
+                Blob blob = resultSet.getBlob(6);
+                InputStream stream = blob.getBinaryStream();
+
+                listaProd.add(new Prodotto(codice, nome, tipologia, descrizione, prezzo, stream));
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaProd;
     }
 }
 

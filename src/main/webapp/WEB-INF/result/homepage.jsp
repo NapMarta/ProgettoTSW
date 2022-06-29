@@ -124,10 +124,10 @@
         <tr>
             <td>
                 <div class="search">
-                    <form action="">
-                        <input type="text" placeholder="Search..." name="search" id="search-input">
+                    <form action="SearchProdotto">
+                        <input type="search" placeholder="Cerca..." autocomplete="off"  name="search" id="search-input">
                         <button type="submit" id="search-button">
-                            <a href="#"><img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/></a>
+                            <img src="https://img.icons8.com/ios/40/C29436/search--v1.png"/>
                         </button>
                     </form>
                 </div>
