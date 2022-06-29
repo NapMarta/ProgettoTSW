@@ -17,7 +17,7 @@
     <p class="titolo">Registrazione Utente</p>
     <hr>
     <table>
-        <form action="Registrazione" class="child">
+        <form action="Registrazione" class="child" method="post">
             <tr>
                 <td>
                     <label for="nome">Nome</label><br>

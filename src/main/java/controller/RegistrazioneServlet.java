@@ -8,6 +8,7 @@ import model.beans.ListaDeiDesideri;
 import model.beans.Prodotto;
 import model.beans.Utente;
 import model.dao.CarrelloDAO;
+import model.dao.ListaDeiDesideriDAO;
 import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
 
@@ -36,7 +37,7 @@ public class RegistrazioneServlet extends HttpServlet {
             Utente utente = new Utente();
             UtenteDAO service = new UtenteDAO();
             try {
-                utente.setPasswordUtente(request.getParameter("psw"));
+                utente.setPasswordUtente(request.getParameter("pswd"));
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
@@ -52,17 +53,21 @@ public class RegistrazioneServlet extends HttpServlet {
             List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
             request.setAttribute("prodottoList", list);
 
-            Carrello carrello = (Carrello) session.getAttribute("carrello");
+            Carrello carrello = new Carrello();
             carrello.setIdUtente(utente.getId());
+            carrello.setTotale(0);
+            carrello.setNumeroProdotti(0);
             CarrelloDAO carrelloDAO = new CarrelloDAO();
             carrello.setIdUtente(carrelloDAO.doCreate(carrello));
 
             //if (id == 0)  ERROR
 
             ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();
-            ArrayList<Prodotto> arrayListDes = new ArrayList<>();
-            listaDeiDesideri.setListaProdotti(arrayListDes);
             listaDeiDesideri.setIdUtente(utente.getId());
+            listaDeiDesideri.setListaProdotti(new ArrayList<>());
+            ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+
+            listaDeiDesideriDAO.doCreate(listaDeiDesideri);
 
             synchronized (session){
                 session.setAttribute("carrello", carrello);

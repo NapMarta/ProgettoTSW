@@ -75,25 +75,18 @@ public class LoginServlet extends HttpServlet {
                 CarrelloDAO carrelloDAO = new CarrelloDAO();
                 Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
 
-//                carrello.setIdUtente(utente.getId());
                 synchronized (session) {
                     session.setAttribute("carrello", carrello);
                 }
 
+                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+                ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
 
-//                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
-//                ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
-//
-//
-//                if(listaDeiDesideri == null){
-//                    ArrayList<Prodotto> arrayListDes = new ArrayList<>();
-//                    listaDeiDesideri.setListaProdotti(arrayListDes);
-//                    listaDeiDesideri.setIdUtente(utente.getId());
-//                }
-//
-//                synchronized (session){
-//                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
-//                }
+                listaDeiDesideri.setIdUtente(utente.getId());
+
+                synchronized (session){
+                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                }
 
                 address = "WEB-INF/result/homepage.jsp";
             }

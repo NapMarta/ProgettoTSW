@@ -20,7 +20,7 @@ public class ListaDeiDesideriDAO {
             ps.setInt(1, idUtente);
             ResultSet rs = ps.executeQuery();
             ArrayList<Prodotto> listaProdotti = new ArrayList<>();
-            if (rs.next()) {
+            while (rs.next()) {
                 Prodotto p = new Prodotto();
                 p.setCodice(rs.getInt(1));
                 p.setNome(rs.getString(2));
@@ -37,30 +37,36 @@ public class ListaDeiDesideriDAO {
         }
     }
 
-    public void doSave(ListaDeiDesideri lista){
+    public void doCreate(ListaDeiDesideri lista){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO listaDesideri (idUtente) VALUES(?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, lista.getIdUtente());
-            for (Prodotto p: lista.getListaProdotti())
-            {
-                PreparedStatement ps1 = con.prepareStatement(
-                        "INSERT INTO seleziona (codiceProdotto, idUtente) VALUES(?,?)",
-                        Statement.RETURN_GENERATED_KEYS);
-                ps1.setInt(1,p.getCodice());
-                ps1.setInt(2, lista.getIdUtente());
-            }
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
+
+//            for (Prodotto p: lista.getListaProdotti())
+//            {
+//                PreparedStatement ps1 = con.prepareStatement(
+//                        "INSERT INTO seleziona (codiceProdotto, idUtente) VALUES(?,?)",
+//                        Statement.RETURN_GENERATED_KEYS);
+//                ps1.setInt(1,p.getCodice());
+//                ps1.setInt(2, lista.getIdUtente());
+//
+//                if (ps1.executeUpdate() != 1) {
+//                    throw new RuntimeException("INSERT error.");
+//                }
+//            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /*
     public List<ListaDeiDesideri> doRetrieveAll(){
         List<ListaDeiDesideri> listaDeiDesideriList = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
@@ -94,20 +100,26 @@ public class ListaDeiDesideriDAO {
         }
 
         return listaDeiDesideriList;
-    }
+    }*/
 
     public boolean doUpdate(ListaDeiDesideri lista){
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
-            String query = "update listaDesideri set idUtente='" + lista.getIdUtente() + "';";
-            st.executeUpdate(query);
-            for (Prodotto p: lista.getListaProdotti()) {
-                String query1 = "delete * from seleziona where idUtente='" + lista.getIdUtente() + "';";
-                st.executeUpdate(query1);
+//            String query = "update listaDesideri set idUtente='" + lista.getIdUtente() + "';";
+//            st.executeUpdate(query);
 
-                String query2 = "insert into seleziona values  codiceProdotto='" + p.getCodice() + "', idUtente='" + lista.getIdUtente() + "';";
-                st.executeUpdate(query2);
+            String query1 = "delete from seleziona where idUtente='" + lista.getIdUtente() + "';";
+            st.executeUpdate(query1);
+
+            for (Prodotto p: lista.getListaProdotti()) {
+                PreparedStatement ps1 = con.prepareStatement("insert into seleziona (codiceProdotto, idUtente) VALUES (?, ?)");
+                ps1.setInt(1,p.getCodice());
+                ps1.setInt(2, lista.getIdUtente());
+
+                if (ps1.executeUpdate() != 1) {
+                    throw new RuntimeException("INSERT error.");
+                }
             }
 
             ris = true;
@@ -121,6 +133,7 @@ public class ListaDeiDesideriDAO {
         return false;
     }
 
+    /*
     public void doDeleteById(int id){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM listaDesideri WHERE codice=?");
@@ -130,5 +143,5 @@ public class ListaDeiDesideriDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }

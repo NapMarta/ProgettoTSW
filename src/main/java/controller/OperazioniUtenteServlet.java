@@ -33,6 +33,7 @@ public class OperazioniUtenteServlet extends HttpServlet {
         if(elements.equalsIgnoreCase("Logout")){
             HttpSession session = request.getSession();
             Carrello carrello = (Carrello) session.getAttribute("carrello");
+            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 //            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 
 
@@ -40,8 +41,8 @@ public class OperazioniUtenteServlet extends HttpServlet {
 //            carrelloDAO.doDeleteById(carrello.getIdUtente());
             carrelloDAO.doUpdate(carrello);
 
-//            ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
-//            listaDeiDesideriDAO.doSave(listaDeiDesideri);
+            ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+            listaDeiDesideriDAO.doUpdate(listaDeiDesideri);
 
             synchronized (session){
                 session.invalidate();
