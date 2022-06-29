@@ -28,8 +28,11 @@ public class OrdineDAO {
                 ordine.setTotale(rs1.getDouble(3));
                 ordine.setDataPagamento(rs1.getDate(4));
                 ordine.setTipoPagamento(rs1.getString(5));
-                ordine.setIdUtente(rs1.getInt(6));
-                ordine.setNumeroCarta(rs1.getString(7));
+                ordine.setNumeroCarta(rs1.getString(6));
+                ordine.setVia(rs1.getString(7));
+                ordine.setCap(rs1.getString(8));
+                ordine.setCitta(rs1.getString(9));
+                ordine.setIdUtente(rs1.getInt(10));
             }
 
             PreparedStatement ps =
@@ -59,7 +62,8 @@ public class OrdineDAO {
     public void doSave(Ordine o){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente, numeroCarta) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente, numeroCarta, via, cap, citta) " +
+                            "VALUES(?,?,?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, o.getTipologia());
             ps.setDouble(2,o.getTotale());
@@ -67,6 +71,9 @@ public class OrdineDAO {
             ps.setString(4,o.getTipoPagamento());
             ps.setInt(5,o.getIdUtente());
             ps.setString(6, o.getNumeroCarta());
+            ps.setString(7, o.getVia());
+            ps.setString(8, o.getCap());
+            ps.setString(9, o.getCitta());
 
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
@@ -109,8 +116,13 @@ public class OrdineDAO {
                 String tipoPag = resultSet.getString(6);
                 int idUtente = resultSet.getInt(7);
                 String numeroCarta = resultSet.getString(8);
+                String via = resultSet.getString(9);
+                String cap = resultSet.getString(10);
+                String citta = resultSet.getString(11);
 
-                PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità, numeroCarta FROM prodotto JOIN appartenere ON codice=codiceProdotto ORDER BY codiceOrdine");
+                PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, " +
+                                                                    "quantità, numeroCarta, numeroCarta, via, cap, citta FROM prodotto " +
+                                                                    "JOIN appartenere ON codice=codiceProdotto ORDER BY codiceOrdine");
                 ResultSet rs = ps.executeQuery();
 
                 ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
@@ -126,7 +138,7 @@ public class OrdineDAO {
                     prodotti.add(p);
                 }
 
-                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, totale, dataPag, numeroCarta, prodotti));
+                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, totale, dataPag, numeroCarta, prodotti, via, cap, citta));
             }
 
         }
