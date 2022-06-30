@@ -103,22 +103,20 @@ public class  UtenteDAO {
         return utenteList;
     }
 
-    public boolean doUpdate(Utente utente){
-        boolean ris = false;
-        try (Connection con = ConPool.getConnection()) {
-            Statement st = con.createStatement();
-            String query = "update Utente set nome='" + utente.getNome() + "', cognome='" +
-                    utente.getCognome() + "', email='" + utente.getEmail() + "', passwordUtente='" + utente.getPasswordUtente() + "', isAdmin='" + utente.isAdmin() + "' where id='" + utente.getId() + "';";
-            st.executeUpdate(query);
-            ris = true;
+    public void doUpdate(Utente utente) throws SQLException{
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Connection con = ConPool.getConnection();
 
-        if(ris)
-            return true;        //a buon fine
-        return false;
+        PreparedStatement ps = con.prepareStatement("update utente set nome= ?, cognome=?, passwordUtente=?, isAdmin=? where id=?");
+
+        ps.setString(1, utente.getNome());
+        ps.setString(2, utente.getCognome());
+        ps.setString(3, utente.getPasswordUtente());
+        ps.setBoolean(4, utente.isAdmin());
+        ps.setInt(5,utente.getId());
+
+        ps.executeUpdate();
+
     }
 
     public Utente doRetrieveByEmail(String email) throws SQLException {
