@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.beans.Carrello;
 import model.beans.ListaDeiDesideri;
+import model.beans.Utente;
 import model.dao.CarrelloDAO;
 import model.dao.ListaDeiDesideriDAO;
 import model.dao.ProdottoDAO;
@@ -17,13 +18,15 @@ public class OperazioniUtenteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String elements = request.getParameter("elements");
         String address = null;
+        HttpSession session = request.getSession();
 
         if(elements.equalsIgnoreCase("Ordini Effettuati")){
 
         }
 
         if(elements.equalsIgnoreCase("Modifica Credenziali")){
-
+            request.setAttribute("ris", true);
+            address = "WEB-INF/result/modificaCredenziali.jsp";
         }
 
         if(elements.equalsIgnoreCase("Lista dei desideri")){
@@ -31,7 +34,7 @@ public class OperazioniUtenteServlet extends HttpServlet {
         }
 
         if(elements.equalsIgnoreCase("Logout")){
-            HttpSession session = request.getSession();
+
             Carrello carrello = (Carrello) session.getAttribute("carrello");
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 //            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");

@@ -102,7 +102,6 @@ public class OrdineDAO {
         }
     }
 
-
     public List<Ordine> doRetrieveAll(){
         List<Ordine> ordini = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
