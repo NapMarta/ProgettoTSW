@@ -25,6 +25,23 @@ public class Ordine {
         this.cap = cap;
     }
 
+    public Ordine(int codice, int idUtente, String tipologia, String tipoPagamento, String numeroCarta,
+                  String via, String cap, String citta, String emailUtente, double totale, Date dataPagamento,
+                  ArrayList<ProdottoQuantita> listaProdotti) {
+        this.codice = codice;
+        this.idUtente = idUtente;
+        this.tipologia = tipologia;
+        this.tipoPagamento = tipoPagamento;
+        this.numeroCarta = numeroCarta;
+        this.via = via;
+        this.cap = cap;
+        this.citta = citta;
+        this.emailUtente = emailUtente;
+        this.totale = totale;
+        this.dataPagamento = dataPagamento;
+        this.listaProdotti = listaProdotti;
+    }
+
     public int getCodice() {
         return codice;
     }
@@ -113,8 +130,16 @@ public class Ordine {
         this.citta = citta;
     }
 
+    public String getEmailUtente() {
+        return emailUtente;
+    }
+
+    public void setEmailUtente(String emailUtente) {
+        this.emailUtente = emailUtente;
+    }
+
     private int codice, idUtente;
-    private String tipologia, tipoPagamento, numeroCarta, via, cap, citta;
+    private String tipologia, tipoPagamento, numeroCarta, via, cap, citta, emailUtente;
     private double totale;
     private Date dataPagamento;
     private ArrayList<ProdottoQuantita> listaProdotti;

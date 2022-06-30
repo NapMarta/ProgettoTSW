@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.*;
 import model.beans.Carrello;
 import model.beans.ListaDeiDesideri;
 import model.beans.Ordine;
+import model.beans.Utente;
 import model.dao.CarrelloDAO;
 import model.dao.ListaDeiDesideriDAO;
 import model.dao.OrdineDAO;
@@ -21,12 +22,14 @@ public class OperazioniUtenteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String elements = request.getParameter("elements");
         String address = null;
+        HttpSession session = request.getSession();
 
         if(elements.equalsIgnoreCase("Ordini Effettuati")){
-            address = "WEB-INF/result/visualizzaz,ioneOrdini.jsp";
-//            OrdineDAO ordineDAO = new OrdineDAO();
-//            List<Ordine> list = ordineDAO.doRetrieveAll();
-
+            address = "WEB-INF/result/visualizzazioneOrdini.jsp";
+            Utente utente = (Utente) session.getAttribute("utente");
+            OrdineDAO ordineDAO = new OrdineDAO();
+            List<Ordine> list = ordineDAO.doRetrieveByIdUtente(utente.getId());
+            request.setAttribute("listOrdini", list);
         }
 
         if(elements.equalsIgnoreCase("Modifica Credenziali")){
@@ -38,7 +41,6 @@ public class OperazioniUtenteServlet extends HttpServlet {
         }
 
         if(elements.equalsIgnoreCase("Logout")){
-            HttpSession session = request.getSession();
             Carrello carrello = (Carrello) session.getAttribute("carrello");
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 //            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");

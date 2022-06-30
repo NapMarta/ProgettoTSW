@@ -4,10 +4,13 @@ import com.mysql.cj.Session;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.beans.Ordine;
 import model.beans.Prodotto;
+import model.dao.OrdineDAO;
 import model.dao.ProdottoDAO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Admin", value = "/Admin")
@@ -47,8 +50,13 @@ public class AdminServlet extends HttpServlet {
                 break;
 
             case "Visualizza ordini":
+                OrdineDAO ordineDAO = new OrdineDAO();
+                ArrayList<Ordine> listaOrdiniUtenti = (ArrayList<Ordine>) ordineDAO.doRetrieveForAdmin();
+                request.setAttribute("listOrdini", listaOrdiniUtenti);
+                address = "WEB-INF/result/ordiniAdmin.jsp";
                 break;
             case "Visualizza utenti":
+
                 break;
 
             case "Logout":

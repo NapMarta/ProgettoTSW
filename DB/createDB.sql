@@ -1,7 +1,7 @@
-drop
+/*drop
 database if exists CookStock;
 create
-database CookStock;
+database CookStock;*/
 
 use CookStock;
 
@@ -29,10 +29,11 @@ create table ordine
 	numeroCarta varchar(27),
     via varchar(50),
     cap varchar(5),
-    citta varchar(10),
-	idUtente int
+    citta varchar(20),
+	idUtente int,
+    foreign key(idUtente) references utente(id)
 );
-
+/*
 create table prodotto
 (
 	codice int auto_increment primary key,
@@ -45,7 +46,7 @@ create table prodotto
                                 tipologia = 'Fritto' OR 
                                 tipologia = 'Dolce') not null,
 	immagine mediumblob
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
 
 create table appartenere
 (

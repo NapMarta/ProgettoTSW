@@ -12,17 +12,18 @@ import java.util.List;
 
 public class OrdineDAO {
 
-    public Ordine doRetrieveById(int codice){
+    public ArrayList<Ordine> doRetrieveByIdUtente(int codiceUtente){
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps1 =
-                    con.prepareStatement("SELECT * FROM ordine WHERE codice=?");
-            ps1.setInt(1, codice);
+                    con.prepareStatement("SELECT * FROM ordine WHERE idUtente=?");
+            ps1.setInt(1, codiceUtente);
             ResultSet rs1 = ps1.executeQuery();
 
-            Ordine ordine = new Ordine();
+            ArrayList<Ordine> list = new ArrayList<>();
 
-            if (rs1.next()) {
+            while (rs1.next()) {
+                Ordine ordine = new Ordine();
                 ordine.setCodice(rs1.getInt(1));
                 ordine.setTipologia(rs1.getString(2));
                 ordine.setTotale(rs1.getDouble(3));
@@ -32,28 +33,30 @@ public class OrdineDAO {
                 ordine.setVia(rs1.getString(7));
                 ordine.setCap(rs1.getString(8));
                 ordine.setCitta(rs1.getString(9));
-                ordine.setIdUtente(rs1.getInt(10));
+
+                PreparedStatement ps =
+                        con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN appartenere ON codice=codiceProdotto WHERE codiceOrdine=?");
+                ps.setInt(1, ordine.getCodice());
+                ResultSet rs = ps.executeQuery();
+                ArrayList<ProdottoQuantita> listaProdotti = new ArrayList<>();
+                while (rs.next()) {
+                    ProdottoQuantita p = new ProdottoQuantita();
+                    p.setCodice(rs.getInt(1));
+                    p.setNome(rs.getString(2));
+                    p.setPrezzo(rs.getDouble(3));
+                    p.setDescrizione(rs.getString(4));
+                    p.setTipologia(rs.getString(5));
+                    p.setImmagine(rs.getBinaryStream(6));
+                    p.setQuantita(rs.getInt(7));
+                    listaProdotti.add(p);
+                }
+                ordine.setListaProdotti(listaProdotti);
+
+                list.add(ordine);
             }
 
-            PreparedStatement ps =
-                    con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN appartenere ON codice=codiceProdotto WHERE codice=?");
-            ps.setInt(1, codice);
-            ResultSet rs = ps.executeQuery();
-            ArrayList<ProdottoQuantita> listaProdotti = new ArrayList<>();
-            if (rs.next()) {
-                ProdottoQuantita p = new ProdottoQuantita();
-                p.setCodice(rs.getInt(1));
-                p.setNome(rs.getString(2));
-                p.setPrezzo(rs.getDouble(3));
-                p.setDescrizione(rs.getString(4));
-                p.setTipologia(rs.getString(5));
-                p.setImmagine(rs.getBinaryStream(6));
-                p.setQuantita(rs.getInt(7));
-                listaProdotti.add(p);
-            }
 
-            ordine.setListaProdotti(listaProdotti);
-            return ordine;
+            return list;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -106,30 +109,33 @@ public class OrdineDAO {
     }
 
 
-    public List<Ordine> doRetrieveAll(){
+    public List<Ordine> doRetrieveForAdmin(){
         List<Ordine> ordini = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM ordine");
+            PreparedStatement ps = con.prepareStatement("SELECT codice, tipologia, totale, dataPagamento, tipoPagamento, " +
+                    "idUtente, numeroCarta, via, cap, citta, email FROM ordine JOIN utente ON idUtente=id");
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
 
                 int codice = resultSet.getInt(1);
                 String tipologia = resultSet.getString(2);
-                double sconto = resultSet.getDouble(3);
-                double totale = resultSet.getDouble(4);
-                Date dataPag = resultSet.getDate(5);
-                String tipoPag = resultSet.getString(6);
-                int idUtente = resultSet.getInt(7);
-                String numeroCarta = resultSet.getString(8);
-                String via = resultSet.getString(9);
-                String cap = resultSet.getString(10);
-                String citta = resultSet.getString(11);
+                double totale = resultSet.getDouble(3);
+                Date dataPag = resultSet.getDate(4);
+                String tipoPag = resultSet.getString(5);
+                int idUtente = resultSet.getInt(6);
+                String numeroCarta = resultSet.getString(7);
+                String via = resultSet.getString(8);
+                String cap = resultSet.getString(9);
+                String citta = resultSet.getString(10);
+                String emailUtente = resultSet.getString(11);
+
+                ResultSet rs = ps.executeQuery();
 
                 PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, " +
                                                                     "quantità, numeroCarta, numeroCarta, via, cap, citta FROM prodotto " +
                                                                     "JOIN appartenere ON codice=codiceProdotto ORDER BY codiceOrdine");
-                ResultSet rs = ps.executeQuery();
+
 
                 ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
                 while(rs.next()){
@@ -144,7 +150,8 @@ public class OrdineDAO {
                     prodotti.add(p);
                 }
 
-                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, totale, dataPag, numeroCarta, prodotti, via, cap, citta));
+                ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, numeroCarta, via,
+                        cap, citta, emailUtente, totale, dataPag, prodotti));
             }
 
         }
@@ -156,4 +163,11 @@ public class OrdineDAO {
     }
 
 
+
+
+
+
+
+
+                ///////MARTAAAAAAAAAAA
 }

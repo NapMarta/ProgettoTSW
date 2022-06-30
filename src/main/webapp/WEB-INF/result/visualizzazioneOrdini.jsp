@@ -1,4 +1,6 @@
-
+<%@ page import="model.beans.Ordine" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.beans.ProdottoQuantita" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -7,37 +9,62 @@
         <title>Visualizzazione Ordine</title>
     </head>
     <body>
-        <c:choose>
-            <c:when>
-                <h3>Non ci sono ordini effettuati</h3>
-            </c:when>
-            <c:otherwise>
-                <c:forEach items="${listOrdini}" var="ordine">
-                    <details class="">
-                       <summary>Data: ${ordine.dataPagamento} / Totale: ${ordine.totale}</summary>
-                        <table>
-                            <thead>
+
+    <%
+        ArrayList<Ordine> list = (ArrayList<Ordine>)request.getAttribute("listOrdini");
+        if(list.size() == 0){
+    %>
+            <h3>Non ci sono ordini effettuati</h3>
+    <%
+        }else{
+            for(Ordine ordine: list){
+    %>
+                <details class="">
+
+
+                   <summary>Data: <%=ordine.getDataPagamento()%> / Totale: <%=ordine.getTotale()%></summary>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrizione</th>
+                                <th>Prezzo</th>
+                                <th>Quantità</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            ArrayList<ProdottoQuantita> listaProdotti = ordine.getListaProdotti();
+                            for(ProdottoQuantita prodottoQuantita: listaProdotti){%>
                                 <tr>
-                                    <th>Prodotto</th>
-                                    <th>Prezzo</th>
-                                    <th>Quantità</th>
+                                    <td data-head="Nome">
+                                        <%=prodottoQuantita.getNome()%>
+                                    </td>
+                                    <td data-head="Descrizione">
+                                        <%=prodottoQuantita.getDescrizione()%>
+                                    </td>
+                                    <td data-head="Prezzo">
+                                        <%=prodottoQuantita.getPrezzo()%>
+                                    </td>
+                                    <td data-head="Quantita">
+                                        <%=prodottoQuantita.getQuantita()%>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${ordine.listaProdotti}" var="items">
-                                    <tr>
-                                        <td data-head="Prodotto">
-<%--                                            foto--%>
-                                        </td>
-                                        <td data-head="Prezzo"></td>
-                                        <td data-head="Quantita"></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </details>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
+                        <%
+                            }
+                        %>
+                            <tr>
+                                <td>
+                                    <form action="">
+                                        <input type="hidden">
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </details>
+
+            <%}%>
+        <%}%>
     </body>
 </html>

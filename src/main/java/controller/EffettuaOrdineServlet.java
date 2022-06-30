@@ -26,7 +26,7 @@ public class EffettuaOrdineServlet extends HttpServlet {
         String address;
         String conferma = request.getParameter("conferma");
         String continua = request.getParameter("continuaAcquisti");
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         Ordine ordine = new Ordine();
 
         if (continua != null) {
@@ -48,6 +48,8 @@ public class EffettuaOrdineServlet extends HttpServlet {
                     Date date = Date.valueOf(dtm.toLocalDate());
                     ordine.setDataPagamento(date);
                     ordine.setTotale(carrello.getTotale());
+                    int id = utente.getId();
+                    ordine.setIdUtente(id);
                     synchronized (session){
                         session.setAttribute("ordine", ordine);
                     }
@@ -59,7 +61,6 @@ public class EffettuaOrdineServlet extends HttpServlet {
                 Carrello carrello = (Carrello) session.getAttribute("carrello");
 
                 OrdineDAO ordineDAO = new OrdineDAO();
-                ordine.setIdUtente(utente.getId());
                 ordine = (Ordine) session.getAttribute("ordine");
                 ordine.setTipologia(request.getParameter("tipologia"));
                 ordine.setNumeroCarta(request.getParameter("numeroCarta"));
@@ -69,7 +70,7 @@ public class EffettuaOrdineServlet extends HttpServlet {
                 ordine.setCap(request.getParameter("cap"));
                 ordine.setCitta(request.getParameter("citta"));
 
-                if(ordine.getTipologia().equals("A") || ordine.getTipologia().equals("D")){
+                if(ordine.getTipologia().equals("A") || ordine.getTipologia().equals("CP")){
                     ordine.setVia(new String());
                     ordine.setCap(new String());
                     ordine.setCitta(new String());
