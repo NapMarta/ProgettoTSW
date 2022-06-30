@@ -130,12 +130,11 @@ public class OrdineDAO {
                 String citta = resultSet.getString(10);
                 String emailUtente = resultSet.getString(11);
 
-                ResultSet rs = ps.executeQuery();
+//                ResultSet rs = ps.executeQuery();
 
-                PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, " +
-                                                                    "quantità, numeroCarta, numeroCarta, via, cap, citta FROM prodotto " +
-                                                                    "JOIN appartenere ON codice=codiceProdotto ORDER BY codiceOrdine");
-
+                PreparedStatement ps1 = con.prepareStatement("SELECT prodotto.codice, nome, prezzo, descrizione, prodotto.tipologia, quantità " +
+                        "FROM (prodotto JOIN appartenere ON prodotto.codice=codiceProdotto) JOIN ordine ON codiceOrdine=ordine.codice WHERE idUtente='" + idUtente +"'");
+                ResultSet rs = ps1.executeQuery();
 
                 ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
                 while(rs.next()){
@@ -145,10 +144,11 @@ public class OrdineDAO {
                     p.setPrezzo(rs.getDouble(3));
                     p.setDescrizione(rs.getString(4));
                     p.setTipologia(rs.getString(5));
-                    p.setImmagine(rs.getBinaryStream(6));
-                    p.setQuantita(rs.getInt(7));
+                    p.setQuantita(rs.getInt(6));
                     prodotti.add(p);
                 }
+
+
 
                 ordini.add(new Ordine(codice, idUtente, tipologia, tipoPag, numeroCarta, via,
                         cap, citta, emailUtente, totale, dataPag, prodotti));
@@ -161,13 +161,4 @@ public class OrdineDAO {
 
         return ordini;
     }
-
-
-
-
-
-
-
-
-                ///////MARTAAAAAAAAAAA
 }

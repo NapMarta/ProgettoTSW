@@ -72,5 +72,9 @@ drop table utente;
 
 update carrello set totale = 0, numeroProdotti = 0;
 
+delete from ordine where codice = 3;
+delete from appartenere where codiceOrdine = 3;
+
+
 SELECT prodotto.codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM (prodotto JOIN contenere ON prodotto.codice=contenere.codiceProdotto) JOIN carrello ON contenere.codiceCarrello = carrello.codice;
 

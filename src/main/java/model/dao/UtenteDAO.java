@@ -11,6 +11,7 @@ import java.util.List;
 
 public class  UtenteDAO {
 
+    /*
     public Utente doRetrieveById(int id){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
@@ -31,7 +32,7 @@ public class  UtenteDAO {
         } catch (SQLException | NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
     public Utente doRetrieveByCredenziali(String email, String password) throws SQLException, NoSuchAlgorithmException {
         try (Connection con = ConPool.getConnection()){
@@ -80,8 +81,8 @@ public class  UtenteDAO {
         }
     }
 
-    public List<Utente> doRetrieveAll(){
-        List<Utente> utenteList = new ArrayList<>();
+    public ArrayList<Utente> doRetrieveAll(){
+        ArrayList<Utente> utenteList = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM utente");
             ResultSet resultSet = ps.executeQuery();

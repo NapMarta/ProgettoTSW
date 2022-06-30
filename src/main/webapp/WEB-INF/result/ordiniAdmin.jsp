@@ -29,7 +29,6 @@
                     <th>Descrizione</th>
                     <th>Prezzo</th>
                     <th>Quantità</th>
-                    <th>Email Utente</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,7 +43,7 @@
                         <%=prodottoQuantita.getDescrizione()%>
                     </td>
                     <td data-head="Prezzo">
-                        <%=prodottoQuantita.getPrezzo()%>
+                        <%=prodottoQuantita.getPrezzo()%>&#8364;
                     </td>
                     <td data-head="Quantita">
                         <%=prodottoQuantita.getQuantita()%>
@@ -53,13 +52,6 @@
                 <%
                     }
                 %>
-                <tr>
-                    <td>
-                        <form action="">
-                            <input type="hidden">
-                        </form>
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </details>

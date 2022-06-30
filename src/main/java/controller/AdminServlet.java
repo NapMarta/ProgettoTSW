@@ -6,8 +6,10 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.beans.Ordine;
 import model.beans.Prodotto;
+import model.beans.Utente;
 import model.dao.OrdineDAO;
 import model.dao.ProdottoDAO;
+import model.dao.UtenteDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,7 +58,10 @@ public class AdminServlet extends HttpServlet {
                 address = "WEB-INF/result/ordiniAdmin.jsp";
                 break;
             case "Visualizza utenti":
-
+                UtenteDAO utenteDAO = new UtenteDAO();
+                ArrayList<Utente> utenteArrayList = utenteDAO.doRetrieveAll();
+                request.setAttribute("listUtenti", utenteArrayList);
+                address = "WEB-INF/result/visualizzaUtenti.jsp";
                 break;
 
             case "Logout":
