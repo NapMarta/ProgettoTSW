@@ -5,11 +5,15 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.beans.Carrello;
 import model.beans.ListaDeiDesideri;
+import model.beans.Ordine;
 import model.dao.CarrelloDAO;
 import model.dao.ListaDeiDesideriDAO;
+import model.dao.OrdineDAO;
 import model.dao.ProdottoDAO;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "OperazioniUtente", value = "/OperazioniUtente")
 public class OperazioniUtenteServlet extends HttpServlet {
@@ -19,6 +23,9 @@ public class OperazioniUtenteServlet extends HttpServlet {
         String address = null;
 
         if(elements.equalsIgnoreCase("Ordini Effettuati")){
+            address = "WEB-INF/result/visualizzaz,ioneOrdini.jsp";
+//            OrdineDAO ordineDAO = new OrdineDAO();
+//            List<Ordine> list = ordineDAO.doRetrieveAll();
 
         }
 

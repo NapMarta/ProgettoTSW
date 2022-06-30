@@ -62,19 +62,20 @@ public class OrdineDAO {
     public void doSave(Ordine o){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO ordine (tipologia, totale, dataPagamento, tipoPagamento, idUtente, numeroCarta, via, cap, citta) " +
+                    "INSERT INTO ordine (idUtente, tipologia, totale, dataPagamento, tipoPagamento, numeroCarta, via, cap, citta) " +
                             "VALUES(?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, o.getTipologia());
-            ps.setDouble(2,o.getTotale());
-            ps.setDate(3,o.getDataPagamento());
-            ps.setString(4,o.getTipoPagamento());
-            ps.setInt(5,o.getIdUtente());
+
+            ps.setInt(1, o.getIdUtente());
+            ps.setString(2, o.getTipologia());
+            ps.setDouble(3,o.getTotale());
+            ps.setDate(4,o.getDataPagamento());
+            ps.setString( 5,o.getTipoPagamento());
             ps.setString(6, o.getNumeroCarta());
             ps.setString(7, o.getVia());
             ps.setString(8, o.getCap());
             ps.setString(9, o.getCitta());
 
-            if (ps.executeUpdate() != 1) {
+            if(ps.executeUpdate() != 1){
                 throw new RuntimeException("INSERT error.");
             }
 
@@ -91,11 +92,13 @@ public class OrdineDAO {
                 ps1.setInt(1,p.getCodice());
                 ps1.setInt(2, o.getCodice());
                 ps1.setInt(3, p.getQuantita());
+
+                if (ps1.executeUpdate() != 1) {
+                    throw new RuntimeException("INSERT error.");
+                }
+
             }
 
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("INSERT error.");
-            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
