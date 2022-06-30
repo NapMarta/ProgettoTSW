@@ -30,8 +30,7 @@ create table ordine
     via varchar(50),
     cap varchar(5),
     citta varchar(10),
-	idUtente int not null,
-    foreign key(idUtente) references utente(id)
+	idUtente int
 );
 
 create table prodotto
