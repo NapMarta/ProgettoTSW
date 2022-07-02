@@ -31,7 +31,7 @@ header{
     padding: 5px 10px 5px 10px;
 }
 
-td h2{
+#nomePub{
     font-family: 'Shadows Into Light', cursive, sans-serif;
     font-size: 30px;
     text-align: center;
@@ -87,7 +87,7 @@ td h2{
 }
 
 .search{
-    min-width: 180px;
+    min-width: 250px;
 }
 
 #search-button{
@@ -167,6 +167,7 @@ a img:hover, .notification img:hover, button img:hover{
     background-color: #f7f7f7;
     min-width: 160px;
     bottom: 50px;
+    right: 10%;
     z-index: 2;
     padding: 0px;
 }
@@ -241,4 +242,10 @@ a{
 
 .log {
     margin-top: 10px;
+}
+
+@media screen and (max-width: 470px) {
+    .dropup-content{
+        right: 2%;
+    }
 }

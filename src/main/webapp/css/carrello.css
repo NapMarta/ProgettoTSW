@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+body{
+    background-color: #f7f7f7;
+}
+
+.title{
+    font-family: 'Shadows Into Light', cursive, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.formConferma{
+    right: 0;
+    position: absolute;
+    color: #C29436;
+    margin-right: 5px;
+}
+
+.formConferma input{
+    background-color: #f7f7f7;
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    color: black;
+}
+
+.formProdotto{
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.formProdotto button{
+    background-color: #f7f7f7;
+    border: none;
+    margin: -15px 5%;
+}
+
+.cancella{
+    right: 0;
+    position: absolute;
+    margin-right: 5px;
+}
+
+#imgProdotto{
+    width: 100px;
+}
+
+#RimuoviDallaLista{
+    margin: -15px 5%;
+}
+
+
+@media screen and (max-width: 500px){
+    .formProdotto button{
+        margin: 5px;
+    }
+}

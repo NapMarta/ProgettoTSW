@@ -7,20 +7,22 @@
 <head>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Liste Desideri</title>
+    <link rel="stylesheet" href="css/carrello.css"/>
 </head>
 <body>
-    <p>La mia lista dei desideri</p>
-    <form action="ListaDesideri" method="post">
+    <p class="title">La mia lista dei desideri</p>
+    <form action="ListaDesideri" method="post" class="formProdotto">
         <%
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
             ArrayList<Prodotto> list = listaDeiDesideri.getListaProdotti();
             for (Prodotto prodotto: list){
         %>
-            <p><img src="./PhotoController?codice=<%=prodotto.getCodice()%>"></p>
-            <p><%=prodotto.getNome()%></p>
-            <p><%=prodotto.getPrezzo()%>&#8364;</p>
+            <div><img id="imgProdotto" src="./PhotoController?codice=<%=prodotto.getCodice()%>"></div>
+            <br>
+            <span><%=prodotto.getNome()%></span>
+            <span><%=prodotto.getPrezzo()%>&#8364;</span>
             <input type="hidden" name="codice" value="<%=prodotto.getCodice()%>">
-            <button type="submit" id="RimuoviDallaLista" name="cancella" value="cancella">
+            <button type="submit" id="RimuoviDallaLista" name="cancella" value="cancella" class="cancella">
                 <img src="https://img.icons8.com/fluency-systems-filled/30/000000/trash.png"/>
             </button>
             <hr>

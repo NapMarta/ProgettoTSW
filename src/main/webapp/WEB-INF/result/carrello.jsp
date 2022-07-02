@@ -7,11 +7,12 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/carrello.css"/>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <script src="JavaScript/carrello.js" type="text/javascript"></script>
 </head>
 <body>
 
-
+    <p class="title">Il mio carrello</p>
     <%  session = request.getSession(false);
         Carrello carrello = (Carrello) session.getAttribute("carrello");
         ArrayList<ProdottoQuantita> list = carrello.getListaProdotti();
@@ -20,19 +21,19 @@
         <c:when  test = "${list != 'null' || list.size() !='0'}">
             <% for (ProdottoQuantita p: list) { %>
 
-                <form action="Aggiungi" method="post">
-                    <p><%= p.getNome()%></p>
+                <form action="Aggiungi" method="post" class="formProdotto">
+                    <span><%= p.getNome()%></span>
                     <input type="hidden" name="cod" value="<%=p.getCodice()%>">
                     <button name="quantita" value="meno">
                         <img src="https://img.icons8.com/ios-glyphs/20/000000/minus.png"/>
                     </button>
-                    <p><%= p.getQuantita()%></p>
+                    <span><%= p.getQuantita()%></span>
                     <button name="quantita" value="piu">
                         <img src="https://img.icons8.com/ios-glyphs/20/000000/macos-maximize.png"/>
                     </button>
 
-                    <p><%= p.getPrezzo()%>&#8364;</p>
-                    <button type="submit" id="RimuoviDalCarrello" name="cancella" value="cancella">
+                    <span><%= p.getPrezzo()%>&#8364;</span>
+                    <button type="submit" id="RimuoviDalCarrello" name="cancella" value="cancella" class="cancella">
                         <img src="https://img.icons8.com/fluency-systems-filled/30/000000/trash.png"/>
                     </button>
                     <hr>
@@ -40,7 +41,7 @@
 
 
             <%}%>
-            <form action="EffettuaOrdine">
+            <form action="EffettuaOrdine" class="formConferma">
                 <p>Totale: <%= carrello.getTotale()%>&#8364;</p>
                 <p>Numero prodotti: <%= carrello.getNumeroProdotti()%></p>
                 <input type="submit" name="conferma" value="Conferma ordine">
@@ -49,9 +50,6 @@
         </c:when>
 
     </c:choose>
-
-
-
 
 
 </body>

@@ -8,7 +8,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Homepage</title>
     <link href="css/homepage.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="css/catalogo.css">
+    <link rel="stylesheet" href="css/catalogo.css"/>
 </head>
 <body>
 
