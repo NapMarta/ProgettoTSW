@@ -6,9 +6,15 @@
 
 <html>
     <head>
+        <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
         <title>Visualizzazione Ordine</title>
+        <link rel="stylesheet" href="css/elenco.css"/>
+
     </head>
     <body>
+
+    <p class="title">I miei ordini</p>
+
 
     <%
         ArrayList<Ordine> list = (ArrayList<Ordine>)request.getAttribute("listOrdini");
