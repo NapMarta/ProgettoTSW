@@ -19,7 +19,7 @@
                 <tr>
                     <td>
                         <label for="nomeProdotto">Nome Prodotto</label><br>
-                        <input type="text" id="nomeProdotto" name="nomeProdotto">
+                        <input type="text" id="nomeProdotto" name="nomeProdotto" placeholder="Nome Prodotto">
                     </td>
                     <td>
                         <label for="prezzoProdotto">Prezzo</label><br>
@@ -29,7 +29,7 @@
                 <tr>
                     <td>
                         <label for="descrizione">Descrizione</label><br>
-                        <input type="text" id="descrizione" name="descrizione">
+                        <input type="text" id="descrizione" name="descrizione" placeholder="Descrizione">
                     </td>
                     <td>
                         <label for="tipologia">Tipologia</label><br>
@@ -55,8 +55,8 @@
             </table>
         </form>
 
-        <form action="AggiungiProdotto">
-            <button type="submit" value="Home" name="home" id="home">
+        <form action="Ordini">
+            <button type="submit" value="Home" name="homeAdmin" id="home">
                 <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
             </button>
         </form>

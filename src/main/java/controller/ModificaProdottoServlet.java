@@ -25,12 +25,8 @@ public class ModificaProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String modifica = request.getParameter("modifica");
-        String home = request.getParameter("home");
         String address = null;
 
-        if(home != null){
-            address = "index.jsp";
-        }
 
         if(modifica != null){
             Prodotto prodotto = new Prodotto();

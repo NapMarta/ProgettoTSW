@@ -46,7 +46,7 @@
                     <tr>
                         <td>
                             <input type="file" name="immagine" size="50"><br><br>
-                            <p><img src="./PhotoController?codice=<%= prodotto.getCodice()%>"  name="immagineVecchia"></p><br/>
+                            <p><img id="imgProdotto" src="./PhotoController?codice=<%= prodotto.getCodice()%>"  name="immagineVecchia"></p><br/>
 
                         </td>
                     </tr>
@@ -57,8 +57,8 @@
                     </tr>
                 </table>
             </form>
-            <form action="ModificaProdotto">
-                <button type="submit" value="Home" name="home" id="home">
+            <form action="Ordini">
+                <button type="submit" value="Home" name="homeAdmin" id="home">
                     <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
                 </button>
             </form>

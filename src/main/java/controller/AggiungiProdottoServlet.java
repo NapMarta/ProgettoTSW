@@ -20,7 +20,6 @@ public class AggiungiProdottoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String home = request.getParameter("home");
         String conferma = request.getParameter("conferma");
         String address  = null;
 
@@ -51,11 +50,6 @@ public class AggiungiProdottoServlet extends HttpServlet {
             request.setAttribute("prodottoList", list);
             address = "WEB-INF/result/AdminView.jsp";
         }
-
-        if(home != null){
-            address = "index.jsp";
-        }
-
 
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

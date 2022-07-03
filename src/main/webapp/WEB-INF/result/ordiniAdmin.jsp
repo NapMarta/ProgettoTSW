@@ -63,7 +63,7 @@
     <%}%>
 
     <form action="Ordini">
-        <button type="submit" value="Home" name="home" id="home">
+        <button type="submit" value="Home" name="homeAdmin" id="home">
             <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
         </button>
     </form>

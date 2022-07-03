@@ -68,7 +68,7 @@
 
         <div>
             <form action="Ordini">
-                <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+                <input type="submit" name="home" value="Ritorna agli acquisti">
             </form>
         </div>
     </body>

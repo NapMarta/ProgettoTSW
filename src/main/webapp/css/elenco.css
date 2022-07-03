@@ -20,3 +20,8 @@ details{
 details th{
     color: white;
 }
+
+#home{
+    border: none;
+    background-color: white;
+}
