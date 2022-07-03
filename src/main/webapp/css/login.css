@@ -13,7 +13,7 @@ body{
     margin: 30vh auto;
     border: 2px solid black;
     border-radius: 10px;
-
+    box-shadow: 20px 20px 25px #d1d1d1;
 }
 
 p.titolo{
@@ -119,9 +119,15 @@ input:focus {
     outline: none;
 }
 
-/*small screen, laptop, tv*/
-@media screen and (min-width: 1011px){
+#home{
+    border: none;
+    background-color: #C29436;
+    margin-right: 0px;
+    margin-left: 80%;
+}
 
+.error{
+    color: #ec3f41;
 }
 
 

@@ -10,10 +10,22 @@
 <body>
     <div class="parent">
         <p class="titolo">Login</p>
+
         <form action="Login" method="post" class="child">
-            <label for="email">Email</label><br>            <!--admin@gmail.com-->
+            <%
+                Boolean error = (Boolean) request.getAttribute("error");
+                if(error != null){%>
+                    <span class="error">
+                       Email e/o password Errati
+                    </span><br>
+            <%}%>
+            <button type="submit" value="Home" name="home" id="home">
+                <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+            </button>
+            <br><br>
+            <label for="email">Email</label><br>
             <input type="email" id="email" name="email" placeholder="Email"><br>
-            <label for="password">Password</label><br>      <!--admin-->
+            <label for="password">Password</label><br>
             <div class="visible">
                 <input type="password" id="password" name="password" id="password" placeholder="Password">
                 <button type="button"  class="btn" onclick="visible('password', 'psw-linea');">
@@ -23,10 +35,8 @@
             </div>
             <br><br>
             <input type="submit" value="Accedi" name="accedi" id="accedi">
-            <button type="submit" value="Home" name="home" id="home">
-                <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
-            </button>
-            <br><br>
+            <br>
+
             <input type="submit" value="Sei un nuovo utente? Registrati" name="registrati" id="registrati">
             <br>
         </form>

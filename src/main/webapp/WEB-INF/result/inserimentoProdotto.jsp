@@ -49,15 +49,16 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" value="Conferma">
-                    </td>
-                    <td>
-                        <button type="submit" value="Home" name="home" id="home">
-                            <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
-                        </button>
+                        <input type="submit" value="Conferma" name="conferma">
                     </td>
                 </tr>
             </table>
+        </form>
+
+        <form action="AggiungiProdotto">
+            <button type="submit" value="Home" name="home" id="home">
+                <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+            </button>
         </form>
     </div>
 </body>

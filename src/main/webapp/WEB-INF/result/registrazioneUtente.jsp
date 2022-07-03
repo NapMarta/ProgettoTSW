@@ -35,7 +35,7 @@
                     <div class="small"></div>
                 </td>
                 <td>
-                    <label for="pswd">Password<br></label>
+                    <label for="pswd">Password<br><br></label>
                     <span class="visible">
                         <input type="password" placeholder="Inserisci Password" name="pswd" id="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
@@ -44,7 +44,6 @@
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
                         </button>
                     </span>
-
                 </td>
             </tr>
             <tr>
@@ -73,16 +72,16 @@
                 </td>
             <tr>
                 <td>
-                    <input type="submit" id="registrati" value="Registrati ora">
-                    <button type="submit" value="Home" name="home" id="home">
-                        <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
-                    </button>
+                    <input type="submit" name="registrazione" id="registrati" value="Registrati ora">
                 </td>
             </tr>
         </form>
     </table>
 
     <form action="Registrazione" class="child1">
+        <button type="submit" value="Home" name="home" id="home">
+            <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+        </button>
         <p class="testo">Hai già un account?<input type="submit" id="accedi" name="login" value="Login"></p>
     </form>
 

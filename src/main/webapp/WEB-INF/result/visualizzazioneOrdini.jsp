@@ -59,13 +59,6 @@
                         <%
                             }
                         %>
-                            <tr>
-                                <td>
-                                    <form action="">
-                                        <input type="hidden">
-                                    </form>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </details>
@@ -74,7 +67,9 @@
         <%}%>
 
         <div>
-            <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+            <form action="Ordini">
+                <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+            </form>
         </div>
     </body>
 </html>

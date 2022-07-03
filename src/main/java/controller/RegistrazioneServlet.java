@@ -27,13 +27,21 @@ public class RegistrazioneServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
+        String registrazione = request.getParameter("registrazione");
+        String home = request.getParameter("home");
         String address = null;
         HttpSession session = request.getSession(true);
 
         if(login != null){
             address = "/WEB-INF/result/login.jsp";
         }
-        else {
+
+        if(home != null){
+            address = "index.jsp";
+        }
+
+
+        if (registrazione != null){
             Utente utente = new Utente();
             UtenteDAO service = new UtenteDAO();
             try {

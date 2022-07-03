@@ -15,7 +15,7 @@ body{
     color: black;
     position: absolute;
     top: 0;
-    /*padding: 0% 0% 0% 5%;*/
+    box-shadow: 20px 20px 25px #d1d1d1;
 }
 
 
@@ -159,46 +159,6 @@ input:focus {
     line-height: 35px;
 }
 
-/*#message {*/
-/*    display:none;*/
-/*    background: #f1f1f1;*/
-/*    color: #000;*/
-/*    position: relative;*/
-/*    padding: 20px;*/
-/*    margin-top: 10px;*/
-/*}*/
-
-/*#message p {*/
-/*    padding: 10px 35px;*/
-/*    font-size: 18px;*/
-/*}*/
-
-/*!* Add a green text color and a checkmark when the requirements are right *!*/
-/*.valid {*/
-/*    color: green;*/
-/*}*/
-
-/*.valid:before {*/
-/*    position: relative;*/
-/*    left: -35px;*/
-/*    content: "✔";*/
-/*}*/
-
-/*!* Add a red text color and an "x" when the requirements are wrong *!*/
-/*.invalid {*/
-/*    color: red;*/
-/*}*/
-
-/*.invalid:before {*/
-/*    position: relative;*/
-/*    left: -35px;*/
-/*    content: "✖";*/
-/*}*/
-
-
-
-/*nuovo css*/
-
 ul, li {
     margin:0;
     padding:0;
@@ -252,6 +212,19 @@ ul, li {
     display:none;
 }
 
+#home{
+    border: none;
+    background-color: #C29436;
+    margin-right: 0px;
+    margin-left: 20%;
+}
+
+@media screen and (max-width: 1500px){
+    table{
+        margin: 4vh 10vw;
+    }
+}
+
 
 /*modile device*/
 @media screen and (max-width: 1100px){
@@ -262,18 +235,24 @@ ul, li {
     }
 
     table{
-        margin-left: 15%;
+        margin-left: 25%;
     }
 }
 
-@media screen and (max-width: 670px){
+@media screen and (max-width: 800px){
+    table{
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 600px){
 
     .parent{
-        margin: 20% 0%;
+        margin-left: 0.5%;
     }
 
     table{
-        margin: auto 0%;
+        margin-left: 5%;
     }
 
     #cognome, #nome, #email, .visible{
@@ -283,8 +262,14 @@ ul, li {
     input[type=password], .active{
         width: 100px;
     }
+}
 
-    p.testo{
-        margin-top: 0px;
+@media screen and (max-width: 360px){
+    #cognome, #nome, #email, .visible{
+        width: 100px;
+    }
+
+    input[type=password], .active{
+        width: 70px;
     }
 }

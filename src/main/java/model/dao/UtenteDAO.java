@@ -51,6 +51,7 @@ public class  UtenteDAO {
                 p.setAdmin(rs.getBoolean(6));
                 return p;
             }
+
             return null;
         }catch (SQLException e){
             throw new RuntimeException();

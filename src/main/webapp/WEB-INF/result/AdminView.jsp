@@ -34,7 +34,7 @@
                             <p class="name">${prodotto.nome}</p>
                             <p>${prodotto.tipologia}</p>
                             <p>${prodotto.descrizione}</p>
-                            <p class="prezzo">${prodotto.prezzo}&#8364;<</p>
+                            <p class="prezzo">${prodotto.prezzo}&#8364;</p>
                         </div>
                         <div class="btnProdotto">
                             <input type="hidden" name="codice" value="${prodotto.codice}">

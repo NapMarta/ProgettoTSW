@@ -20,30 +20,43 @@ public class AggiungiProdottoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nomeProdotto = request.getParameter("nomeProdotto");
-        Double prezzoProdotto = Double.parseDouble(request.getParameter("prezzoProdotto"));
-        String descrizione = request.getParameter("descrizione");
-        String tipologia = request.getParameter("tipologia");
-        Part immagine = request.getPart("immagine");
-        InputStream stream = null;
+        String home = request.getParameter("home");
+        String conferma = request.getParameter("conferma");
+        String address  = null;
 
-        if(immagine != null){
-            stream = immagine.getInputStream();
+        if(conferma != null){
+            String nomeProdotto = request.getParameter("nomeProdotto");
+
+            Double prezzoProdotto = Double.parseDouble(request.getParameter("prezzoProdotto"));
+            String descrizione = request.getParameter("descrizione");
+            String tipologia = request.getParameter("tipologia");
+            Part immagine = request.getPart("immagine");
+            InputStream stream = null;
+
+            if(immagine != null){
+                stream = immagine.getInputStream();
+            }
+
+            Prodotto prodotto = new Prodotto();
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            prodotto.setDescrizione(descrizione);
+            prodotto.setImmagine(stream);
+            prodotto.setNome(nomeProdotto);
+            prodotto.setTipologia(tipologia);
+            prodotto.setPrezzo(prezzoProdotto);
+
+            prodotto.setCodice(prodottoDAO.doSave(prodotto));
+
+            List<Prodotto> list = prodottoDAO.doRetrieveAll();
+            request.setAttribute("prodottoList", list);
+            address = "WEB-INF/result/AdminView.jsp";
         }
 
-        Prodotto prodotto = new Prodotto();
-        ProdottoDAO prodottoDAO = new ProdottoDAO();
-        prodotto.setDescrizione(descrizione);
-        prodotto.setImmagine(stream);
-        prodotto.setNome(nomeProdotto);
-        prodotto.setTipologia(tipologia);
-        prodotto.setPrezzo(prezzoProdotto);
+        if(home != null){
+            address = "index.jsp";
+        }
 
-        prodotto.setCodice(prodottoDAO.doSave(prodotto));
 
-        List<Prodotto> list = prodottoDAO.doRetrieveAll();
-        request.setAttribute("prodottoList", list);
-        String address = "WEB-INF/result/AdminView.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);

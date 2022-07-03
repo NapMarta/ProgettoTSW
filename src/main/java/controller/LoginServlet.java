@@ -33,13 +33,19 @@ public class LoginServlet extends HttpServlet {
 
         String accedi = request.getParameter("accedi");
         String registrazione = request.getParameter("registrati");
+        String home = request.getParameter("home");
         String address = null;
         HttpSession session = request.getSession(true);
 
         if(registrazione != null){
             address = "WEB-INF/result/registrazioneUtente.jsp";
         }
-        else{
+
+        if(home != null){
+            address = "index.jsp";
+        }
+
+        if(accedi != null){
             Utente utente = new Utente();
             UtenteDAO utenteDAO = new UtenteDAO();
 
@@ -59,44 +65,49 @@ public class LoginServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-            if(utente.isAdmin()){
-                address = "WEB-INF/result/AdminView.jsp";
-                ProdottoDAO prodottoDAO = new ProdottoDAO();
-                List<Prodotto> prodottoList = prodottoDAO.doRetrieveAll();
-                request.setAttribute("utente", utente);
-                request.setAttribute("prodottoList", prodottoList);
-            }
-            else {
-                ProdottoDAO prodottoDAO = new ProdottoDAO();
-                List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
-                request.setAttribute("prodottoList", list);
-                session.setAttribute("utente", utente);
-
-                CarrelloDAO carrelloDAO = new CarrelloDAO();
-                Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
-
-                synchronized (session) {
-                    session.setAttribute("carrello", carrello);
+            if(utente != null){
+                if(utente.isAdmin()){
+                    address = "WEB-INF/result/AdminView.jsp";
+                    ProdottoDAO prodottoDAO = new ProdottoDAO();
+                    List<Prodotto> prodottoList = prodottoDAO.doRetrieveAll();
+                    request.setAttribute("utente", utente);
+                    request.setAttribute("prodottoList", prodottoList);
                 }
+                else {      // utente
+                    ProdottoDAO prodottoDAO = new ProdottoDAO();
+                    List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+                    request.setAttribute("prodottoList", list);
+                    session.setAttribute("utente", utente);
 
-                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
-                ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
+                    CarrelloDAO carrelloDAO = new CarrelloDAO();
+                    Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
 
-                listaDeiDesideri.setIdUtente(utente.getId());
+                    synchronized (session) {
+                        session.setAttribute("carrello", carrello);
+                    }
+
+                    ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+                    ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
+
+                    listaDeiDesideri.setIdUtente(utente.getId());
+
+                    synchronized (session){
+                        session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                    }
+
+                    address = "WEB-INF/result/homepage.jsp";
+                }
 
                 synchronized (session){
-                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                    session.setAttribute("utente", utente);
                 }
-
-                address = "WEB-INF/result/homepage.jsp";
             }
-
-            synchronized (session){
-                session.setAttribute("utente", utente);
+            else {
+                request.setAttribute("error", true);
+                address =  "WEB-INF/result/login.jsp";
             }
-
-
         }
+
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
