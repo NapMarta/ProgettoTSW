@@ -248,4 +248,12 @@ a{
     .dropup-content{
         right: 2%;
     }
+
+    #search-input{
+        width: 100px;
+    }
+
+    .search{
+        min-width: 170px;
+    }
 }

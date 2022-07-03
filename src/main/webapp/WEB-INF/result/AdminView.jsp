@@ -29,12 +29,12 @@
             <form action="Admin" method="post">
                 <figure>
                     <figcaption class="column">
-                        <p><img src="./PhotoController?codice=${prodotto.codice}"></p><br>
+                        <p><img class="imgProdotto" src="./PhotoController?codice=${prodotto.codice}"></p><br>
                         <div class="descrizione">
-                            <p>${prodotto.nome}</p>
+                            <p class="name">${prodotto.nome}</p>
                             <p>${prodotto.tipologia}</p>
                             <p>${prodotto.descrizione}</p>
-                            <p>${prodotto.prezzo}</p>
+                            <p class="prezzo">${prodotto.prezzo}&#8364;<</p>
                         </div>
                         <div class="btnProdotto">
                             <input type="hidden" name="codice" value="${prodotto.codice}">

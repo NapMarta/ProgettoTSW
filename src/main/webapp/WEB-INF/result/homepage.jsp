@@ -97,7 +97,7 @@
         <form action="Aggiungi" method="post">
             <figure>
                 <figcaption class="column">
-                    <p><img src="./PhotoController?codice=${prodotto.codice}"></p>
+                    <p><img class="imgProdotto" src="./PhotoController?codice=${prodotto.codice}"></p>
                     <div class="btnProdotto">
                         <button type="submit" id="AggiungiCarrello" name="aggiungiCarrello" value="carrello">
                             <img src="https://img.icons8.com/ios-glyphs/30/C29436/add-shopping-cart.png"/>
@@ -107,7 +107,7 @@
                         </button>
                     </div>
                     <div class="descrizione">
-                        <p>${prodotto.nome}</p>
+                        <p class="name">${prodotto.nome}</p>
                         <p>${prodotto.descrizione}</p>
                         <p class="prezzo">${prodotto.prezzo}&#8364;</p>
                         <input type="hidden" name="codice" value="${prodotto.codice}">

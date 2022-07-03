@@ -59,8 +59,13 @@
                 </tbody>
             </table>
         </details>
-
         <%}%>
     <%}%>
+
+    <div>
+        <button type="submit" value="Home" name="home" id="home">
+            <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+        </button>
+    </div>
 </body>
 </html>

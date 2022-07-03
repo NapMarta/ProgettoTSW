@@ -24,6 +24,7 @@ body{
     -moz-border-radius: 6px;
     border-radius: 6px;
     color: black;
+    padding: 5px;
 }
 
 .formProdotto{

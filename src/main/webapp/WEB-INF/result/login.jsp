@@ -22,8 +22,13 @@
                 </button>
             </div>
             <br><br>
-            <input type="submit" value="Accedi" name="accedi" id="accedi"><br><br>
+            <input type="submit" value="Accedi" name="accedi" id="accedi">
+            <button type="submit" value="Home" name="home" id="home">
+                <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+            </button>
+            <br><br>
             <input type="submit" value="Sei un nuovo utente? Registrati" name="registrati" id="registrati">
+            <br>
         </form>
     </div>
 

@@ -25,7 +25,7 @@
         }else{
             for(Ordine ordine: list){
     %>
-                <details class="">
+                <details>
 
 
                    <summary>Data: <%=ordine.getDataPagamento()%> / Totale: <%=ordine.getTotale()%></summary>
@@ -72,5 +72,9 @@
 
             <%}%>
         <%}%>
+
+        <div>
+            <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+        </div>
     </body>
 </html>

@@ -44,14 +44,15 @@ hr{
     border: solid 2px #f7f7f7;
 }
 
-footer{
+footer {
     font-size: 15px;
     text-align: center;
-    position: relative;
-    margin-top: 40vh;
+    position: absolute;
     margin-bottom: 0px;
     padding-bottom: 0px;
     line-height: 5px;
-    width:100%;
+    width: 100%;
     overflow: hidden;
+    bottom: 0;
+    z-index: -5;
 }

@@ -28,5 +28,8 @@
             <hr>
         <%}%>
     </form>
+    <form action="EffettuaOrdine" class="formConferma">
+        <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">
+    </form>
 </body>
 </html>

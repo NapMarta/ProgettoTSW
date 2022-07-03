@@ -33,7 +33,8 @@ public class OperazioniUtenteServlet extends HttpServlet {
         }
 
         if(elements.equalsIgnoreCase("Modifica Credenziali")){
-
+            request.setAttribute("ris", true);
+            address = "WEB-INF/result/modificaCredenziali.jsp";
         }
 
         if(elements.equalsIgnoreCase("Lista dei desideri")){
@@ -43,13 +44,10 @@ public class OperazioniUtenteServlet extends HttpServlet {
         if(elements.equalsIgnoreCase("Logout")){
             Carrello carrello = (Carrello) session.getAttribute("carrello");
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
-//            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
-
 
             CarrelloDAO carrelloDAO = new CarrelloDAO();
-//            carrelloDAO.doDeleteById(carrello.getIdUtente());
-            carrelloDAO.doUpdate(carrello);
 
+            carrelloDAO.doUpdate(carrello);
             ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
             listaDeiDesideriDAO.doUpdate(listaDeiDesideri);
 

@@ -51,6 +51,11 @@
                     <td>
                         <input type="submit" value="Conferma">
                     </td>
+                    <td>
+                        <button type="submit" value="Home" name="home" id="home">
+                            <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+                        </button>
+                    </td>
                 </tr>
             </table>
         </form>
