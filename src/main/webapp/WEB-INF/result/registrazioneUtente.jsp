@@ -29,13 +29,13 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    <label for="email">Email</label><br>
+                <td><br>
+                    <label for="email" class="email">Email</label><br>
                     <input type="email" placeholder="Inserisci Email" name="email" id="email" required>
                     <div class="small"></div>
                 </td>
                 <td>
-                    <label for="pswd">Password<br><br></label>
+                    <label for="pswd" class="tPsw">Password<br></label>
                     <span class="visible">
                         <input type="password" placeholder="Inserisci Password" name="pswd" id="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
@@ -47,7 +47,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td><br>
                     <label for="psw-repeat" class="tPsw">Ripetere Password<br></label>
                     <span class="visible">
                         <input type="password" placeholder="Ripetere Password" name="psw-repeat" id="psw-repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"

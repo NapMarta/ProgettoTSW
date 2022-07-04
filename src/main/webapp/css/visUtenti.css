@@ -11,15 +11,24 @@ body{
     padding-top: 60px;
 }
 
-table{
-    margin-left: 30vw;
-    border: 1px solid;
-    box-shadow: 20px 20px 25px #d1d1d1;
-
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 25%;
 }
 
-th{
-    color: #C29436;
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #C29436;
+    color: white;
 }
 
 #home{
