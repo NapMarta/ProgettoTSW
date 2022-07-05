@@ -56,7 +56,7 @@
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>
                         </button>
-                    </span><br>
+                    </span><br><br>
                     <div id="CheckPasswordMatch"></div>
                 </td>
                 <td>

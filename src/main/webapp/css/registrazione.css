@@ -173,7 +173,7 @@ ul, li {
     border-radius: 5px;
     box-shadow: 0 1px 3px #ccc;
     border: 1px solid #ddd;
-    margin-top: -33px;
+    margin-top: -45px;
     z-index: 100;
     display:none;
 }
@@ -212,7 +212,7 @@ ul, li {
     border: none;
     background-color: #C29436;
     margin-right: 0px;
-    margin-left: 20%;
+    margin-left: 10vw;
 }
 
 .psw{
@@ -271,7 +271,7 @@ ul, li {
     }
 
     #pswd_info{
-        margin-top: -45px;
+        margin-top: -60px;
     }
 }
 

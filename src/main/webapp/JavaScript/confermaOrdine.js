@@ -2,7 +2,7 @@ $(document).ready(function (){
 
     $("#domicilio").click(function () {
 
-        $("#indirizzo").css("display","block");
+        $("#indirizzo").css("display","inline");
         const x = $('#totale').text();
         var totale = parseFloat(x);
 
@@ -27,7 +27,7 @@ $(document).ready(function (){
 
 
     $("#carta").click(function () {
-        $("#numeroCarta").css("display","block");
+        $("#numeroCarta").css("display","inline");
     })
 
     $("#contanti, #paypal").click(function () {
