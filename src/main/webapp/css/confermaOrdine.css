@@ -1,7 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+body{
+    background-color: #f7f7f7;
+}
+
+.parent{
+    background-color: #C29436;
+    height: 50%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 30vh auto;
+    border: 0px solid black;
+    border-radius: 10px;
+    box-shadow: 20px 20px 25px #d1d1d1;
+}
+
+#home{
+    border: none;
+    background-color: #C29436;
+    margin-top: 50px;
+}
+
+input[type=text]{
+    background-color: white;
+    padding: 6px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+input[type=submit]{
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+p.titolo{
+    text-align: center;
+    font-family: "Shadows Into Light", cursive, sans-serif;
+    font-size: 35px;
+}
+
+
+hr{
+    color: black;
+    background-color: black;
+    border: 0;
+    height: 1px;
+    width: 50%;
+    text-align: center;
+}
+
+
+
 #indirizzo{
     display: none;
 }
 
 #numeroCarta{
     display: none;
+}
+
+
+/*iPad, tablet*/
+@media screen and (max-width: 1010px){
+    .parent {
+        height: 40%;
+        width: 60%;
+    }
+
+    p{
+        font-size: 30px;
+    }
+}
+
+/*mobile device*/
+@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
+    .parent {
+        height: 40%;
+        width: 100%;
+        padding: 0px;
+        border-collapse: collapse;
+    }
+
+    label{
+        font-size: 15px;
+    }
+
+    p{
+        font-size: 30px;
+    }
 }
