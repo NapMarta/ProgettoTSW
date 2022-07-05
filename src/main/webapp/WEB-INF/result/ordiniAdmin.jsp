@@ -7,7 +7,7 @@
 <html>
 <head>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
-    <title>Visualizzazione Ordine</title>
+    <title>Ordini Utenti</title>
     <link rel="stylesheet" href="css/elenco.css"/>
 </head>
 <body>
@@ -24,7 +24,7 @@
         for(Ordine ordine: list){
     %>
         <details>
-            <summary>Data: <%=ordine.getDataPagamento()%> Totale: <%=ordine.getTotale()%>/
+            <summary>Data: <%=ordine.getDataPagamento()%> Totale: <%=ordine.getTotale()%>&#8364;/
                 Tipo Pagamento:<%=ordine.getTipoPagamento()%> Carta: <%=ordine.getNumeroCarta()%> Email Utente: <%=ordine.getEmailUtente()%></summary>
             <table>
                 <thead>

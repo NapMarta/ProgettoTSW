@@ -64,7 +64,7 @@ hr{
     width: 200px;
 }
 
-input[type=submit]#registrati{
+input[type=submit]#registrati, .btnConferma{
     border: 0.5px solid black;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -103,7 +103,7 @@ input[type=password], .active{
     padding-right: 25px;
 }
 
-input[type=submit]#registrati{
+input[type=submit]#registrati, .btnConferma{
     background-color: #f7f7f7;
     text-align: center;
     padding: 5px 10px;
@@ -140,7 +140,7 @@ p.testo{
 }
 
 table{
-    margin: 4% 25%;
+    margin: 4% auto 4% 25% ;
 }
 
 label{
@@ -165,19 +165,19 @@ ul, li {
     list-style-type:none;
 }
 
-#pswd_info {
-    position:absolute;
-    right:55px;
-    width:250px;
-    padding:15px;
-    background:#fefefe;
-    font-size:.875em;
-    border-radius:5px;
-    box-shadow:0 1px 3px #ccc;
-    border:1px solid #ddd;
-    margin-top: -25px;
+#pswd_info{
+    position: fixed;
+    padding: 15px;
+    background: #fefefe;
+    font-size: .875em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    border: 1px solid #ddd;
+    margin-top: -33px;
     z-index: 100;
+    display:none;
 }
+
 
 #pswd_info h4 {
     margin:0 0 10px 0;
@@ -208,10 +208,6 @@ ul, li {
     color:#3a7d34;
 }
 
-#pswd_info {
-    display:none;
-}
-
 #home{
     border: none;
     background-color: #C29436;
@@ -219,9 +215,17 @@ ul, li {
     margin-left: 20%;
 }
 
+.psw{
+    line-height: 35px;
+}
+
+.email{
+    line-height: 17px;
+}
+
 @media screen and (max-width: 1500px){
     table{
-        margin: 4vh 10vw;
+        margin: 4vh  auto  4vh 10vw;
     }
 }
 
@@ -236,12 +240,14 @@ ul, li {
 
     table{
         margin-left: 25%;
+        margin-right: auto;
     }
 }
 
 @media screen and (max-width: 800px){
     table{
         margin-left: 10%;
+        margin-right: auto;
     }
 }
 
@@ -253,6 +259,7 @@ ul, li {
 
     table{
         margin-left: 5%;
+        margin-right: auto;
     }
 
     #cognome, #nome, #email, .visible{
@@ -262,9 +269,13 @@ ul, li {
     input[type=password], .active{
         width: 100px;
     }
+
+    #pswd_info{
+        margin-top: -45px;
+    }
 }
 
-@media screen and (max-width: 360px){
+@media screen and (max-width: 380px){
     #cognome, #nome, #email, .visible{
         width: 100px;
     }

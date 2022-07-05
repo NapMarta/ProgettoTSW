@@ -37,16 +37,18 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    <label for="email">Email</label><br>
+                <td><br><br>
+                    <label for="email" class="email">Email</label><br>
                     <input type="email"  name="email" id="email" value="<%=utente.getEmail()%>" readonly>
                 </td>
                 <td>
                     <input type="hidden" name="pswDB" id="pswDB" value="<%=utente.getPasswordUtente()%>">
-                    <label for="pswdOld">Password attuale<br></label>
+                    <br>
+                    <label for="pswdOld" class="psw">Password attuale<br></label>
                     <span class="visible">
                         <input type="password"name="pswdOld" id="pswdOld" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                               placeholder="Password precedente" required>
                         <button type="button"  class="btn" onclick="visible('pswdOld', 'psw-old-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-old-linea"/>
@@ -57,22 +59,24 @@
                 </td>
             </tr>
             <tr class="nuovaPsw">
-                <td>
-                    <label for="pswd">Nuova Password<br></label>
+                <td> <br>
+                    <label for="pswd" class="psw">Nuova Password<br></label>
                     <span class="visible">
                         <input type="password"name="pswd" id="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                               placeholder="Inserire Password" required>
                         <button type="button"  class="btn" onclick="visible('pswd', 'psw-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
                         </button>
                     </span>
                 </td>
-                <td>
-                    <label for="psw-repeat" class="tPsw">Ripetere Password<br></label>
+                <td><br>
+                    <label for="psw-repeat" class="psw">Ripetere Password<br></label>
                     <span class="visible">
                         <input type="password" name="psw-repeat" id="psw-repeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                               placeholder="Ripetere Password" required>
                         <button type="button" class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>
@@ -94,14 +98,15 @@
                     </div>
                 </td>
                 <td>
-                    <input type="submit" id="modifica" name="modifica" value="Modifica">
-                    </form><br>
+                    <input type="submit" id="modifica" name="modifica" value="Modifica" class="btnConferma">
+                    </form>
+                </td>
+                <td>
                     <form action="ModificaCredenziali" method="post">
-                        <input type="submit" id="annulla" name="annulla" value="Annulla">
+                        <input type="submit" id="annulla" name="annulla" value="Annulla" class="btnConferma">
                     </form>
                 </td>
             </tr>
-
     </table>
 </span>
 

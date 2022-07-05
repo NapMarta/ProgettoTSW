@@ -7,7 +7,7 @@
 <html>
     <head>
         <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
-        <title>Visualizzazione Ordine</title>
+        <title>Visualizzazione Ordini</title>
         <link rel="stylesheet" href="css/elenco.css"/>
 
     </head>
@@ -28,7 +28,7 @@
                 <details>
 
 
-                   <summary>Data: <%=ordine.getDataPagamento()%> / Totale: <%=ordine.getTotale()%></summary>
+                   <summary>Data: <%=ordine.getDataPagamento()%> / Totale: <%=ordine.getTotale()%>&#8364;</summary>
                     <table>
                         <thead>
                             <tr>
@@ -50,7 +50,7 @@
                                         <%=prodottoQuantita.getDescrizione()%>
                                     </td>
                                     <td data-head="Prezzo">
-                                        <%=prodottoQuantita.getPrezzo()%>
+                                        <%=prodottoQuantita.getPrezzo()%>&#8364;
                                     </td>
                                     <td data-head="Quantita">
                                         <%=prodottoQuantita.getQuantita()%>

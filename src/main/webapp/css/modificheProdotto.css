@@ -4,7 +4,7 @@
     background-color: #C29436;
     display: flex;
     margin: 25vh auto;
-    border: 2px solid black;
+    border: 0px solid black;
     border-radius: 10px;
     width: fit-content;
     height: fit-content;
@@ -68,7 +68,7 @@ input:focus {
     background-color: #C29436;
     margin-right: 0px;
     margin-left: 20%;
-    margin-top: 35vh;
+    margin-top: 45px;
 }
 
 

@@ -17,7 +17,7 @@ public class OrdiniServlet extends HttpServlet {
         String homeAdmin = request.getParameter("homeAdmin");
         String address = null;
         if(home != null){
-            address = "WEB-INF/result/homePage.jsp";
+            address = "WEB-INF/result/homepage.jsp";
             ProdottoDAO prodottoDAO = new ProdottoDAO();
             List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
             request.setAttribute("prodottoList", list);
