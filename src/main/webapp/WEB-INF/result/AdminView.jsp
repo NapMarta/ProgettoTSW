@@ -32,11 +32,11 @@
                         <p><img class="imgProdotto" src="./PhotoController?codice=${prodotto.codice}"></p><br>
                         <div class="descrizione">
                             <p class="name">${prodotto.nome}</p>
-                            <p>${prodotto.tipologia}</p>
                             <p>${prodotto.descrizione}</p>
                             <p class="prezzo">${prodotto.prezzo}&#8364;</p>
                         </div>
                         <div class="btnProdotto">
+                            <input type="hidden" name="tipologia" value="${prodotto.tipologia}">
                             <input type="hidden" name="codice" value="${prodotto.codice}">
                             <input type="submit" id="rimuovi" name="scelta" value="Rimuovi prodotto">
                             <input type="submit" id="modifica" name="scelta" value="Modifica prodotto">
