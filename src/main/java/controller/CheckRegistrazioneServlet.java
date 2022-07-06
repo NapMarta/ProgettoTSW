@@ -27,8 +27,6 @@ public class CheckRegistrazioneServlet extends HttpServlet {
             }else
                 isRegistered = false;
         } catch (SQLException e) {
-            request.getSession().setAttribute("errore", "Errore nella registrazione");
-            response.sendRedirect(request.getContextPath() + "/error.jsp");
             e.printStackTrace();
         }
 

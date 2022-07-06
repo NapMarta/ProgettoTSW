@@ -2,12 +2,12 @@ function checkPasswordMatch() {
     const password = $("#pswd").val();
     const confirmPassword = $("#psw-repeat").val();
     if (password != confirmPassword){
-        $("#CheckPasswordMatch").text('Passwords does not match!');
+        $("#CheckPasswordMatch").text('Password non corrispondono!');
         $("#CheckPasswordMatch").css({"font-size": "10px","color": "red"});
     }
 
     else{
-        $("#CheckPasswordMatch").text('Passwords match.');
+        $("#CheckPasswordMatch").text('Password corrispondono.');
         $("#CheckPasswordMatch").css({"font-size": "10px","color": "green"});
     }
 }

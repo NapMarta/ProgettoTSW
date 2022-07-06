@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
             UtenteDAO utenteDAO = new UtenteDAO();
 
             String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            String password = request.getParameter("psw");
             try {
                 utente.setPasswordUtente(password);
             } catch (NoSuchAlgorithmException e) {
@@ -77,7 +77,10 @@ public class LoginServlet extends HttpServlet {
                     ProdottoDAO prodottoDAO = new ProdottoDAO();
                     List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
                     request.setAttribute("prodottoList", list);
-                    session.setAttribute("utente", utente);
+                    synchronized (session){
+                        session.setAttribute("utente", utente);
+                    }
+
 
                     CarrelloDAO carrelloDAO = new CarrelloDAO();
                     Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());

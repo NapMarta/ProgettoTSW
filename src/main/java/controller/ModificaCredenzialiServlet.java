@@ -44,7 +44,7 @@ public class ModificaCredenzialiServlet extends HttpServlet {
             String vecchiaPsw = request.getParameter("pswDB");
             String pswInserita = request.getParameter("pswdOld");
             String nuovaPsw = request.getParameter("pswd");
-            String nuovaPswRepeat = request.getParameter("psw-repeat");
+            String nuovaPswRepeat = request.getParameter("pswrepeat");
 
             Utente utente = new Utente();
 
