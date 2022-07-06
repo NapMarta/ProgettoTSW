@@ -6,8 +6,8 @@ body{
 
 .parent {
     background-color: #C29436;
-    height: 50%;
-    width: 30%;
+    height: 65%;
+    width: 40%;
     display: flex;
     justify-content: center;
     margin: 30vh auto;
@@ -20,7 +20,7 @@ p.titolo{
     text-align: center;
     font-family: "Shadows Into Light", cursive, sans-serif;
     font-size: 35px;
-    padding-top: 60px;
+    padding-top: 10vh;
 }
 
 .parent .child {
@@ -69,7 +69,7 @@ input[type=submit]#registrati{
     background-color: #C29436;
     font-size: 15px;
     position: relative;
-    margin-top: 30px;
+    /*! margin-top: 30px; */
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
@@ -123,6 +123,7 @@ input:focus {
     border: none;
     background-color: #C29436;
     margin-right: 5px;
+    margin-top: 15px;
 }
 
 .error{
@@ -135,31 +136,21 @@ input:focus {
 
 .reg{
     display: inline;
+    margin-top: 30vh;
+    margin-right: 2vw;
+}
+
+.other{
+    margin-top: 30vh;
+    margin-left: -10vw;
+    margin-right: 5vw;
+    padding-top: 50px;
 }
 
 /*iPad, tablet*/
-@media screen and (max-width: 1010px){
+@media screen and (max-width: 1300px){
     .parent {
-        height: 40%;
         width: 60%;
-    }
-
-    p{
-        font-size: 30px;
-    }
-}
-
-/*mobile device*/
-@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
-    .parent {
-        height: 40%;
-        width: 100%;
-        padding: 0px;
-        border-collapse: collapse;
-    }
-
-    label{
-        font-size: 15px;
     }
 
     p{
