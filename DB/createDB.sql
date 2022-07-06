@@ -26,7 +26,7 @@ create table ordine
     tipoPagamento varchar(20) check(tipoPagamento = 'Contanti' OR 
 									tipoPagamento = 'Carta di credito' OR 
                                     tipoPagamento = 'PayPal') not null,
-	numeroCarta varchar(27),
+	numeroCarta varchar(16),
     via varchar(50),
     cap varchar(5),
     citta varchar(20),
