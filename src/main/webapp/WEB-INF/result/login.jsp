@@ -10,7 +10,11 @@
 <body>
     <div class="parent">
         <p class="titolo">Login</p>
-
+        <form action="Login">
+            <button type="submit" value="Home" name="home" id="home">
+                <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
+            </button>
+        </form>
         <form action="Login" method="post" class="child">
             <%
                 Boolean error = (Boolean) request.getAttribute("error");
@@ -19,9 +23,7 @@
                        Email e/o password Errati
                     </span><br>
             <%}%>
-            <button type="submit" value="Home" name="home" id="home">
-                <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
-            </button>
+
             <br><br>
             <label for="email">Email</label><br>
             <input type="email" id="email" name="email" placeholder="Email"><br>

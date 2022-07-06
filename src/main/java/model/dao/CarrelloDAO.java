@@ -3,10 +3,8 @@ package model.dao;
 import model.ConPool;
 import model.beans.Carrello;
 import model.beans.ProdottoQuantita;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CarrelloDAO {
 
@@ -73,68 +71,12 @@ public class CarrelloDAO {
             int id = rs.getInt(1);
             c.setCodice(id);
 
-//            for (ProdottoQuantita p: c.getListaProdotti())
-//            {
-//                PreparedStatement ps1 = con.prepareStatement(
-//                        "INSERT INTO contenere (codiceProdotto, codiceCarrello, quantità) VALUES(?,?,?)",
-//                        Statement.RETURN_GENERATED_KEYS);
-//                ps1.setInt(1,p.getCodice());
-//                ps1.setInt(2, c.getCodice());
-//                ps1.setInt(3, p.getQuantita());
-//
-//                if (ps1.executeUpdate() != 1) {
-//                    throw new RuntimeException("INSERT error.");
-//                }
-//            }
 
             return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-    /*
-    public List<Carrello> doRetrieveAll(){
-        List<Carrello> carrelli = new ArrayList<Carrello>();
-        try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM carrello");
-            ResultSet resultSet = ps.executeQuery();
-
-            while (resultSet.next()) {
-
-                int codice = resultSet.getInt(1);
-                int idUtente = resultSet.getInt(4);
-                double totale = resultSet.getDouble(2);
-                int numProdotti = resultSet.getInt(3);
-
-
-                PreparedStatement ps1 = con.prepareStatement("SELECT codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM prodotto JOIN contenere ON codice=codiceProdotto ORDER BY codiceCarrello");
-                ResultSet rs = ps.executeQuery();
-
-                ArrayList<ProdottoQuantita> prodotti = new ArrayList<>();
-                while(rs.next()){
-                    ProdottoQuantita p = new ProdottoQuantita();
-                    p.setCodice(rs.getInt(1));
-                    p.setNome(rs.getString(2));
-                    p.setPrezzo(rs.getDouble(3));
-                    p.setDescrizione(rs.getString(4));
-                    p.setTipologia(rs.getString(5));
-                    p.setImmagine(rs.getBinaryStream(6));
-                    p.setQuantita(rs.getInt(7));
-                    prodotti.add(p);
-                }
-
-                carrelli.add(new Carrello(codice, idUtente, totale, numProdotti,prodotti));
-            }
-
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return carrelli;
-    }
-    */
 
     public boolean doUpdate(Carrello carrello){
         boolean ris = false;
@@ -168,15 +110,4 @@ public class CarrelloDAO {
         return false;
     }
 
-    /*
-    public void doDeleteById(int id){
-        try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM carrello WHERE codice=?");
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 }

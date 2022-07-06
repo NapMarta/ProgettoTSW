@@ -87,7 +87,7 @@
             </tr>
             <tr>
                 <td>
-                    <div id="pswd_info">
+                    <div id="pswd_infoModifica">
                         <h4>Password must contain the following:</h4>
                         <ul>
                             <li id="letter" class="invalid">A <b>lowercase</b> letter</li>
@@ -102,7 +102,7 @@
                     </form>
                 </td>
                 <td>
-                    <form action="ModificaCredenziali" method="post">
+                    <form action="ModificaCredenziali" method="post" class="annulla">
                         <input type="submit" id="annulla" name="annulla" value="Annulla" class="btnConferma">
                     </form>
                 </td>
