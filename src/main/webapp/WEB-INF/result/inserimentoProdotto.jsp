@@ -8,11 +8,13 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Inserimento Prodotto</title>
     <link href="css/modificheProdotto.css" rel="stylesheet">
+    <script type="text/javascript" src="JavaScript/validazioniForm/validazioneProdotto.js"></script>
+
 </head>
 <body>
 
     <div class="contentForm">
-        <form action="AggiungiProdotto" method="post" enctype="multipart/form-data">
+        <form action="AggiungiProdotto" method="post" name="prodotto" onsubmit="return validateP();" enctype="multipart/form-data">
             <p class="titolo">Inserimento Prodotto</p>
             <hr>
             <table>

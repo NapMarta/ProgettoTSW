@@ -14,38 +14,41 @@ function validateR(){
     const cognome = document.registrazione.cognome.value;
     const cognome_reg_exp = /^[A-z]{3,30}$/;
 
+
+    if (!nome_reg_exp.test(nome) || (nome == "") || (nome == "undefined")) {
+        alert("Inserire un nome corretto.");
+        return false;
+
+    }
+    if(!cognome_reg_exp.test(cognome) || (cognome == "") || (cognome == "undefined")){
+        alert("Inserire un cognome corretto.");
+        return false;
+    }
+
     if (!email_reg_exp.test(email) || (email == "") || (email == "undefined")) {
         alert("Inserire un indirizzo email corretto.");
         return false;
 
-    }else if (!nome_reg_exp.test(nome) || (nome == "") || (nome == "undefined")) {
-        alert("Inserire un nome corretto.");
-        return false;
+    }
 
-    }else if(!cognome_reg_exp.test(cognome) || (cognome == "") || (cognome == "undefined")){
-        alert("Inserire un cognome corretto.");
-        return false;
-    }else {
-        if(password_reg_exp.test(password)){
-            if(password_reg_exp.test(password2)){
-                if(password == password2){
+    if(password_reg_exp.test(password)){
+        if(password_reg_exp.test(password2)){
+            if(password == password2){
 
-                }else{
-                    alert("Password non corrispondono");
-                    return false;
-                }
-            }
-            else{
-                alert("Inserire password2 corretta.");
+            }else{
+                alert("Password non corrispondono");
                 return false;
             }
-
         }
         else{
-            alert("Inserire password1 corretta.");
+            alert("Inserire password2 corretta.");
             return false;
         }
 
+    }
+    else{
+        alert("Inserire password1 corretta.");
+        return false;
     }
 
 }

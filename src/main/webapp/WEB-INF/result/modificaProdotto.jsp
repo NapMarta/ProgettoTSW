@@ -8,12 +8,14 @@
         <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
         <title>Modifica Prodotto</title>
         <link href="css/modificheProdotto.css" rel="stylesheet">
+        <script type="text/javascript" src="JavaScript/validazioniForm/validazioneProdotto.js"></script>
+
     </head>
     <body>
 
         <% Prodotto prodotto = (Prodotto) session.getAttribute("prodotto"); %>
         <div class="contentForm">
-            <form action="ModificaProdotto" method="post" enctype="multipart/form-data">
+            <form action="ModificaProdotto" method="post" name="prodotto" onsubmit="return validateP();" enctype="multipart/form-data">
                 <p class="titolo">Modifica Prodotto</p>
                 <hr>
                 <table>

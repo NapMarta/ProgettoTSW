@@ -60,12 +60,12 @@
                 </td>
                 <td>
                     <div id="pswd_info">
-                        <h4>Password must contain the following:</h4>
+                        <h4>Password deve avere i seguenti requisiti:</h4>
                         <ul>
-                            <li id="letter" class="invalid">A <b>lowercase</b> letter</li>
-                            <li id="capital" class="invalid">A <b>capital (uppercase)</b> letter</li>
-                            <li id="number" class="invalid">A <b>number</b></li>
-                            <li id="length" class="invalid">Minimum <b>8 characters</b></li>
+                            <li id="letter" class="invalid">Una lettera <b>minuscola</b> </li>
+                            <li id="capital" class="invalid">Una lettera <b>maiuscola</b></li>
+                            <li id="number" class="invalid">Un <b>numero</b></li>
+                            <li id="length" class="invalid">Minimo <b>8 caratteri</b></li>
                         </ul>
                     </div>
                 </td>

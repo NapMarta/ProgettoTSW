@@ -259,6 +259,15 @@ ul, li {
     margin-left: 10vw;
 }
 
+.error{
+    color: #691911;
+    background-color: #f4d6d2;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-left: 20px;
+}
+
 @media screen and (max-width: 1500px){
     table{
         margin: 4vh  auto  4vh 10vw;

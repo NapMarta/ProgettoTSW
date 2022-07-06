@@ -7,11 +7,12 @@
         <link href="css/confermaOrdine.css" type="text/css" rel="stylesheet"/>
         <script type="text/javascript" src="JavaScript/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="JavaScript/confermaOrdine.js"></script>
+        <script type="text/javascript" src="JavaScript/validazioniForm/validazioneOrdine.js"></script>
     </head>
     <body>
     <div class="parent">
         <p class="titolo">Conferma Ordine</p><hr>
-        <form method="post" action="EffettuaOrdine">
+        <form method="post" name="ordine" onsubmit="return validateO();" action="EffettuaOrdine">
             <div>
                 <label>Seleziona il tipo di ordine:</label><br>
                 <span>
@@ -23,9 +24,10 @@
                     <input type="radio" id="domicilio" name="tipologia" value="D">
                     <label for="domicilio">Domicilio</label><br>
                         <span id="indirizzo">
-                            <label for="via">Via: </label> <input type="text" name="via" id="via" class="dom"><br>
-                            <label for="via">Città:</label><input type="text" name="citta" id="citta" class="dom"><br>
-                            <label for="via">CAP:</label><input type="text" name="cap" id="cap" class="dom"><br>
+                            <label for="via">Via: </label> <input type="text" name="via" id="via" class="dom"
+                                                                  title="Inserire nel formato: Via,Numero civico"><br>
+                            <label for="citta">Città:</label><input type="text" name="citta" id="citta" class="dom"><br>
+                            <label for="cap">CAP:</label><input type="text" name="cap" id="cap" class="dom"><br>
                         </span>
                 </span>
                 <span>
@@ -35,8 +37,8 @@
             </div>
             <div>
                 <p>Costo di spedizione:<span id="spedizione">0.00</span>&#8364;</p>
-                <p>Totale: <span id="totale">${ordine.totale}</span>&#8364;</p>
-                <p>Data Pagamento: ${ordine.dataPagamento}</p>
+                <p>Totale: <span id="totale" name="totale">${ordine.totale}</span>&#8364;</p>
+                <p>Data Pagamento: <span name="data" id="data">${ordine.dataPagamento}</span></p>
             </div>
             <div>
                 <label>Seleziona il tipo di pagamento:</label><br>

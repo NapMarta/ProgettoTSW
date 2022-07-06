@@ -1,6 +1,6 @@
 $(document).ready(function (){
 
-    $("#domicilio").click(function () {
+    $("#domicilio").change(function () {
 
         $("#indirizzo").css("display","inline");
         const x = $('#totale').text();
