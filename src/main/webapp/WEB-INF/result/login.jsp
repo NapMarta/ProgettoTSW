@@ -15,7 +15,7 @@
                 <img src="https://img.icons8.com/material-rounded/30/000000/home.png"/>
             </button>
         </form>
-        <form action="Login" method="post" class="child">
+        <form action="Login" method="post" class="child" name="login" onsubmit="return validate();">
             <%
                 Boolean error = (Boolean) request.getAttribute("error");
                 if(error != null){%>
@@ -38,7 +38,8 @@
             <br><br>
             <input type="submit" value="Accedi" name="accedi" id="accedi">
             <br>
-
+        </form>
+        <form action="Login" class="reg">
             <input type="submit" value="Sei un nuovo utente? Registrati" name="registrati" id="registrati">
             <br>
         </form>

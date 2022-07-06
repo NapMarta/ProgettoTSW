@@ -133,6 +133,9 @@ input:focus {
     font-size: 13px;
 }
 
+.reg{
+    display: inline;
+}
 
 /*iPad, tablet*/
 @media screen and (max-width: 1010px){

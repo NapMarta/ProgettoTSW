@@ -9,7 +9,7 @@ create table utente(
 	id int auto_increment primary key,
     nome varchar(30) not null,
     cognome varchar(30) not null,
-    email varchar(30) not null,
+    email varchar(50) not null,
     passwordUtente varchar(128) not null,
     isAdmin boolean default false,
     unique(email)
