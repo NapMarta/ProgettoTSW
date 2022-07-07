@@ -56,7 +56,8 @@
                     <br>
                     <label for="pswdOld" class="psw">Password attuale<br></label>
                     <span class="visible">
-                        <input type="password"name="pswdOld" id="pswdOld" placeholder="Password precedente" required>
+                        <input type="password"name="pswdOld" id="pswdOld" placeholder="Password precedente"
+                               title=" Ammessi solo i caratteri @_\.,!?#" required>
                         <button type="button"  class="btn" onclick="visible('pswdOld', 'psw-old-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-old-linea"/>
@@ -70,7 +71,8 @@
                 <td> <br>
                     <label for="pswd" class="psw">Nuova Password<br></label>
                     <span class="visible">
-                        <input type="password"name="pswd" id="pswd" placeholder="Inserire Password" required>
+                        <input type="password"name="pswd" id="pswd" placeholder="Inserire Password"
+                               title=" Ammessi solo i caratteri @_\.,!?#" required>
                         <button type="button"  class="btn" onclick="visible('pswd', 'psw-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
@@ -80,7 +82,8 @@
                 <td><br>
                     <label for="psw-repeat" class="psw">Ripetere Password<br></label>
                     <span class="visible">
-                        <input type="password" name="pswrepeat" id="psw-repeat" placeholder="Ripetere Password" required>
+                        <input type="password" name="pswrepeat" id="psw-repeat" placeholder="Ripetere Password"
+                               title=" Ammessi solo i caratteri @_\.,!?#" required>
                         <button type="button" class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>

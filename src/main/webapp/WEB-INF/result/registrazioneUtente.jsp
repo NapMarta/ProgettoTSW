@@ -38,7 +38,8 @@
                 <td>
                     <label for="pswd" class="tPsw">Password<br></label>
                     <span class="visible">
-                        <input type="password" placeholder="Inserisci Password" name="pswd" id="pswd" required>
+                        <input type="password" placeholder="Inserisci Password" name="pswd" id="pswd"
+                               title=" Ammessi solo i caratteri @_\.,!?#" required>
                         <button type="button"  class="btn" onclick="visible('pswd', 'psw-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
@@ -50,7 +51,8 @@
                 <td><br>
                     <label for="psw-repeat" class="tPsw">Ripetere Password<br></label>
                     <span class="visible">
-                        <input type="password" placeholder="Ripetere Password" name="pswrepeat" id="psw-repeat" required>
+                        <input type="password" placeholder="Ripetere Password" name="pswrepeat" id="psw-repeat"
+                               title=" Ammessi solo i caratteri @_\.,!?#" required>
                         <button type="button" class="btn" onclick="visible('psw-repeat', 'psw-repeat-linea');">
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>

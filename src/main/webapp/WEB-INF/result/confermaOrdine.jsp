@@ -50,7 +50,8 @@
                     <input type="radio" id="carta" name="tipoPagamento" value="Carta di credito">
                     <label for="carta">Carta di credito</label>
                     <span>
-                        <input type="text" name="numeroCarta" id="numeroCarta" maxlength="27">
+                        <input type="text" name="numeroCarta" id="numeroCarta" maxlength="16"
+                        title="Inserire il numero della carta(16 cifre)">
                     </span><br>
                 </span>
                 <span>
