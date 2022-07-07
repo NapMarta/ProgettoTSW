@@ -15,7 +15,7 @@ public class RequestValidator {
 
 
     public static boolean assertNome(String name){
-        Pattern pattern = Pattern.compile("^[a-z0-9_-]{3,30}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9_-]{3,30}$");
         Matcher matcher = pattern.matcher(name);
         if(matcher.matches())
             return true;

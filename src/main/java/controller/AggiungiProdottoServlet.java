@@ -51,9 +51,6 @@ public class AggiungiProdottoServlet extends HttpServlet {
 
             if(immagine != null){
                 stream = immagine.getInputStream();
-            }else{
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
             }
 
             /* fine validazione */

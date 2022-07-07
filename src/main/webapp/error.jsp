@@ -24,8 +24,8 @@
     <h1>Errore</h1>
     <img src="error.jpg">
     <div class="message">
-        Siamo spiacenti, si è verificato un errore durante l'esecuzione:<br/><br/>
-        <%= exception.getMessage()%><br><br>
+        Siamo spiacenti, si è verificato un errore durante l'esecuzione.<br/><br/>
+
     </div>
 
     <a href="index.jsp">Torna alla homepage!</a>
