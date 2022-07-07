@@ -4,7 +4,7 @@ function validate(){
     const email = document.login.email.value;
 
     const password = document.login.psw.value;
-    const password_reg_exp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,20})$/;
+    const password_reg_exp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([@_\.,!?#]*)(([a-zA-Z0-9]([@_\.,!?#]*)){8,20})$/;
 
 
     if (!email_reg_exp.test(email) || (email == "") || (email == "undefined")) {
