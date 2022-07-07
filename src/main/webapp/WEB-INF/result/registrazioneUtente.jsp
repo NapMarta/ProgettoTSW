@@ -12,6 +12,7 @@
     <script type="text/javascript" src="JavaScript/ajaxPsw.js"></script>
     <script type="text/javascript" src="JavaScript/validazionePsw.js"></script>
     <script type="text/javascript" src="JavaScript/validazioniForm/validazioneRegistrazione.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 

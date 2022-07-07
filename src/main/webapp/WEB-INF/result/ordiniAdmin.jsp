@@ -10,6 +10,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Ordini Utenti</title>
     <link rel="stylesheet" href="css/elenco.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 

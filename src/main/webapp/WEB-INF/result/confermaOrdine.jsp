@@ -9,6 +9,7 @@
         <script type="text/javascript" src="JavaScript/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="JavaScript/confermaOrdine.js"></script>
         <script type="text/javascript" src="JavaScript/validazioniForm/validazioneOrdine.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
     <div class="parent">

@@ -31,7 +31,7 @@ body{
 .column {
     float: left;
     width: 24%;
-    height: 65vh;
+    height: 70vh;
     margin: 5px 5px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -114,7 +114,7 @@ body{
 @media screen and (max-width: 1300px) {
     .column {
         width: 31.5%;
-        height: 60vh;
+        height: 65vh;
     }
 
     .imgProdotto{
@@ -139,4 +139,14 @@ body{
     .imgProdotto{
         height: 40vh;
     }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+    .column {
+        width: 110%;
+        height: fit-content;
+        margin-left:-15px;
+    }
+
 }

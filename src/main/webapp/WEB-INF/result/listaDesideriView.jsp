@@ -9,6 +9,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <title>Liste Desideri</title>
     <link rel="stylesheet" href="css/carrello.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <p class="title">La mia lista dei desideri</p>

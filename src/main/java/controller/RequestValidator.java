@@ -23,7 +23,7 @@ public class RequestValidator {
     }
 
     public static boolean assertCognome(String cognome){
-        Pattern pattern = Pattern.compile("^[a-z0-9_-]{3,30}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9_-]{3,30}$");
         Matcher matcher = pattern.matcher(cognome);
         if(matcher.matches())
             return true;

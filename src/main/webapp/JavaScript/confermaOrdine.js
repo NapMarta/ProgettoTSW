@@ -34,6 +34,4 @@ $(document).ready(function (){
         $("#numeroCarta").css("display","none");
     })
 
-
-
 });

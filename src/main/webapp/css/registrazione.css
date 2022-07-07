@@ -109,6 +109,10 @@ input[type=submit]#registrati, .btnConferma{
     padding: 5px 10px;
     font-size: 15px;
     margin-top: 25px;
+    border: 0.5px solid black;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 input[type=submit]#accedi{
@@ -145,10 +149,6 @@ table{
 
 label{
     margin-bottom: 5px;
-}
-
-input[type="checkbox"] {
-    appearance: none;
 }
 
 input:focus {
@@ -205,7 +205,7 @@ ul, li {
     border-radius: 5px;
     box-shadow: 0 1px 3px #ccc;
     border: 1px solid #ddd;
-    margin-top: -19px;
+    margin-top: -5px;
     z-index: 100;
     display:none;
 }
@@ -252,11 +252,6 @@ ul, li {
 
 .email{
     line-height: 17px;
-}
-
-#annulla{
-    margin-top: 0px;
-    margin-left: 10vw;
 }
 
 .error{

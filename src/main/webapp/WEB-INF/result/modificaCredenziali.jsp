@@ -1,6 +1,7 @@
 <%@ page import="model.beans.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage = "/error.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Modifica Credenziali</title>
@@ -9,10 +10,9 @@
     <script type="text/javascript" src="JavaScript/registrazione.js"></script>
     <script type="text/javascript" src="JavaScript/ajaxPsw.js"></script>
     <script type="text/javascript" src="JavaScript/validazionePsw.js"></script>
-    <script type="text/javascript" src="JavaScript/pswOld.js"></script>
     <link href="css/registrazione.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="JavaScript/validazioniForm/validazioneModCredenziali.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -89,8 +89,7 @@
                             <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                             <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-repeat-linea"/>
                         </button>
-                    </span><br>
-                    <div id="CheckPasswordMatch"></div>
+                    </span>
                 </td>
             </tr>
             <tr>
@@ -106,15 +105,21 @@
                     </div>
                 </td>
                 <td>
+                    <br>
+                    <div id="CheckPasswordMatch"></div>
+                </td>
+            </tr>
+        <tr>
+            <td>
                     <input type="submit" id="modifica" name="modifica" value="Modifica" class="btnConferma">
                     </form>
-                </td>
-                <td>
+            </td>
+            <td>
                     <form action="ModificaCredenziali" method="post" class="annulla">
                         <input type="submit" id="annulla" name="annulla" value="Annulla" class="btnConferma">
                     </form>
-                </td>
-            </tr>
+            </td>
+        </tr>
     </table>
 </span>
 

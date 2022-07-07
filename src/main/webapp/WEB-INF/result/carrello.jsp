@@ -4,12 +4,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page errorPage = "/error.jsp" %>
-
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="css/carrello.css"/>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
-    <script src="JavaScript/carrello.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 

@@ -9,11 +9,11 @@ body{
     height: 65%;
     width: 40%;
     display: flex;
-    justify-content: center;
-    margin: 30vh auto;
     border: 0px solid black;
     border-radius: 10px;
     box-shadow: 20px 20px 25px #d1d1d1;
+    margin-top: 25vh;
+    margin-left: 30vw;
 }
 
 p.titolo{
@@ -21,6 +21,7 @@ p.titolo{
     font-family: "Shadows Into Light", cursive, sans-serif;
     font-size: 35px;
     padding-top: 10vh;
+    width: 50%;
 }
 
 .parent .child {
@@ -33,11 +34,9 @@ label{
     font-size: 20px;
 }
 
-p{
-    margin-top: 20px;
-    font-family: "Shadows Into Light", cursive, sans-serif;
-    font-size: 30px;
-    width: 100%;
+.child{
+    width: 50%;
+    margin-right: 20px;
 }
 
 input[type=email], input[type=submit], .visible{
@@ -69,13 +68,8 @@ input[type=submit]#registrati{
     background-color: #C29436;
     font-size: 15px;
     position: relative;
-    /*! margin-top: 30px; */
     padding-bottom: 0px;
     margin-bottom: 0px;
-}
-
-input[type="checkbox"] {
-    appearance: none;
 }
 
 input[type=submit]#registrati:hover{
@@ -141,19 +135,44 @@ input:focus {
 }
 
 .other{
-    margin-top: 30vh;
-    margin-left: -10vw;
+    margin-top: 35vh;
+    margin-left: -15vw;
     margin-right: 5vw;
     padding-top: 50px;
 }
 
 /*iPad, tablet*/
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1100px){
     .parent {
-        width: 60%;
+        width: 90%;
+        margin-left: 5%;
     }
 
-    p{
-        font-size: 30px;
+    .child{
+        margin-right: 0%;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .parent {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .child{
+        margin-right: -35%;
+        margin-left: 5%
+    }
+
+    input[type=email], .visible{
+        width: 150px;
+    }
+
+    input[type=password], input[type=text]{
+        width: 130px;
+    }
+
+    .error{
+        font-size: 10px;
     }
 }

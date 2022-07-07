@@ -8,7 +8,7 @@ function checkPasswordMatch() {
 
     else{
         $("#CheckPasswordMatch").text('Password corrispondono.');
-        $("#CheckPasswordMatch").css({"font-size": "10px","color": "green"});
+        $("#CheckPasswordMatch").css({"font-size": "12px","color": "green"});
     }
 }
 

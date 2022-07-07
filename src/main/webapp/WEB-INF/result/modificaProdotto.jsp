@@ -10,7 +10,7 @@
         <title>Modifica Prodotto</title>
         <link href="css/modificheProdotto.css" rel="stylesheet">
         <script type="text/javascript" src="JavaScript/validazioniForm/validazioneProdotto.js"></script>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
 

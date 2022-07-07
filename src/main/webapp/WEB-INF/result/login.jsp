@@ -8,6 +8,8 @@
     <link href="css/login.css" rel="stylesheet">
     <script type="text/javascript" src="JavaScript/registrazione.js"></script>
     <script type="text/javascript" src="JavaScript/validazioniForm/validazioneLogin.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="parent">
@@ -18,7 +20,7 @@
                 Boolean error = (Boolean) request.getAttribute("error");
                 if(error != null){%>
                     <span class="error">
-                       Email e/o password Errati
+                       Email e/o password errati
                     </span><br>
             <%}%>
 
@@ -27,8 +29,7 @@
             <input type="email" id="email" name="email" placeholder="Email"><br>
             <label for="password">Password</label><br>
             <div class="visible">
-                <input type="password" id="password" name="psw" id="password" placeholder="Password"
-                       title=" Ammessi solo i caratteri @_\.,!?#">
+                <input type="password" id="password" name="psw" id="password" placeholder="Password">
                 <button type="button"  class="btn" onclick="visible('password', 'psw-linea');">
                     <img src="https://img.icons8.com/ios/20/undefined/visible--v1.png" class="occhio"/>
                     <img src="https://img.icons8.com/ios/20/undefined/line--v1.png" class="linea" id="psw-linea"/>
