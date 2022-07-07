@@ -23,9 +23,10 @@ public class EffettuaOrdineServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String address;
+        String address = null;
         String conferma = request.getParameter("conferma");
         String continua = request.getParameter("continuaAcquisti");
+        String concludiOrdine = request.getParameter("concludiOrdine");
         HttpSession session = request.getSession();
         Ordine ordine = new Ordine();
 
@@ -34,74 +35,108 @@ public class EffettuaOrdineServlet extends HttpServlet {
             List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
             request.setAttribute("prodottoList", list);
             address = "WEB-INF/result/homepage.jsp";
-        } else {
+        }
+
+        if (conferma != null) {
             Utente utente = (Utente) session.getAttribute("utente");
-
-            if (conferma != null) {
-
-                if (utente == null) {
-                    address = "WEB-INF/result/login.jsp";
-                }else{
-                    address = "WEB-INF/result/confermaOrdine.jsp";
-                    Carrello carrello = (Carrello) session.getAttribute("carrello");
-                    LocalDateTime dtm = LocalDateTime.now();
-                    Date date = Date.valueOf(dtm.toLocalDate());
-                    ordine.setDataPagamento(date);
-                    ordine.setTotale(carrello.getTotale());
-                    int id = utente.getId();
-                    ordine.setIdUtente(id);
-                    synchronized (session){
-                        session.setAttribute("ordine", ordine);
-                    }
-
-                    request.setAttribute("ordine", ordine);
-                }
-
-            } else {
+            if (utente == null) {
+                address = "WEB-INF/result/login.jsp";
+            }else{
+                address = "WEB-INF/result/confermaOrdine.jsp";
                 Carrello carrello = (Carrello) session.getAttribute("carrello");
+                LocalDateTime dtm = LocalDateTime.now();
+                Date date = Date.valueOf(dtm.toLocalDate());
+                ordine.setDataPagamento(date);
+                ordine.setTotale(carrello.getTotale());
 
-                OrdineDAO ordineDAO = new OrdineDAO();
-                ordine = (Ordine) session.getAttribute("ordine");
-                ordine.setTipologia(request.getParameter("tipologia"));
-                ordine.setNumeroCarta(request.getParameter("numeroCarta"));
-                ordine.setTipoPagamento(request.getParameter("tipoPagamento"));
-                ordine.setListaProdotti(carrello.getListaProdotti());
-                ordine.setVia(request.getParameter("via"));
-                ordine.setCap(request.getParameter("cap"));
-                ordine.setCitta(request.getParameter("citta"));
-
-                if(ordine.getTipologia().equals("A") || ordine.getTipologia().equals("CP")){
-                    ordine.setVia(new String());
-                    ordine.setCap(new String());
-                    ordine.setCitta(new String());
+                /* validazione lato server */
+                if(!RequestValidator.assertDouble(String.valueOf(ordine.getTotale()))){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                    dispatcher.forward(request, response);
                 }
+                /* fine validazione */
 
-                if(ordine.getTipoPagamento().equalsIgnoreCase("contanti") ||
-                        ordine.getTipoPagamento().equalsIgnoreCase("paypal")){
-                    ordine.setNumeroCarta(new String());
-                }
-
-                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20)
-                    ordine.setTotale(ordine.getTotale() + 3);
-
-                ordineDAO.doSave(ordine);
-
-                carrello.setTotale(0);
-                carrello.setNumeroProdotti(0);
-                carrello.setListaProdotti(new ArrayList<>());
-                CarrelloDAO carrelloDAO = new CarrelloDAO();
-
+                int id = utente.getId();
+                ordine.setIdUtente(id);
                 synchronized (session){
-                    carrelloDAO.doUpdate(carrello);
-                    session.setAttribute("carrello", carrello);
-
+                    session.setAttribute("ordine", ordine);
                 }
-
-                ProdottoDAO prodottoDAO = new ProdottoDAO();
-                List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
-                request.setAttribute("prodottoList", list);
-                address = "WEB-INF/result/homepage.jsp";
+                request.setAttribute("ordine", ordine);
             }
+        }
+
+        if(concludiOrdine != null) {
+            Utente utente = (Utente) session.getAttribute("utente");
+            Carrello carrello = (Carrello) session.getAttribute("carrello");
+
+            OrdineDAO ordineDAO = new OrdineDAO();
+            ordine = (Ordine) session.getAttribute("ordine");
+            ordine.setTipologia(request.getParameter("tipologia"));
+            ordine.setNumeroCarta(request.getParameter("numeroCarta"));
+            ordine.setTipoPagamento(request.getParameter("tipoPagamento"));
+            ordine.setListaProdotti(carrello.getListaProdotti());
+            ordine.setVia(request.getParameter("via"));
+            ordine.setCap(request.getParameter("cap"));
+            ordine.setCitta(request.getParameter("citta"));
+
+
+
+            if(ordine.getTipologia().equals("A") || ordine.getTipologia().equals("CP")){
+                ordine.setVia(new String());
+                ordine.setCap(new String());
+                ordine.setCitta(new String());
+            }
+            else{
+                //D = domicilio
+                /* validazione lato server */
+                if(!RequestValidator.assertIndirizzo(ordine.getVia())){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                    dispatcher.forward(request, response);
+                }
+                if(!RequestValidator.assertCAP(ordine.getCap())){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                    dispatcher.forward(request, response);
+                }
+                if(!RequestValidator.assertCitta(ordine.getCitta())){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                    dispatcher.forward(request, response);
+                }
+                /* fine validazione */
+            }
+
+            if(ordine.getTipoPagamento().equalsIgnoreCase("contanti") ||
+                    ordine.getTipoPagamento().equalsIgnoreCase("paypal")){
+                ordine.setNumeroCarta(new String());
+            }else{
+                //Contanti
+                /* validazione lato server */
+                if(!RequestValidator.assertNumeroCarta(ordine.getNumeroCarta())){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                    dispatcher.forward(request, response);
+                }
+                /* fine validazione */
+            }
+
+            if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20)
+                ordine.setTotale(ordine.getTotale() + 3);
+
+            ordineDAO.doSave(ordine);
+
+            carrello.setTotale(0);
+            carrello.setNumeroProdotti(0);
+            carrello.setListaProdotti(new ArrayList<>());
+            CarrelloDAO carrelloDAO = new CarrelloDAO();
+
+            synchronized (session){
+                carrelloDAO.doUpdate(carrello);
+                session.setAttribute("carrello", carrello);
+
+            }
+
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+            request.setAttribute("prodottoList", list);
+            address = "WEB-INF/result/homepage.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
