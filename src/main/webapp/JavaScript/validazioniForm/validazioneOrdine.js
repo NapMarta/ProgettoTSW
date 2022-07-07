@@ -19,7 +19,8 @@ function validateO(){
     const citta = document.ordine.citta.value;
     const citta_reg_exp=/^[A-z]{3,20}$/;
 
-    const totale = document.getElementById("totale").innerText;
+    const t = document.getElementById("totale").innerText;
+    const totale = parseFloat(t);
 
     if (!data_reg_exp.test(data) || (data == "") || (data == "undefined")) {
         alert("Inserire una data corretta.");
@@ -50,7 +51,7 @@ function validateO(){
         }
     }
 
-    if ((isNaN(totale)) || (totale === '0.0') || (totale == "undefined")) {
+    if ((isNaN(totale)) || (totale <= 0) || (t == "undefined")) {
         alert("Inserire almeno un prodotto nel carrello.");
         return false;
     }
