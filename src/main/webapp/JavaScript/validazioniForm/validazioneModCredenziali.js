@@ -10,7 +10,7 @@ function validateM(){
     const password = document.modifica.pswd.value;
     const password2 = document.modifica.pswrepeat.value;
 
-    const password_reg_exp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,20})$/;
+    const password_reg_exp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([@_\.,!?#]*)(([a-zA-Z0-9]([@_\.,!?#]*)){8,20})$/;
 
 
     if (!nome_reg_exp.test(nome) || (nome == "") || (nome == "undefined")) {
