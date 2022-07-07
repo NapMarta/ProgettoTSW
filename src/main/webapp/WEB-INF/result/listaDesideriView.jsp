@@ -3,6 +3,7 @@
 <%@ page import="model.beans.ListaDeiDesideri" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage = "/error.jsp" %>
 <html>
 <head>
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
