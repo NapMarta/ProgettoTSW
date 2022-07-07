@@ -81,6 +81,10 @@ div{
     display: inline;
 }
 
+input:focus {
+    outline: none;
+}
+
 /*iPad, tablet*/
 @media screen and (max-width: 1010px){
     .parent {

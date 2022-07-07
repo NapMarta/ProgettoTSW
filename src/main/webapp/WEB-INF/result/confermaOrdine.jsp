@@ -62,7 +62,7 @@
             </div>
 
             <div>
-                <input type="submit" value="Conferma Ordine">
+                <input type="submit" name="concludiOrdine" value="Concludi Ordine">
             </div>
         </form>
         <form action="Ordini">

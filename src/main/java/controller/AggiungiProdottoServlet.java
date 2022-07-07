@@ -32,9 +32,31 @@ public class AggiungiProdottoServlet extends HttpServlet {
             Part immagine = request.getPart("immagine");
             InputStream stream = null;
 
+            /* validazione lato server */
+
+            if(!RequestValidator.assertNome(nomeProdotto)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            if(!RequestValidator.assertDouble(String.valueOf(prezzoProdotto))){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            if(!RequestValidator.assertDescrizione(descrizione)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
             if(immagine != null){
                 stream = immagine.getInputStream();
+            }else{
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
             }
+
+            /* fine validazione */
 
             Prodotto prodotto = new Prodotto();
             ProdottoDAO prodottoDAO = new ProdottoDAO();

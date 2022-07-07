@@ -41,6 +41,26 @@ public class ModificaProdottoServlet extends HttpServlet {
             String tipologia = request.getParameter("tipologia");
             Part immagine = request.getPart("immagine");
 
+            /* validazione lato server */
+
+            if(!RequestValidator.assertNome(nomeProdotto)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            if(!RequestValidator.assertDouble(String.valueOf(prezzoProdotto))){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            if(!RequestValidator.assertDescrizione(descrizione)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            /* fine validazione */
+
+
             InputStream stream = null;
             boolean foto = true;        //l'admin vuole cambiare la foto del prodotto
 
