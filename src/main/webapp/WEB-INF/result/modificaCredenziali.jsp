@@ -1,5 +1,6 @@
 <%@ page import="model.beans.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage = "/error.jsp" %>
 <html>
 <head>
     <title>Modifica Credenziali</title>
