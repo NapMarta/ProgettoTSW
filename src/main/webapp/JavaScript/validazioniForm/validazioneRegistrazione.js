@@ -5,7 +5,7 @@ function validateR(){
 
     const password = document.registrazione.pswd.value;
 
-    const password_reg_exp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,20})$/;
+    const password_reg_exp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([@_\.,!?#]*)(([a-zA-Z0-9]([@_\.,!?#]*)){8,20})$/;
     const password2 = document.registrazione.pswrepeat.value;
 
     const nome = document.registrazione.nome.value;
