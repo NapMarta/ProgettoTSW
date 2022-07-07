@@ -46,6 +46,29 @@ public class ModificaCredenzialiServlet extends HttpServlet {
             String nuovaPsw = request.getParameter("pswd");
             String nuovaPswRepeat = request.getParameter("pswrepeat");
 
+            /* validazione lato server */
+            if(!RequestValidator.assertPassword(pswInserita)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertPassword(nuovaPsw)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertPassword(nuovaPswRepeat)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertNome(nome)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertCognome(cognome)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            /* fine validazione */
+
             Utente utente = new Utente();
 
             utente.setId(codice);
@@ -87,7 +110,6 @@ public class ModificaCredenzialiServlet extends HttpServlet {
                         request.setAttribute("ris", ris);
                         address = "WEB-INF/result/modificaCredenziali.jsp";
                     }
-
                 }
             }
             else{

@@ -44,8 +44,10 @@ public class RegistrazioneServlet extends HttpServlet {
         if (registrazione != null){
             Utente utente = new Utente();
             UtenteDAO service = new UtenteDAO();
+            String password = request.getParameter("pswd");
+            String passwordRipetuta = request.getParameter("pswrepeat");
             try {
-                utente.setPasswordUtente(request.getParameter("pswd"));
+                utente.setPasswordUtente(password);
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
@@ -53,6 +55,33 @@ public class RegistrazioneServlet extends HttpServlet {
             utente.setNome(request.getParameter("nome"));
             utente.setCognome(request.getParameter("cognome"));
             utente.setAdmin(false);
+
+            /* validazione lato server */
+            if(!RequestValidator.assertEmail(utente.getEmail())){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertPassword(password)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertPassword(passwordRipetuta)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(passwordRipetuta.equals(password)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertNome(utente.getNome())){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            if(!RequestValidator.assertCognome(utente.getCognome())){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+            /* fine validazione */
 
             request.setAttribute("utente", utente);
             utente.setId(service.doSave(utente));

@@ -9,10 +9,10 @@ function validateR(){
     const password2 = document.registrazione.pswrepeat.value;
 
     const nome = document.registrazione.nome.value;
-    const nome_reg_exp = /^[A-z]{3,30}$/;
+    const nome_reg_exp = /^[A-z ]{3,30}$/;
 
     const cognome = document.registrazione.cognome.value;
-    const cognome_reg_exp = /^[A-z]{3,30}$/;
+    const cognome_reg_exp = /^[A-z ]{3,30}$/;
 
 
     if (!nome_reg_exp.test(nome) || (nome == "") || (nome == "undefined")) {

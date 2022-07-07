@@ -52,15 +52,16 @@ public class LoginServlet extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("psw");
 
+            /* validazione lato server */
             if(!RequestValidator.assertEmail(email)){
                 RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
                 dispatcher.forward(request, response);
             }
-
             if(!RequestValidator.assertPassword(password)){
                 RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
                 dispatcher.forward(request, response);
             }
+            /* fine validazione */
 
             try {
                 utente.setPasswordUtente(password);

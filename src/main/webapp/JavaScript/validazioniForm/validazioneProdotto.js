@@ -3,7 +3,7 @@
 function validateP() {
 
     const nome = document.prodotto.nomeProdotto.value;
-    const nome_reg_exp = /^[A-z0-9]{3,30}$/;
+    const nome_reg_exp = /^[A-z0-9 ]{3,30}$/;
 
     const p = document.prodotto.prezzoProdotto.value;
 

@@ -9,6 +9,8 @@ import model.dao.ProdottoDAO;
 import java.io.IOException;
 import java.util.List;
 
+/*pulsante home dalla view Admin e dalla view Cliente*/
+
 @WebServlet(name = "Ordini", value = "/Ordini")
 public class OrdiniServlet extends HttpServlet {
     @Override
