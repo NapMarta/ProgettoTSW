@@ -10,7 +10,7 @@ function validateP() {
     const prezzo = parseFloat(p);
 
     const descrizione = document.prodotto.descrizione.value;
-    const descrizione_reg_exp = /^\w{3,200}$/;
+    const descrizione_reg_exp = /^[A-z0-9,\. ]{3,200}$/;
 
     if (!nome_reg_exp.test(nome) || (nome == "") || (nome == "undefined")) {
         alert("Inserire un nome corretto.");
