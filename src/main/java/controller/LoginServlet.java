@@ -51,6 +51,17 @@ public class LoginServlet extends HttpServlet {
 
             String email = request.getParameter("email");
             String password = request.getParameter("psw");
+
+            if(!RequestValidator.assertEmail(email)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            if(!RequestValidator.assertPassword(password)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+                dispatcher.forward(request, response);
+            }
+
             try {
                 utente.setPasswordUtente(password);
             } catch (NoSuchAlgorithmException e) {
