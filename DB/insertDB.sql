@@ -1,7 +1,7 @@
 use cookstock;
 
 insert into utente(nome, cognome, email, passwordUtente, isAdmin) value
-    ("Admin", "Admin","admin@gmail.com","c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec",true);
+    ("Admin", "Admin","admin@gmail.com","c002746dc3645ac45161650d12d1042bef90bf3a75cd07878c2ee9104af87e8f936e70dcd957750f9da1a222ab5edba7da66f839edb99c2820e8ba2e39ff1e54",true);
 -- ("Mario", "Rossi", "mario01@gmail.com","Scdfg54", false),
 -- ("Marco", "Bianchi", "marco22@libero.it","ciao43", false),
 -- ("Luigi", "Ferreri","luigi34@gmail.com","HelloWorld", false),
