@@ -85,10 +85,34 @@ input:focus {
     outline: none;
 }
 
+#via{
+    margin-left: 10px;
+}
+
+.indirizzo{
+    margin-left: 35px;
+}
+
+.desc{
+    font-weight: bold;
+}
+
+.child{
+    margin-left: 10%;
+}
+
+#indirizzo input{
+    margin-bottom: 5px;
+}
+
 /*iPad, tablet*/
 @media screen and (max-width: 1010px){
     .parent {
         width: 70%;
+        margin-top: 15vh;
+    }
+    .child{
+        margin-left: 5%;
     }
 }
 
@@ -101,5 +125,8 @@ input:focus {
         margin-left: 2px;
     }
 
+    .child{
+        margin-left: -5%;
+    }
 }
 

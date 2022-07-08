@@ -14,9 +14,9 @@
     <body>
     <div class="parent">
         <p class="titolo">Conferma Ordine</p><hr>
-        <form method="post" name="ordine" onsubmit="return validateO();" action="EffettuaOrdine">
+        <form method="post" name="ordine" onsubmit="return validateO();" action="EffettuaOrdine" class="child">
             <div>
-                <label>Seleziona il tipo di ordine:</label><br>
+                <label class="desc">Seleziona il tipo di ordine:</label><br>
                 <span>
                     <input type="radio" id="asporto" name="tipologia" value="A"
                            checked>
@@ -26,10 +26,10 @@
                     <input type="radio" id="domicilio" name="tipologia" value="D">
                     <label for="domicilio">Domicilio</label><br>
                         <span id="indirizzo">
-                            <label for="via">Via: </label> <input type="text" name="via" id="via" class="dom"
+                            <label for="via" class="indirizzo">Via:</label><input type="text" name="via" id="via" class="dom"
                                                                   title="Inserire nel formato: Via,Numero civico"><br>
-                            <label for="citta">Città:</label><input type="text" name="citta" id="citta" class="dom"><br>
-                            <label for="cap">CAP:</label><input type="text" name="cap" id="cap" class="dom"><br>
+                            <label for="citta" class="indirizzo">Città:</label><input type="text" name="citta" id="citta" class="dom"><br>
+                            <label for="cap" class="indirizzo">CAP:</label><input type="text" name="cap" id="cap" class="dom"><br>
                         </span>
                 </span>
                 <span>
@@ -38,12 +38,12 @@
                 </span>
             </div>
             <div>
-                <p>Costo di spedizione:<span id="spedizione">0.00</span>&#8364;</p>
-                <p>Totale: <span id="totale" name="totale">${ordine.totale}</span>&#8364;</p>
-                <p>Data Pagamento: <span name="data" id="data">${ordine.dataPagamento}</span></p>
+                <p class="desc">Costo di spedizione:<span id="spedizione">0.00</span>&#8364;</p>
+                <p class="desc">Totale: <span id="totale" name="totale">${ordine.totale}</span>&#8364;</p>
+                <p class="desc">Data Pagamento: <span name="data" id="data">${ordine.dataPagamento}</span></p>
             </div>
             <div>
-                <label>Seleziona il tipo di pagamento:</label><br>
+                <label class="desc">Seleziona il tipo di pagamento:</label><br>
                 <span>
                     <input type="radio" id="contanti" name="tipoPagamento" value="Contanti" checked>
                     <label for="contanti">Contanti</label><br>
