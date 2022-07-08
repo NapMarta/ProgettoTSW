@@ -15,7 +15,7 @@ public class RequestValidator {
 
 
     public static boolean assertNome(String name){
-        Pattern pattern = Pattern.compile("^[A-z0-9_-]{3,30}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9_ ]{3,30}$");
         Matcher matcher = pattern.matcher(name);
         if(matcher.matches())
             return true;
@@ -23,7 +23,7 @@ public class RequestValidator {
     }
 
     public static boolean assertCognome(String cognome){
-        Pattern pattern = Pattern.compile("^[A-z0-9_-]{3,30}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9_ ]{3,30}$");
         Matcher matcher = pattern.matcher(cognome);
         if(matcher.matches())
             return true;
@@ -72,7 +72,7 @@ public class RequestValidator {
     }
 
     public static boolean assertCitta(String citta){
-        Pattern pattern = Pattern.compile("^[a-z]{3,20}$", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("^[a-z ]{3,20}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(citta);
         if(matcher.matches())
             return true;
