@@ -43,7 +43,7 @@
 
             <%}%>
             <form action="EffettuaOrdine" class="formConferma">
-                <p>Totale: <%= carrello.getTotale()%>&#8364;</p>
+                <p>Totale provvisorio: <%= carrello.getTotale()%>&#8364;</p>
                 <p>Numero prodotti: <%= carrello.getNumeroProdotti()%></p>
                 <input type="submit" name="conferma" value="Conferma ordine">
                 <input type="submit" name="continuaAcquisti" value="Ritorna agli acquisti">

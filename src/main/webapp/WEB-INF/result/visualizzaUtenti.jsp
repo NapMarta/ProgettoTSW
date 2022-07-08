@@ -18,7 +18,7 @@
     ArrayList<Utente> list = (ArrayList<Utente>)request.getAttribute("listUtenti");
     if(list.size() == 0){
 %>
-        <h3>Non ci sono ordini effettuati</h3>
+        <h3>Non ci sono utenti</h3>
 <%
 }else{%>
 <p class="title">Visualizzazione Utenti</p>
