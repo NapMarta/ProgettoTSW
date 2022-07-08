@@ -1,9 +1,9 @@
 function validateM(){
     const nome = document.modifica.nome.value;
-    const nome_reg_exp = /^[A-z ]{3,30}$/;
+    const nome_reg_exp = /^[A-zàèìòù' ]{3,30}$/;
 
     const cognome = document.modifica.cognome.value;
-    const cognome_reg_exp = /^[A-z ]{3,30}$/;
+    const cognome_reg_exp = /^[A-zàèìòù' ]{3,30}$/;
 
     const passwordOld = document.modifica.pswdOld.value;
 
