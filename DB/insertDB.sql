@@ -1,7 +1,7 @@
 use cookstock;
 
 insert into utente(nome, cognome, email, passwordUtente, isAdmin) value
-    ("Admin", "Admin","admin@gmail.com","c002746dc3645ac45161650d12d1042bef90bf3a75cd07878c2ee9104af87e8f936e70dcd957750f9da1a222ab5edba7da66f839edb99c2820e8ba2e39ff1e54",true);
+("Admin", "Admin","admin@gmail.com","c002746dc3645ac45161650d12d1042bef90bf3a75cd07878c2ee9104af87e8f936e70dcd957750f9da1a222ab5edba7da66f839edb99c2820e8ba2e39ff1e54",true);
 -- ("Mario", "Rossi", "mario01@gmail.com","Scdfg54", false),
 -- ("Marco", "Bianchi", "marco22@libero.it","ciao43", false),
 -- ("Luigi", "Ferreri","luigi34@gmail.com","HelloWorld", false),
@@ -76,6 +76,10 @@ delete from ordine where codice = 4;
 delete from appartenere where codiceOrdine = 3;
 
 
-SELECT prodotto.codice, nome, prezzo, descrizione, tipologia, immagine, quantità FROM (prodotto JOIN contenere ON prodotto.codice=contenere.codiceProdotto) JOIN carrello ON contenere.codiceCarrello = carrello.codice;
+SELECT prodotto.codice, nome, prezzo, descrizione, tipologia, immagine, quantità
+FROM (prodotto JOIN contenere ON prodotto.codice=contenere.codiceProdotto) JOIN carrello
+ON contenere.codiceCarrello = carrello.codice;
 
-SELECT prodotto.codice, nome, prezzo, descrizione, prodotto.tipologia, quantità FROM (prodotto JOIN appartenere ON prodotto.codice=codiceProdotto) JOIN ordine ON codiceOrdine=ordine.codice WHERE idUtente=3;
+SELECT prodotto.codice, nome, prezzo, descrizione, prodotto.tipologia, quantità
+FROM (prodotto JOIN appartenere ON prodotto.codice=codiceProdotto) JOIN ordine
+ON codiceOrdine=ordine.codice WHERE idUtente=3;
