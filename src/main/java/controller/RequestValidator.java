@@ -15,7 +15,7 @@ public class RequestValidator {
 
 
     public static boolean assertNome(String name){
-        Pattern pattern = Pattern.compile("^[A-z0-9_-]{3,30}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9àèìòù' ]{3,30}$");
         Matcher matcher = pattern.matcher(name);
         if(matcher.matches())
             return true;
@@ -23,7 +23,7 @@ public class RequestValidator {
     }
 
     public static boolean assertCognome(String cognome){
-        Pattern pattern = Pattern.compile("^[A-z0-9_-]{3,30}$");
+        Pattern pattern = Pattern.compile("^[A-zàèìòù' ]{3,30}$");
         Matcher matcher = pattern.matcher(cognome);
         if(matcher.matches())
             return true;
@@ -64,7 +64,7 @@ public class RequestValidator {
 
 
     public static boolean assertIndirizzo(String indirizzo){
-        Pattern pattern = Pattern.compile("^[A-z0-9,\\. ]{3,30},[A-z0-9,\\. ]{2,3}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9àèìòù',\\. ]{3,30}, [A-z0-9,\\. ]{2,3}$");
         Matcher matcher = pattern.matcher(indirizzo);
         if(matcher.matches())
             return true;
@@ -72,7 +72,7 @@ public class RequestValidator {
     }
 
     public static boolean assertCitta(String citta){
-        Pattern pattern = Pattern.compile("^[a-z]{3,20}$", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("^[a-zàèìòù' ]{3,20}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(citta);
         if(matcher.matches())
             return true;
@@ -80,7 +80,7 @@ public class RequestValidator {
     }
 
     public static boolean assertDescrizione(String descrizione){
-        Pattern pattern = Pattern.compile("^[a-z0-9,\\. ]{3,200}$", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("^[A-z0-9àèìòù',\\. ]{3,200}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(descrizione);
         if(matcher.matches())
             return true;

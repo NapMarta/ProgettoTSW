@@ -23,6 +23,8 @@ public class AggiungiProdottoServlet extends HttpServlet {
         String conferma = request.getParameter("conferma");
         String address  = null;
 
+        boolean ris = true;     //validazione corretta
+
         if(conferma != null){
             String nomeProdotto = request.getParameter("nomeProdotto");
 
@@ -32,43 +34,45 @@ public class AggiungiProdottoServlet extends HttpServlet {
             Part immagine = request.getPart("immagine");
             InputStream stream = null;
 
+
             /* validazione lato server */
 
-            if(!RequestValidator.assertNome(nomeProdotto)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+            if(!RequestValidator.assertNome(nomeProdotto)) {
+                ris = false;
             }
 
             if(!RequestValidator.assertDouble(String.valueOf(prezzoProdotto))){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
 
             if(!RequestValidator.assertDescrizione(descrizione)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
-
-            if(immagine != null){
-                stream = immagine.getInputStream();
-            }
-
             /* fine validazione */
 
-            Prodotto prodotto = new Prodotto();
-            ProdottoDAO prodottoDAO = new ProdottoDAO();
-            prodotto.setDescrizione(descrizione);
-            prodotto.setImmagine(stream);
-            prodotto.setNome(nomeProdotto);
-            prodotto.setTipologia(tipologia);
-            prodotto.setPrezzo(prezzoProdotto);
+            if(ris){
+                if(immagine != null){
+                    stream = immagine.getInputStream();
+                }
 
-            prodotto.setCodice(prodottoDAO.doSave(prodotto));
+                Prodotto prodotto = new Prodotto();
+                ProdottoDAO prodottoDAO = new ProdottoDAO();
+                prodotto.setDescrizione(descrizione);
+                prodotto.setImmagine(stream);
+                prodotto.setNome(nomeProdotto);
+                prodotto.setTipologia(tipologia);
+                prodotto.setPrezzo(prezzoProdotto);
 
-            List<Prodotto> list = prodottoDAO.doRetrieveAll();
-            request.setAttribute("prodottoList", list);
-            address = "WEB-INF/result/AdminView.jsp";
+                prodotto.setCodice(prodottoDAO.doSave(prodotto));
+
+                List<Prodotto> list = prodottoDAO.doRetrieveAll();
+                request.setAttribute("prodottoList", list);
+                address = "WEB-INF/result/AdminView.jsp";
+            }
         }
+
+        if(!ris)
+            address = "error.jsp";
 
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
