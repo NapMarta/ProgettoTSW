@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="file" name="immagine" size="50"><br><br>
+                            <input type="file" name="immagine" size="50" accept="image/*"><br><br>
                             <p><img id="imgProdotto" src="./PhotoController?codice=<%= prodotto.getCodice()%>"  name="immagineVecchia"></p><br/>
 
                         </td>

@@ -46,7 +46,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="file" name="immagine" value="" size="50" required>
+                        <input type="file" name="immagine" value="" size="50" accept="image/*" required>
                         <br><br>
                     </td>
                 </tr>

@@ -72,8 +72,26 @@ input:focus {
 }
 
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 570px){
+
     input[type=text], input[type=number]{
         width: 100px;
+        margin-right: -25px;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    input[type=file]{
+        color: transparent;
+        width: 70px;
+    }
+
+    input[type=text], input[type=number]{
+        margin-left: -10px;
+    }
+
+    input[type=number], select{
+        margin-left: 5px;
     }
 }
