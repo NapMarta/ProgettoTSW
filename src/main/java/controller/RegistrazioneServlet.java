@@ -67,7 +67,7 @@ public class RegistrazioneServlet extends HttpServlet {
             if(!RequestValidator.assertPassword(passwordRipetuta)){
                 ris = false;
             }
-            if(passwordRipetuta.equals(password)){
+            if(!passwordRipetuta.equals(password)){
                 ris = false;
             }
             if(!RequestValidator.assertNome(utente.getNome())){
