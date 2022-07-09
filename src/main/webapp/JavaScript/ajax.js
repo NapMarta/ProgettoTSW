@@ -13,12 +13,12 @@ $(document).ready(function(){
                 if(response.registered){
 
                     //console.log(small.text());
-                    div.addClass('error');
+                    div.addClass('errorEmail');
                     small.text('Utente già registrato');
                     small.css({"font-size": "10px","color": "red"});
                 }else{
                     small.text('');
-                    div.removeClass('error');
+                    div.removeClass('errorEmail');
                     //console.log(small.text());
                 }
             })

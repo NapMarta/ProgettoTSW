@@ -3,7 +3,7 @@ function checkPasswordMatch() {
     const confirmPassword = $("#psw-repeat").val();
     if (password != confirmPassword){
         $("#CheckPasswordMatch").text('Password non corrispondono!');
-        $("#CheckPasswordMatch").css({"font-size": "10px","color": "red"});
+        $("#CheckPasswordMatch").css({"font-size": "12px","color": "red"});
     }
 
     else{

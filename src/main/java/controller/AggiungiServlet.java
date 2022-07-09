@@ -47,11 +47,9 @@ public class AggiungiServlet extends HttpServlet {
                         p.setQuantita(p.getQuantita()-1);
                         carrello.setNumeroProdotti(carrello.getNumeroProdotti()-1);
                         carrello.setTotale(carrello.getTotale()-p.getPrezzo());
-
                         if(p.getQuantita() == 0){
                             iterator.remove();
                         }
-
                     }
                 }
             }
@@ -118,9 +116,6 @@ public class AggiungiServlet extends HttpServlet {
 
             address = "WEB-INF/result/homepage.jsp";
         }
-//        else {
-//            address = "WEB-INF/result/login.jsp";
-//        }
 
         if(aggiungiPreferiti != null){               //aggiungi alla lista dei desideri
             Utente utente = (Utente) session.getAttribute("utente");

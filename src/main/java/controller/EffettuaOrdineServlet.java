@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.beans.*;
 import model.dao.CarrelloDAO;
+import model.dao.ListaDeiDesideriDAO;
 import model.dao.OrdineDAO;
 import model.dao.ProdottoDAO;
 
@@ -29,6 +30,7 @@ public class EffettuaOrdineServlet extends HttpServlet {
         String concludiOrdine = request.getParameter("concludiOrdine");
         HttpSession session = request.getSession();
         Ordine ordine = new Ordine();
+        boolean validazione = true;
 
         if (continua != null) {
             ProdottoDAO prodottoDAO = new ProdottoDAO();
@@ -51,17 +53,19 @@ public class EffettuaOrdineServlet extends HttpServlet {
 
                 /* validazione lato server */
                 if(!RequestValidator.assertDouble(String.valueOf(ordine.getTotale()))){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                    dispatcher.forward(request, response);
+                    validazione = false;
                 }
                 /* fine validazione */
 
-                int id = utente.getId();
-                ordine.setIdUtente(id);
-                synchronized (session){
-                    session.setAttribute("ordine", ordine);
+                if(validazione){
+                    int id = utente.getId();
+                    ordine.setIdUtente(id);
+                    synchronized (session){
+                        session.setAttribute("ordine", ordine);
+                    }
+                    request.setAttribute("ordine", ordine);
                 }
-                request.setAttribute("ordine", ordine);
+
             }
         }
 
@@ -80,7 +84,6 @@ public class EffettuaOrdineServlet extends HttpServlet {
             ordine.setCitta(request.getParameter("citta"));
 
 
-
             if(ordine.getTipologia().equals("A") || ordine.getTipologia().equals("CP")){
                 ordine.setVia(new String());
                 ordine.setCap(new String());
@@ -90,16 +93,13 @@ public class EffettuaOrdineServlet extends HttpServlet {
                 //D = domicilio
                 /* validazione lato server */
                 if(!RequestValidator.assertIndirizzo(ordine.getVia())){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                    dispatcher.forward(request, response);
+                    validazione = false;
                 }
                 if(!RequestValidator.assertCAP(ordine.getCap())){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                    dispatcher.forward(request, response);
+                    validazione = false;
                 }
                 if(!RequestValidator.assertCitta(ordine.getCitta())){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                    dispatcher.forward(request, response);
+                    validazione = false;
                 }
                 /* fine validazione */
             }
@@ -111,32 +111,48 @@ public class EffettuaOrdineServlet extends HttpServlet {
                 //Contanti
                 /* validazione lato server */
                 if(!RequestValidator.assertNumeroCarta(ordine.getNumeroCarta())){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                    dispatcher.forward(request, response);
+                    validazione = false;
                 }
                 /* fine validazione */
             }
 
-            if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20)
-                ordine.setTotale(ordine.getTotale() + 3);
+            if(validazione){
+                if(ordine.getTipologia().equals("D") && ordine.getTotale() < 20)
+                    ordine.setTotale(ordine.getTotale() + 3);
 
-            ordineDAO.doSave(ordine);
+                ordineDAO.doSave(ordine);
 
-            carrello.setTotale(0);
-            carrello.setNumeroProdotti(0);
-            carrello.setListaProdotti(new ArrayList<>());
+                carrello.setTotale(0);
+                carrello.setNumeroProdotti(0);
+                carrello.setListaProdotti(new ArrayList<>());
+                CarrelloDAO carrelloDAO = new CarrelloDAO();
+
+                synchronized (session){
+                    carrelloDAO.doUpdate(carrello);
+                    session.setAttribute("carrello", carrello);
+                }
+
+                ProdottoDAO prodottoDAO = new ProdottoDAO();
+                List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+                request.setAttribute("prodottoList", list);
+                address = "WEB-INF/result/homepage.jsp";
+            }
+        }
+
+        if(!validazione){
+            address = "error.jsp";
+            Carrello carrello = (Carrello) session.getAttribute("carrello");
+            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
+
             CarrelloDAO carrelloDAO = new CarrelloDAO();
 
+            carrelloDAO.doUpdate(carrello);
+            ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+            listaDeiDesideriDAO.doUpdate(listaDeiDesideri);
+
             synchronized (session){
-                carrelloDAO.doUpdate(carrello);
-                session.setAttribute("carrello", carrello);
-
+                session.invalidate();
             }
-
-            ProdottoDAO prodottoDAO = new ProdottoDAO();
-            List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
-            request.setAttribute("prodottoList", list);
-            address = "WEB-INF/result/homepage.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

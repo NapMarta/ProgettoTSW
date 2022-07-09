@@ -3,8 +3,12 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.beans.Carrello;
+import model.beans.ListaDeiDesideri;
 import model.beans.Prodotto;
 import model.beans.Utente;
+import model.dao.CarrelloDAO;
+import model.dao.ListaDeiDesideriDAO;
 import model.dao.ProdottoDAO;
 import model.dao.UtenteDAO;
 
@@ -24,9 +28,10 @@ public class ModificaCredenzialiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String annulla = request.getParameter("annulla");
         String modifica = request.getParameter("modifica");
-        boolean ris = true, update;
+        boolean ris = true;
         String address = null;
         UtenteDAO utenteDAO = new UtenteDAO();
+        HttpSession session = request.getSession();
 
         if(annulla != null){
             ProdottoDAO prodottoDAO = new ProdottoDAO();
@@ -35,7 +40,11 @@ public class ModificaCredenzialiServlet extends HttpServlet {
 
             address = "WEB-INF/result/homepage.jsp";
 
-        }else if(modifica != null){
+        }
+
+        boolean validazione = true;
+
+        if(modifica != null){
             int codice = Integer.parseInt(request.getParameter("codice"));
             String nome = request.getParameter("nome");
             String cognome = request.getParameter("cognome");
@@ -46,76 +55,91 @@ public class ModificaCredenzialiServlet extends HttpServlet {
             String nuovaPsw = request.getParameter("pswd");
             String nuovaPswRepeat = request.getParameter("pswrepeat");
 
+
+
             /* validazione lato server */
             if(!RequestValidator.assertPassword(pswInserita)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             if(!RequestValidator.assertPassword(nuovaPsw)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             if(!RequestValidator.assertPassword(nuovaPswRepeat)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             if(!RequestValidator.assertNome(nome)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             if(!RequestValidator.assertCognome(cognome)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             /* fine validazione */
 
-            Utente utente = new Utente();
 
-            utente.setId(codice);
-            utente.setNome(nome);
-            utente.setCognome(cognome);
-            utente.setEmail(email);
+            if(validazione){
+                Utente utente = new Utente();
 
-            Utente u = new Utente();
-            try {
-                u.setPasswordUtente(pswInserita);
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-            String psw = u.getPasswordUtente();
+                utente.setId(codice);
+                utente.setNome(nome);
+                utente.setCognome(cognome);
+                utente.setEmail(email);
 
-            try {
-                u = utenteDAO.doRetrieveByCredenziali(email, psw);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
+                Utente u = new Utente();
+                try {
+                    u.setPasswordUtente(pswInserita);
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                String psw = u.getPasswordUtente();
+
+                try {
+                    u = utenteDAO.doRetrieveByCredenziali(email, psw);
+                } catch (SQLException | NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
 
 
-            if(u != null){
-                if(nuovaPsw.equals(nuovaPswRepeat)){
-                    try {
-                        utente.setPasswordUtente(nuovaPsw);
-                        utenteDAO.doUpdate(utente);
+                if(u != null){
+                    if(nuovaPsw.equals(nuovaPswRepeat)){
+                        try {
+                            utente.setPasswordUtente(nuovaPsw);
+                            utenteDAO.doUpdate(utente);
 
-                        ProdottoDAO prodottoDAO = new ProdottoDAO();
-                        List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
-                        request.setAttribute("prodottoList", list);
+                            ProdottoDAO prodottoDAO = new ProdottoDAO();
+                            List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+                            request.setAttribute("prodottoList", list);
 
-                        address = "WEB-INF/result/homepage.jsp";
-                    } catch (NoSuchAlgorithmException | SQLException e) {
-                        e.printStackTrace();
-                        ris = false;
-                        request.setAttribute("ris", ris);
-                        address = "WEB-INF/result/modificaCredenziali.jsp";
+                            address = "WEB-INF/result/homepage.jsp";
+                        } catch (NoSuchAlgorithmException | SQLException e) {
+                            e.printStackTrace();
+                            ris = false;
+                            request.setAttribute("ris", ris);
+                            address = "WEB-INF/result/modificaCredenziali.jsp";
+                        }
                     }
                 }
+                else{
+                    ris = false;
+                    request.setAttribute("ris", ris);
+                    address = "WEB-INF/result/modificaCredenziali.jsp";
+                }
             }
-            else{
-                ris = false;
-                request.setAttribute("ris", ris);
-                address = "WEB-INF/result/modificaCredenziali.jsp";
+
+        }
+
+        if(!validazione){
+            address = "error.jsp";
+            Carrello carrello = (Carrello) session.getAttribute("carrello");
+            ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
+
+            CarrelloDAO carrelloDAO = new CarrelloDAO();
+
+            carrelloDAO.doUpdate(carrello);
+            ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+            listaDeiDesideriDAO.doUpdate(listaDeiDesideri);
+
+            synchronized (session){
+                session.invalidate();
             }
         }
 

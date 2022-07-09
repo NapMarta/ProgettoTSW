@@ -40,6 +40,7 @@ public class RegistrazioneServlet extends HttpServlet {
             address = "index.jsp";
         }
 
+        boolean ris = true;
 
         if (registrazione != null){
             Utente utente = new Utente();
@@ -58,62 +59,63 @@ public class RegistrazioneServlet extends HttpServlet {
 
             /* validazione lato server */
             if(!RequestValidator.assertEmail(utente.getEmail())){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
             if(!RequestValidator.assertPassword(password)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
             if(!RequestValidator.assertPassword(passwordRipetuta)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
             if(passwordRipetuta.equals(password)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
             if(!RequestValidator.assertNome(utente.getNome())){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
             if(!RequestValidator.assertCognome(utente.getCognome())){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                ris = false;
             }
             /* fine validazione */
 
-            request.setAttribute("utente", utente);
-            utente.setId(service.doSave(utente));
+            if(ris){
+                request.setAttribute("utente", utente);
+                utente.setId(service.doSave(utente));
 
-            ProdottoDAO prodottoDAO = new ProdottoDAO();
-            List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
-            request.setAttribute("prodottoList", list);
+                ProdottoDAO prodottoDAO = new ProdottoDAO();
+                List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+                request.setAttribute("prodottoList", list);
 
-            Carrello carrello = new Carrello();
-            carrello.setIdUtente(utente.getId());
-            carrello.setTotale(0);
-            carrello.setNumeroProdotti(0);
-            carrello.setListaProdotti(new ArrayList<>());
-            CarrelloDAO carrelloDAO = new CarrelloDAO();
-            carrello.setIdUtente(carrelloDAO.doCreate(carrello));
+                Carrello carrello = new Carrello();
+                carrello.setIdUtente(utente.getId());
+                carrello.setTotale(0);
+                carrello.setNumeroProdotti(0);
+                carrello.setListaProdotti(new ArrayList<>());
+                CarrelloDAO carrelloDAO = new CarrelloDAO();
+                carrello.setIdUtente(carrelloDAO.doCreate(carrello));
 
-            //if (id == 0)  ERROR
+                //if (id == 0)  ERROR
 
-            ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();
-            listaDeiDesideri.setIdUtente(utente.getId());
-            listaDeiDesideri.setListaProdotti(new ArrayList<>());
-            ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+                ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();
+                listaDeiDesideri.setIdUtente(utente.getId());
+                listaDeiDesideri.setListaProdotti(new ArrayList<>());
+                ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
 
-            listaDeiDesideriDAO.doCreate(listaDeiDesideri);
+                listaDeiDesideriDAO.doCreate(listaDeiDesideri);
 
-            synchronized (session){
-                session.setAttribute("carrello", carrello);
-                session.setAttribute("utente", utente);
-                session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                synchronized (session){
+                    session.setAttribute("carrello", carrello);
+                    session.setAttribute("utente", utente);
+                    session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                }
+
+                address = "WEB-INF/result/homepage.jsp";
             }
 
-            address = "WEB-INF/result/homepage.jsp";
+        }
+
+        if(!ris){       //  errore nella validazione
+            address = "error.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

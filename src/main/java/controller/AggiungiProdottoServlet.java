@@ -23,7 +23,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
         String conferma = request.getParameter("conferma");
         String address  = null;
 
-        boolean ris = true;     //validazione corretta
+        boolean validazione = true;     //validazione corretta
 
         if(conferma != null){
             String nomeProdotto = request.getParameter("nomeProdotto");
@@ -38,19 +38,19 @@ public class AggiungiProdottoServlet extends HttpServlet {
             /* validazione lato server */
 
             if(!RequestValidator.assertNome(nomeProdotto)) {
-                ris = false;
+                validazione = false;
             }
 
             if(!RequestValidator.assertDouble(String.valueOf(prezzoProdotto))){
-                ris = false;
+                validazione = false;
             }
 
             if(!RequestValidator.assertDescrizione(descrizione)){
-                ris = false;
+                validazione = false;
             }
             /* fine validazione */
 
-            if(ris){
+            if(validazione){
                 if(immagine != null){
                     stream = immagine.getInputStream();
                 }
@@ -71,7 +71,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
             }
         }
 
-        if(!ris)
+        if(!validazione)
             address = "error.jsp";
 
 

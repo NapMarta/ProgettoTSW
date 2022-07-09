@@ -26,7 +26,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 
         String modifica = request.getParameter("modifica");
         String address = null;
-
+        boolean validazione = true;
 
         if(modifica != null){
             Prodotto prodotto = new Prodotto();
@@ -43,62 +43,63 @@ public class ModificaProdottoServlet extends HttpServlet {
 
             /* validazione lato server */
 
-            if(!RequestValidator.assertNome(nomeProdotto)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+            if(!RequestValidator.assertNome(nomeProdotto)) {
+                validazione = false;
             }
 
             if(!RequestValidator.assertDouble(String.valueOf(prezzoProdotto))){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
 
             if(!RequestValidator.assertDescrizione(descrizione)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
-
             /* fine validazione */
 
+            if(validazione){
+                InputStream stream = null;
+                boolean foto = true;        //l'admin vuole cambiare la foto del prodotto
 
-            InputStream stream = null;
-            boolean foto = true;        //l'admin vuole cambiare la foto del prodotto
-
-            if(immagine.getSize() != 0) {
-                stream = immagine.getInputStream();
-                prodotto.setImmagine(stream);
-            }
-            else {
-                foto = false;
-                Blob blob = prodottoDAO.doRetrievePhotoById(codice);
-                InputStream stream1 = null;
-                try {
-                    stream1 = blob.getBinaryStream();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                if(immagine.getSize() != 0) {
+                    stream = immagine.getInputStream();
+                    prodotto.setImmagine(stream);
                 }
-                prodotto.setImmagine(stream1);
+                else {
+                    foto = false;
+                    Blob blob = prodottoDAO.doRetrievePhotoById(codice);
+                    InputStream stream1 = null;
+                    try {
+                        stream1 = blob.getBinaryStream();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    prodotto.setImmagine(stream1);
+                }
+
+                prodotto.setCodice(codice);
+                prodotto.setDescrizione(descrizione);
+
+                prodotto.setNome(nomeProdotto);
+                prodotto.setTipologia(tipologia);
+                prodotto.setPrezzo(prezzoProdotto);
+
+                boolean ris = prodottoDAO.doUpdate(prodotto, foto);
+
+                if(ris){
+                    List<Prodotto> list = prodottoDAO.doRetrieveAll();
+                    request.setAttribute("prodottoList", list);
+
+                    address = "WEB-INF/result/AdminView.jsp";
+                }
+                else{
+                    address = "WEB-INF/result/homepage.jsp"; //da cambiaree
+                }
             }
 
-            prodotto.setCodice(codice);
-            prodotto.setDescrizione(descrizione);
-
-            prodotto.setNome(nomeProdotto);
-            prodotto.setTipologia(tipologia);
-            prodotto.setPrezzo(prezzoProdotto);
-
-            boolean ris = prodottoDAO.doUpdate(prodotto, foto);
-
-            if(ris){
-                List<Prodotto> list = prodottoDAO.doRetrieveAll();
-                request.setAttribute("prodottoList", list);
-
-                address = "WEB-INF/result/AdminView.jsp";
-            }
-            else{
-                address = "WEB-INF/result/homepage.jsp"; //da cambiaree
-            }
         }
+
+        if(!validazione)
+            address = "error.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);

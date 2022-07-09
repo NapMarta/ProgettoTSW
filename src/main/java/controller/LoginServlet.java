@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
         String home = request.getParameter("home");
         String address = null;
         HttpSession session = request.getSession(true);
+        boolean validazione = true;
 
         if(registrazione != null){
             address = "WEB-INF/result/registrazioneUtente.jsp";
@@ -54,75 +55,78 @@ public class LoginServlet extends HttpServlet {
 
             /* validazione lato server */
             if(!RequestValidator.assertEmail(email)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             if(!RequestValidator.assertPassword(password)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-                dispatcher.forward(request, response);
+                validazione = false;
             }
             /* fine validazione */
 
-            try {
-                utente.setPasswordUtente(password);
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-
-            String pswCrittografata = utente.getPasswordUtente();
-
-            try {
-                utente = utenteDAO.doRetrieveByCredenziali(email, pswCrittografata);
-            } catch (SQLException | NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-
-            if(utente != null){
-                if(utente.isAdmin()){
-                    address = "WEB-INF/result/AdminView.jsp";
-                    ProdottoDAO prodottoDAO = new ProdottoDAO();
-                    List<Prodotto> prodottoList = prodottoDAO.doRetrieveAll();
-                    request.setAttribute("utente", utente);
-                    request.setAttribute("prodottoList", prodottoList);
+            if(validazione){
+                try {
+                    utente.setPasswordUtente(password);
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
                 }
-                else {      // utente
-                    ProdottoDAO prodottoDAO = new ProdottoDAO();
-                    List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
-                    request.setAttribute("prodottoList", list);
+
+                String pswCrittografata = utente.getPasswordUtente();
+
+                try {
+                    utente = utenteDAO.doRetrieveByCredenziali(email, pswCrittografata);
+                } catch (SQLException | NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+
+                if(utente != null){
+                    if(utente.isAdmin()){
+                        address = "WEB-INF/result/AdminView.jsp";
+                        ProdottoDAO prodottoDAO = new ProdottoDAO();
+                        List<Prodotto> prodottoList = prodottoDAO.doRetrieveAll();
+                        request.setAttribute("utente", utente);
+                        request.setAttribute("prodottoList", prodottoList);
+                    }
+                    else {      // utente
+                        ProdottoDAO prodottoDAO = new ProdottoDAO();
+                        List<Prodotto> list = prodottoDAO.doRetrieveByTipologia("Pizza");
+                        request.setAttribute("prodottoList", list);
+                        synchronized (session){
+                            session.setAttribute("utente", utente);
+                        }
+
+
+                        CarrelloDAO carrelloDAO = new CarrelloDAO();
+                        Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
+
+                        synchronized (session) {
+                            session.setAttribute("carrello", carrello);
+                        }
+
+                        ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
+                        ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
+
+                        listaDeiDesideri.setIdUtente(utente.getId());
+
+                        synchronized (session){
+                            session.setAttribute("listaDeiDesideri", listaDeiDesideri);
+                        }
+
+                        address = "WEB-INF/result/homepage.jsp";
+                    }
+
                     synchronized (session){
                         session.setAttribute("utente", utente);
                     }
-
-
-                    CarrelloDAO carrelloDAO = new CarrelloDAO();
-                    Carrello carrello = carrelloDAO.doRetrieveByIdUtente(utente.getId());
-
-                    synchronized (session) {
-                        session.setAttribute("carrello", carrello);
-                    }
-
-                    ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
-                    ListaDeiDesideri listaDeiDesideri = listaDeiDesideriDAO.doRetrieveById(utente.getId());
-
-                    listaDeiDesideri.setIdUtente(utente.getId());
-
-                    synchronized (session){
-                        session.setAttribute("listaDeiDesideri", listaDeiDesideri);
-                    }
-
-                    address = "WEB-INF/result/homepage.jsp";
                 }
-
-                synchronized (session){
-                    session.setAttribute("utente", utente);
+                else {
+                    request.setAttribute("error", true);
+                    address =  "WEB-INF/result/login.jsp";
                 }
             }
-            else {
-                request.setAttribute("error", true);
-                address =  "WEB-INF/result/login.jsp";
-            }
+
         }
 
+        if(!validazione)
+            address = "error.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
