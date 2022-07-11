@@ -8,7 +8,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg"/>
     <script type="text/javascript" src="JavaScript/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="JavaScript/registrazione.js"></script>
-    <script type="text/javascript" src="JavaScript/ajaxPsw.js"></script>
+    <script type="text/javascript" src="JavaScript/psw.js"></script>
     <script type="text/javascript" src="JavaScript/validazionePsw.js"></script>
     <link href="css/registrazione.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="JavaScript/validazioniForm/validazioneModCredenziali.js"></script>

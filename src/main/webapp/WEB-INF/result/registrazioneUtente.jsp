@@ -9,7 +9,7 @@
     <script type="text/javascript" src="JavaScript/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="JavaScript/registrazione.js"></script>
     <script type="text/javascript" src="JavaScript/ajax.js"></script>
-    <script type="text/javascript" src="JavaScript/ajaxPsw.js"></script>
+    <script type="text/javascript" src="JavaScript/psw.js"></script>
     <script type="text/javascript" src="JavaScript/validazionePsw.js"></script>
     <script type="text/javascript" src="JavaScript/validazioniForm/validazioneRegistrazione.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
