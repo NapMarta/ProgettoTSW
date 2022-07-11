@@ -94,7 +94,6 @@ public class RegistrazioneServlet extends HttpServlet {
                 CarrelloDAO carrelloDAO = new CarrelloDAO();
                 carrello.setIdUtente(carrelloDAO.doCreate(carrello));
 
-                //if (id == 0)  ERROR
 
                 ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();
                 listaDeiDesideri.setIdUtente(utente.getId());

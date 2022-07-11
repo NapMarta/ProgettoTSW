@@ -46,7 +46,6 @@ public class OperazioniUtenteServlet extends HttpServlet {
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 
             CarrelloDAO carrelloDAO = new CarrelloDAO();
-
             carrelloDAO.doUpdate(carrello);
             ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
             listaDeiDesideriDAO.doUpdate(listaDeiDesideri);

@@ -56,7 +56,6 @@ public class ModificaCredenzialiServlet extends HttpServlet {
             String nuovaPswRepeat = request.getParameter("pswrepeat");
 
 
-
             /* validazione lato server */
             if(!RequestValidator.assertPassword(pswInserita)){
                 validazione = false;
@@ -133,7 +132,6 @@ public class ModificaCredenzialiServlet extends HttpServlet {
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 
             CarrelloDAO carrelloDAO = new CarrelloDAO();
-
             carrelloDAO.doUpdate(carrello);
             ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
             listaDeiDesideriDAO.doUpdate(listaDeiDesideri);

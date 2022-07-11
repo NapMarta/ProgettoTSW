@@ -6,6 +6,7 @@ import java.io.InputStream;
 public class Prodotto {
 
     public Prodotto() {
+        this.immagine = null;
     }
 
     public Prodotto(int codice, String nome, String tipologia, String descrizione,

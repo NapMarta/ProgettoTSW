@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class ListaDesideriServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 
     @Override

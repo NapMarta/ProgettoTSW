@@ -11,29 +11,6 @@ import java.util.List;
 
 public class  UtenteDAO {
 
-    /*
-    public Utente doRetrieveById(int id){
-        try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps =
-                    con.prepareStatement("SELECT id, nome, cognome, email, passwordUtente, isAdmin FROM utente WHERE id=?");
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                Utente p = new Utente();
-                p.setId(rs.getInt(1));
-                p.setNome(rs.getString(2));
-                p.setCognome(rs.getString(3));
-                p.setEmail(rs.getString(4));
-                p.setPasswordUtente(rs.getString(5));
-                p.setAdmin(rs.getBoolean(6));
-                return p;
-            }
-            return null;
-        } catch (SQLException | NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
     public Utente doRetrieveByCredenziali(String email, String password) throws SQLException, NoSuchAlgorithmException {
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps =

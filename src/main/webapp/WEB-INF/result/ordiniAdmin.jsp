@@ -38,26 +38,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%
-                    ArrayList<ProdottoQuantita> listaProdotti = ordine.getListaProdotti();
-                    for(ProdottoQuantita prodottoQuantita: listaProdotti){%>
-                <tr>
-                    <td data-head="Nome">
-                        <%=prodottoQuantita.getNome()%>
-                    </td>
-                    <td data-head="Descrizione">
-                        <%=prodottoQuantita.getDescrizione()%>
-                    </td>
-                    <td data-head="Prezzo">
-                        <%=prodottoQuantita.getPrezzo()%>&#8364;
-                    </td>
-                    <td data-head="Quantita">
-                        <%=prodottoQuantita.getQuantita()%>
-                    </td>
-                </tr>
-                <%
-                    }
-                %>
+                    <%
+                        ArrayList<ProdottoQuantita> listaProdotti = ordine.getListaProdotti();
+                        for(ProdottoQuantita prodottoQuantita: listaProdotti){%>
+                    <tr>
+                        <td data-head="Nome">
+                            <%=prodottoQuantita.getNome()%>
+                        </td>
+                        <td data-head="Descrizione">
+                            <%=prodottoQuantita.getDescrizione()%>
+                        </td>
+                        <td data-head="Prezzo">
+                            <%=prodottoQuantita.getPrezzo()%>&#8364;
+                        </td>
+                        <td data-head="Quantita">
+                            <%=prodottoQuantita.getQuantita()%>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
                 </tbody>
             </table>
         </details>

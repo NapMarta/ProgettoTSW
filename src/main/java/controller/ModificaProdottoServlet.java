@@ -32,8 +32,6 @@ public class ModificaProdottoServlet extends HttpServlet {
             Prodotto prodotto = new Prodotto();
             ProdottoDAO prodottoDAO = new ProdottoDAO();
 
-            HttpSession session = request.getSession();
-
             int codice = Integer.parseInt(request.getParameter("id"));
             String nomeProdotto = request.getParameter("nomeProdotto");
             Double prezzoProdotto = Double.parseDouble(request.getParameter("prezzoProdotto"));
@@ -92,7 +90,7 @@ public class ModificaProdottoServlet extends HttpServlet {
                     address = "WEB-INF/result/AdminView.jsp";
                 }
                 else{
-                    address = "WEB-INF/result/homepage.jsp"; //da cambiaree
+                    address = "error.jsp";
                 }
             }
 

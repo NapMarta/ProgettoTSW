@@ -39,7 +39,7 @@ public class EffettuaOrdineServlet extends HttpServlet {
             address = "WEB-INF/result/homepage.jsp";
         }
 
-        if (conferma != null) {
+        if (conferma != null) {         //dal carrello
             Utente utente = (Utente) session.getAttribute("utente");
             if (utente == null) {
                 address = "WEB-INF/result/login.jsp";
@@ -108,7 +108,7 @@ public class EffettuaOrdineServlet extends HttpServlet {
                     ordine.getTipoPagamento().equalsIgnoreCase("paypal")){
                 ordine.setNumeroCarta(new String());
             }else{
-                //Contanti
+                //Carta di credito
                 /* validazione lato server */
                 if(!RequestValidator.assertNumeroCarta(ordine.getNumeroCarta())){
                     validazione = false;
@@ -145,7 +145,6 @@ public class EffettuaOrdineServlet extends HttpServlet {
             ListaDeiDesideri listaDeiDesideri = (ListaDeiDesideri) session.getAttribute("listaDeiDesideri");
 
             CarrelloDAO carrelloDAO = new CarrelloDAO();
-
             carrelloDAO.doUpdate(carrello);
             ListaDeiDesideriDAO listaDeiDesideriDAO = new ListaDeiDesideriDAO();
             listaDeiDesideriDAO.doUpdate(listaDeiDesideri);

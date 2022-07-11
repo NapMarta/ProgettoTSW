@@ -44,7 +44,6 @@ public class ProdottoDAO {
             ps.setString(4, prodotto.getTipologia());
             ps.setString(3, prodotto.getDescrizione());
             ps.setDouble(2,prodotto.getPrezzo());
-            ps.setBinaryStream(5,prodotto.getImmagine());
 
             InputStream stream = prodotto.getImmagine();
             if(stream != null){

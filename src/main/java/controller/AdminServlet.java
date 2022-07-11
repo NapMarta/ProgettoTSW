@@ -21,6 +21,7 @@ public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String scelta = request.getParameter("scelta");
         String address = null;
+        ProdottoDAO prodottoDAO = new ProdottoDAO();
         HttpSession session = request.getSession(false);
 
         switch(scelta){
@@ -29,23 +30,17 @@ public class AdminServlet extends HttpServlet {
                 break;
 
             case "Rimuovi prodotto":
-
-                synchronized (session){
-                    int id  = Integer.parseInt(request.getParameter("codice"));
-                    ProdottoDAO prodottoDAO = new ProdottoDAO();
-                    prodottoDAO.doDeleteById(id);
-                    List<Prodotto> list = prodottoDAO.doRetrieveAll();
-                    request.setAttribute("prodottoList", list);
-                    address = "WEB-INF/result/AdminView.jsp";
-                }
+                int id  = Integer.parseInt(request.getParameter("codice"));
+                prodottoDAO.doDeleteById(id);
+                List<Prodotto> list = prodottoDAO.doRetrieveAll();
+                request.setAttribute("prodottoList", list);
+                address = "WEB-INF/result/AdminView.jsp";
                 break;
 
             case "Modifica prodotto":
-
                 synchronized (session){
-                    int id  = Integer.parseInt(request.getParameter("codice"));
-                    ProdottoDAO prodottoDAO = new ProdottoDAO();
-                    Prodotto p = prodottoDAO.doRetrieveById(id);
+                    int idProdotto  = Integer.parseInt(request.getParameter("codice"));
+                    Prodotto p = prodottoDAO.doRetrieveById(idProdotto);
                     session.setAttribute("prodotto", p);
                     address = "WEB-INF/result/modificaProdotto.jsp";
                 }
@@ -57,6 +52,7 @@ public class AdminServlet extends HttpServlet {
                 request.setAttribute("listOrdini", listaOrdiniUtenti);
                 address = "WEB-INF/result/ordiniAdmin.jsp";
                 break;
+
             case "Visualizza utenti":
                 UtenteDAO utenteDAO = new UtenteDAO();
                 ArrayList<Utente> utenteArrayList = utenteDAO.doRetrieveAll();

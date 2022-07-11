@@ -39,7 +39,7 @@ public class AggiungiServlet extends HttpServlet {
                         carrello.setTotale(carrello.getTotale()+p.getPrezzo());
                     }
                 }
-            }else{
+            }else{      //meno
                 Iterator<ProdottoQuantita> iterator = carrello.getListaProdotti().iterator();
                 while(iterator.hasNext()) {
                     ProdottoQuantita p = iterator.next();
@@ -79,7 +79,7 @@ public class AggiungiServlet extends HttpServlet {
             }
         }
 
-        if (aggiungiCarrello != null) {         //aggiungi al carrello
+        if (aggiungiCarrello != null) {         //aggiungi al carrello dalla homapage
             int codice = Integer.parseInt(request.getParameter("codice"));
             boolean val = false;
 

@@ -23,9 +23,10 @@
             </a>
         </form>
     </div>
-    <span>Benvenuto Admin</span>
+
 
     <div class="content">
+        <span>Benvenuto Admin</span>
         <c:forEach items="${prodottoList}" var="prodotto">
             <form action="Admin" method="post">
                 <figure>
