@@ -88,11 +88,11 @@ public class RegistrazioneServlet extends HttpServlet {
 
                 Carrello carrello = new Carrello();
                 carrello.setIdUtente(utente.getId());
-                carrello.setTotale(0);
-                carrello.setNumeroProdotti(0);
                 carrello.setListaProdotti(new ArrayList<>());
+                carrello.calcolaNumeroProdotti();
+                carrello.calcolaTotale();
                 CarrelloDAO carrelloDAO = new CarrelloDAO();
-                carrello.setIdUtente(carrelloDAO.doCreate(carrello));
+                carrello.setCodice(carrelloDAO.doCreate(carrello));
 
 
                 ListaDeiDesideri listaDeiDesideri = new ListaDeiDesideri();

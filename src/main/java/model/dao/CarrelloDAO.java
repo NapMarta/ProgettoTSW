@@ -82,7 +82,8 @@ public class CarrelloDAO {
         boolean ris = false;
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
-            String query = "update carrello set totale='" + carrello.getTotale() + "', numeroProdotti='" + carrello.getNumeroProdotti() +"';";
+            String query = "update carrello set totale='" + carrello.calcolaTotale() + "', numeroProdotti='" + carrello.calcolaNumeroProdotti() +"'" +
+                    "where idUtente='" + carrello.getIdUtente()+"'";
             st.executeUpdate(query);
 
             String query1 = "delete from contenere where codiceCarrello='" + carrello.getCodice() + "';";

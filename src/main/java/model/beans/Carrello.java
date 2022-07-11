@@ -62,7 +62,7 @@ public class Carrello {
             num += 1 * prodottoQuantita.getQuantita();
         }
 
-        this.numeroProdotti = numeroProdotti;
+        this.numeroProdotti = num;
         return num;
     }
 

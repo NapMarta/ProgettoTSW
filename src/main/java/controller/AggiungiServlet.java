@@ -35,8 +35,8 @@ public class AggiungiServlet extends HttpServlet {
                 for (ProdottoQuantita p : carrello.getListaProdotti()) {
                     if(p.getCodice() == cod){
                         p.setQuantita(p.getQuantita()+1);
-                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
-                        carrello.setTotale(carrello.getTotale()+p.getPrezzo());
+//                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+//                        carrello.setTotale(carrello.getTotale()+p.getPrezzo());
                     }
                 }
             }else{      //meno
@@ -45,8 +45,8 @@ public class AggiungiServlet extends HttpServlet {
                     ProdottoQuantita p = iterator.next();
                     if(p.getCodice() == cod){
                         p.setQuantita(p.getQuantita()-1);
-                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()-1);
-                        carrello.setTotale(carrello.getTotale()-p.getPrezzo());
+//                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()-1);
+//                        carrello.setTotale(carrello.getTotale()-p.getPrezzo());
                         if(p.getQuantita() == 0){
                             iterator.remove();
                         }
@@ -68,8 +68,8 @@ public class AggiungiServlet extends HttpServlet {
                 ProdottoQuantita p = iterator.next();
                 if(p.getCodice() == cod){
                     iterator.remove();
-                    carrello.setNumeroProdotti(carrello.getNumeroProdotti()-p.getQuantita());
-                    carrello.setTotale(carrello.getTotale()-(p.getPrezzo()*p.getQuantita()));
+//                    carrello.setNumeroProdotti(carrello.getNumeroProdotti()-p.getQuantita());
+//                    carrello.setTotale(carrello.getTotale()-(p.getPrezzo()*p.getQuantita()));
                 }
             }
             address = "WEB-INF/result/carrello.jsp";
@@ -90,8 +90,8 @@ public class AggiungiServlet extends HttpServlet {
                     if (prodottoQuantita.getCodice() == codice) {
                         prodottoQuantita.setQuantita(prodottoQuantita.getQuantita() + 1);       //e modifichiamo la quantità
                         prodottoQtà = prodottoQuantita;
-                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
-                        carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
+//                        carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
+//                        carrello.setTotale(carrello.getTotale()+prodottoQuantita.getPrezzo());
                         val = true;
                     }
                 }
@@ -104,7 +104,7 @@ public class AggiungiServlet extends HttpServlet {
 
                 carrello.getListaProdotti().add(prodottoQtà);
                 carrello.setNumeroProdotti(carrello.getNumeroProdotti()+1);
-                carrello.setTotale(carrello.getTotale()+prodottoQtà.getPrezzo());
+//                carrello.setTotale(carrello.getTotale()+prodottoQtà.getPrezzo());
             }
 
             synchronized (session){
