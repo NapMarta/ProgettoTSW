@@ -14,7 +14,7 @@ function validateO(){
     const cap_reg_exp=/^\d{5}$/;
 
     const indirizzo = document.ordine.via.value;
-    const indirizzo_reg_exp=/^[A-z0-9',\. ]{3,30}, [A-z0-9,\. ]{2,3}$/;
+    const indirizzo_reg_exp=/^[A-z0-9',\. ]{3,30}, [A-z0-9,\. ]{1,3}$/;
 
     const citta = document.ordine.citta.value;
     const citta_reg_exp=/^[A-z' ]{3,20}$/;

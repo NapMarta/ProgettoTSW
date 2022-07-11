@@ -64,7 +64,7 @@ public class RequestValidator {
 
 
     public static boolean assertIndirizzo(String indirizzo){
-        Pattern pattern = Pattern.compile("^[A-z0-9',\\. ]{3,30}, [A-z0-9,\\. ]{2,3}$");
+        Pattern pattern = Pattern.compile("^[A-z0-9',\\. ]{3,30}, [A-z0-9,\\. ]{1,3}$");
         Matcher matcher = pattern.matcher(indirizzo);
         if(matcher.matches())
             return true;
