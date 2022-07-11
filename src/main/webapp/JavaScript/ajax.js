@@ -15,7 +15,7 @@ $(document).ready(function(){
                     //console.log(small.text());
                     div.addClass('errorEmail');
                     small.text('Utente già registrato');
-                    small.css({"font-size": "10px","color": "red"});
+                    small.css({"font-size": "12px","color": "red"});
                 }else{
                     small.text('');
                     div.removeClass('errorEmail');
@@ -27,7 +27,7 @@ $(document).ready(function(){
                 const small = div.children('.small');
                 //console.log(small.text());
                 small.text('Errore. Riprova');
-                small.css({"font-size": "10px","color": "red"});
+                small.css({"font-size": "12px","color": "red"});
                 console.log('errore');
             });
     });
