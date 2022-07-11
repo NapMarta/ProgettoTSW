@@ -115,17 +115,6 @@ header{
     clear: both;
 }
 
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration,
-input[type=search]::-webkit-search-results-button,
-input[type=search]::-webkit-search-results-decoration {
-    -webkit-appearance:none;
-}
-input[type=search] {
-    -webkit-appearance:textfield;
-    -webkit-box-sizing:content-box;
-}
-
 .search input[type=search]:focus {
     outline: none;
 }
@@ -185,7 +174,7 @@ a img:hover, .notification img:hover, button img:hover{
 }
 
 .dropup-content input[type=submit]:hover {
-    background-color: #ccc
+    background-color: #ccc;
 }
 
 .dropup:hover .dropup-content {

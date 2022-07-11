@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     }).focus(function() {
         $('#pswd_info, #pswd_infoModifica').show();
-    }).blur(function() {
+    }).blur(function() {     //Si attiva quando l’elemento HTML perde il focus
         $('#pswd_info, #pswd_infoModifica').hide();
     });
 

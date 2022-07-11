@@ -105,7 +105,6 @@ input:focus {
     margin-bottom: 5px;
 }
 
-/*iPad, tablet*/
 @media screen and (max-width: 1010px){
     .parent {
         width: 70%;
@@ -116,8 +115,7 @@ input:focus {
     }
 }
 
-/*mobile device*/
-@media screen and (max-width: 580px) /*and (min-width: 320px)*/{
+@media screen and (max-width: 580px){
     .parent {
         width: 96%;
         padding: 0px;
